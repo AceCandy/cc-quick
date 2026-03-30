@@ -1,0 +1,613 @@
+:root {
+  --keyboard-bg: #eff6ff;
+  --keyboard-header: #2563eb;
+  --slash-bg: #f5f3ff;
+  --slash-header: #7c3aed;
+  --skills-bg: #ecfdf5;
+  --skills-header: #059669;
+  --memory-bg: #fffbeb;
+  --memory-header: #d97706;
+  --config-bg: #fff7ed;
+  --config-header: #c2410c;
+  --workflows-bg: #fef2f2;
+  --workflows-header: #dc2626;
+  --mcp-bg: #ecfeff;
+  --mcp-header: #0891b2;
+  --cli-bg: #f9fafb;
+  --cli-header: #4b5563;
+  --footer-bg: #1f2937;
+  --footer-text: #f9fafb;
+  --font-sans: "Inter", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", "Fira Code", "Consolas", "Liberation Mono", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 12px;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.25;
+  background: #fff;
+  color: #1f2937;
+  padding: 6mm;
+}
+
+@page {
+  size: a4 landscape;
+  margin: 8mm;
+}
+
+.page {
+  width: 100%;
+  max-width: 279mm;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4mm;
+  margin-bottom: 2mm;
+  padding-bottom: 1mm;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+}
+
+.header-meta {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-align: right;
+}
+
+.header-meta .version-info {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+}
+
+.header-meta .last-updated {
+  display: block;
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+
+.changelog {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1px solid #f59e0b;
+  border-radius: 4px;
+  padding: 1.5mm 3mm;
+  margin-bottom: 2mm;
+  font-size: 0.72rem;
+}
+
+.changelog-header {
+  font-weight: 700;
+  color: #92400e;
+  margin-bottom: 0.5mm;
+  display: flex;
+  align-items: center;
+  gap: 1mm;
+  cursor: pointer;
+  user-select: none;
+}
+
+.changelog-header a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed #92400e;
+}
+
+.changelog-dismiss {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: #92400e;
+  cursor: pointer;
+  opacity: 0.6;
+  line-height: 1;
+}
+
+.changelog-dismiss:hover {
+  opacity: 1;
+}
+
+.changelog-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1mm 4mm;
+  color: #78350f;
+  list-style: none;
+}
+
+.changelog-list li {
+  display: flex;
+  align-items: center;
+  gap: 1mm;
+}
+
+.changelog-list li::before {
+  content: "•";
+  color: #f59e0b;
+  font-weight: 700;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  gap: 2mm;
+  align-items: stretch;
+}
+
+.section {
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-keyboard-mcp > .section:last-child,
+.section-slash-memory > .section:last-child,
+.section-workflows-config > .section:last-child,
+.section-skills-cli > .section:last-child {
+  flex: 1;
+}
+
+.section-header {
+  padding: 1.2mm 2mm;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 1mm;
+}
+
+.section-content {
+  padding: 1.5mm 2.5mm;
+  flex: 1;
+}
+
+.sub-header {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 0.75rem;
+  color: #374151;
+  margin-top: 1.2mm;
+  margin-bottom: 0.5mm;
+  padding-bottom: 0.3mm;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.15);
+}
+
+.sub-header:first-child {
+  margin-top: 0;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5mm;
+  padding: 0.35mm 0;
+}
+
+.row code,
+.changelog code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.key {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.desc {
+  font-size: 0.8rem;
+  color: #4b5563;
+  flex: 1;
+  min-width: 0;
+}
+
+.keycap {
+  display: inline-block;
+  background: linear-gradient(180deg, #fafafa 0%, #e5e7eb 100%);
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
+  padding: 0.2mm 1.2mm;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  margin-right: 0.3mm;
+}
+
+.badge-new {
+  display: inline-block;
+  background: #ef4444;
+  color: #fff;
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 0.2mm 1mm;
+  border-radius: 2px;
+  margin-left: 1mm;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.section-keyboard {
+  background: var(--keyboard-bg);
+}
+
+.section-keyboard .section-header {
+  background: var(--keyboard-header);
+}
+
+.section-slash {
+  background: var(--slash-bg);
+}
+
+.section-slash .section-header {
+  background: var(--slash-header);
+}
+
+.section-skills {
+  background: var(--skills-bg);
+}
+
+.section-skills .section-header {
+  background: var(--skills-header);
+}
+
+.section-memory {
+  background: var(--memory-bg);
+}
+
+.section-memory .section-header {
+  background: var(--memory-header);
+}
+
+.section-workflows {
+  background: var(--workflows-bg);
+}
+
+.section-workflows .section-header {
+  background: var(--workflows-header);
+}
+
+.section-mcp {
+  background: var(--mcp-bg);
+}
+
+.section-mcp .section-header {
+  background: var(--mcp-header);
+}
+
+.section-cli {
+  background: var(--cli-bg);
+}
+
+.section-cli .section-header {
+  background: var(--cli-header);
+}
+
+.section-config {
+  background: var(--config-bg);
+}
+
+.section-config .section-header {
+  background: var(--config-header);
+}
+
+.section-keyboard-mcp,
+.section-slash-memory,
+.section-workflows-config,
+.section-skills-cli {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+
+.section-keyboard-mcp {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.section-slash-memory {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.section-workflows-config {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.section-skills-cli {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.footer {
+  margin-top: 2mm;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 1.5mm 2.5mm;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5mm;
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  align-items: center;
+}
+
+.footer-label {
+  font-weight: 700;
+  color: #9ca3af;
+  margin-right: 1mm;
+}
+
+.footer-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1mm;
+}
+
+.footer-item code {
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.3mm 1mm;
+  border-radius: 2px;
+}
+
+.footer-sep {
+  color: #6b7280;
+}
+
+.os-toggle {
+  display: flex;
+  border: 1px solid #9ca3af;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.os-btn {
+  background: #fff;
+  border: none;
+  padding: 3px 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  line-height: 1;
+  color: #6b7280;
+  transition: background 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.os-btn + .os-btn {
+  border-left: 1px solid #9ca3af;
+}
+
+.os-btn.active {
+  background: #111827;
+  color: #fff;
+}
+
+.os-btn:hover:not(.active) {
+  background: #f3f4f6;
+}
+
+@media print {
+  html {
+    font-size: 8.5px !important;
+  }
+
+  body {
+    padding: 0;
+    background: #fff;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .page {
+    max-width: none;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .main-grid,
+  .section-keyboard-mcp,
+  .section-slash-memory,
+  .section-workflows-config,
+  .section-skills-cli {
+    gap: 1.5mm;
+  }
+
+  .section,
+  .section-content,
+  .row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .sub-header {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .sub-header + .row {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  .key,
+  .keycap,
+  code,
+  .footer-item code {
+    font-family: "Courier New", "Courier", monospace !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .section-header {
+    padding: 0.8mm 2mm;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .section-content {
+    padding: 1mm 2mm;
+  }
+
+  .row {
+    padding: 0.15mm 0;
+  }
+
+  .sub-header {
+    margin-top: 0.8mm;
+  }
+
+  .keycap {
+    background: #f3f4f6 !important;
+    box-shadow: none;
+    border: 1px solid #9ca3af;
+  }
+
+  .footer {
+    margin-top: 1mm;
+    padding: 1mm 2mm;
+    background: #374151 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .os-toggle,
+  .changelog {
+    display: none !important;
+  }
+
+  .header {
+    margin-bottom: 1.5mm;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  html {
+    font-size: 10px;
+  }
+
+  .main-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    align-items: start;
+  }
+
+  .section-keyboard-mcp {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .section-slash-memory {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .section-workflows-config {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .section-skills-cli {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 11px;
+  }
+
+  body {
+    padding: 3mm;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .header h1 {
+    font-size: 1.18rem;
+    white-space: normal;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .os-toggle {
+    order: -1;
+  }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .section-keyboard-mcp,
+  .section-slash-memory,
+  .section-workflows-config,
+  .section-skills-cli {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .changelog-list {
+    flex-direction: column;
+    gap: 1mm;
+  }
+}
