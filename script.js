@@ -23,6 +23,18 @@
 
   var saved = localStorage.getItem("cc-os") || detectOS();
 
+  function replaceModifierText(text, os) {
+    if (!text) {
+      return text;
+    }
+
+    if (os === "mac") {
+      return text.replaceAll("Shift", "⇧").replaceAll("Alt", "⌥");
+    }
+
+    return text.replaceAll("⇧", "Shift").replaceAll("⌥", "Alt");
+  }
+
   function applyOS(os) {
     buttons.forEach(function (button) {
       button.classList.toggle("active", button.dataset.os === os);
@@ -36,6 +48,15 @@
       } else if (text === "Shift" || text === "⇧") {
         keycap.textContent = os === "mac" ? "⇧" : "Shift";
       }
+    });
+
+    // 中文页当前是纯文本快捷键，不是上游的 keycap 结构，切换时要同步替换修饰键前缀。
+    document.querySelectorAll(".key").forEach(function (key) {
+      if (key.querySelectorAll && key.querySelectorAll(".keycap").length > 0) {
+        return;
+      }
+
+      key.textContent = replaceModifierText(key.textContent, os);
     });
 
     localStorage.setItem("cc-os", os);

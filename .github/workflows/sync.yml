@@ -11,6 +11,7 @@ on:
       - 'templates/**'
       - 'package.json'
       - 'package-lock.json'
+      - 'script.js'
   schedule:
     - cron: '7 */6 * * *'
   workflow_dispatch:
