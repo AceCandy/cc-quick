@@ -22,8 +22,8 @@
           </button>
         </div>
         <div class="header-meta">
-          <span class="version-info">Claude Code v2.1.83</span>
-          <span class="last-updated">Last updated: March 25, 2026</span>
+          <span class="version-info">Claude Code v2.1.88</span>
+          <span class="last-updated">Last updated: March 31, 2026</span>
         </div>
       </div>
     </header>
@@ -34,12 +34,12 @@
         <span class="changelog-dismiss" onclick="event.stopPropagation(); this.closest('.changelog').remove()">✕</span>
       </div>
       <ul class="changelog-list">
-        <li>managed-settings.d/ drop-in policy fragments (v2.1.83)</li>
-        <li>CwdChanged / FileChanged hook events</li>
-        <li>Kill-agents keybinding → Ctrl+X Ctrl+K (was Ctrl+F)</li>
-        <li>Transcript search: / in verbose, n/N step</li>
-        <li>Ctrl+X Ctrl+E — open editor (alias for Ctrl+G)</li>
-        <li>initialPrompt agent frontmatter</li>
+        <li>CLAUDE_CODE_NO_FLICKER=1 alt-screen rendering (v2.1.88)</li>
+        <li>PermissionDenied hook event (v2.1.88)</li>
+        <li>Named subagents in @ mention typeahead (v2.1.88)</li>
+        <li>Thinking summaries off by default (showThinkingSummaries) (v2.1.88)</li>
+        <li>PowerShell tool for Windows (opt-in preview) (v2.1.84)</li>
+        <li>Conditional if field for hooks (permission rule syntax) (v2.1.85)</li>
       </ul>
     </div>
 
@@ -57,7 +57,7 @@
             <div class="row"><span class="key">CtrlX CtrlE</span> <span class="desc">在编辑器中打开（别名）<span class="badge-new" data-added="2026-03-25">NEW</span></span></div>
             <div class="row"><span class="key">CtrlB</span> <span class="desc">将运行中的任务转到后台</span></div>
             <div class="row"><span class="key">CtrlT</span> <span class="desc">显示或隐藏任务列表</span></div>
-            <div class="row"><span class="key">CtrlV</span> <span class="desc">粘贴图片</span></div>
+            <div class="row"><span class="key">CtrlV</span> <span class="desc">粘贴图片<span class="badge-new" data-added="2026-03-25">NEW</span></span></div>
             <div class="row"><span class="key">CtrlX CtrlK</span> <span class="desc">Kill background agents<span class="badge-new" data-added="2026-03-25">NEW</span></span></div>
             <div class="row"><span class="key">EscEsc</span> <span class="desc">回退或撤销</span></div>
 
@@ -65,6 +65,7 @@
             <div class="row"><span class="key">ShiftTab</span> <span class="desc">轮换权限模式</span></div>
             <div class="row"><span class="key">AltP</span> <span class="desc">切换模型</span></div>
             <div class="row"><span class="key">AltT</span> <span class="desc">切换思考模式</span></div>
+            <div class="row"><span class="key">AltO</span> <span class="desc">切换快速模式<span class="badge-new" data-added="2026-03-26">NEW</span></span></div>
 
             <div class="sub-header">Input</div>
             <div class="row"><span class="key">\Enter</span> <span class="desc">换行（快速）</span></div>
@@ -83,6 +84,12 @@
             <div class="row"><span class="key">/</span> <span class="desc">斜杠命令</span></div>
             <div class="row"><span class="key">A</span> <span class="desc">所有项目</span></div>
             <div class="row"><span class="key">B</span> <span class="desc">当前分支</span></div>
+
+            <div class="sub-header">Transcript Mode (Ctrl+O)</div>
+            <div class="row"><span class="key">/</span> <span class="desc">斜杠命令<span class="badge-new" data-added="2026-03-25">NEW</span></span></div>
+            <div class="row"><span class="key">N / ⇧N</span> <span class="desc">Next/prev match</span></div>
+            <div class="row"><span class="key">CtrlE</span> <span class="desc">Toggle show all</span></div>
+            <div class="row"><span class="key">Q / Esc</span> <span class="desc">Exit transcript</span></div>
           </div>
         </section>
 
@@ -104,6 +111,7 @@
             <div class="row"><span class="key">claude mcp list</span> <span class="desc">列出所有服务器</span></div>
             <div class="row"><span class="key">claude mcp serve</span> <span class="desc">将 CC 作为 MCP 服务器</span></div>
             <div class="row"><span class="key">Elicitation</span> <span class="desc">服务器可在任务中途请求输入<span class="badge-new" data-added="2026-03-23">NEW</span></span></div>
+            <div class="row"><span class="key">2KB cap</span> <span class="desc">Tool desc + server instructions limit<span class="badge-new" data-added="2026-03-26">NEW</span></span></div>
           </div>
         </section>
 
@@ -183,7 +191,7 @@
 
             <div class="sub-header">Auto Memory</div>
             <div class="row"><span class="key">~/.claude/projects/&lt;proj&gt;/memory/</span></div>
-            <div class="row"><span class="key"></span> <span class="desc">MEMORY.md + 主题文件，自动加载</span></div>
+            <div class="row"><span class="key"></span> <span class="desc">MEMORY.md + 主题文件，自动加载 (25KB/200 lines max)</span></div>
           </div>
         </section>
 
@@ -198,7 +206,7 @@
             <div class="row"><span class="key">AltT</span> <span class="desc">切换思考模式</span></div>
             <div class="row"><span class="key">&quot;ultrathink&quot;</span> <span class="desc">本轮最大 effort</span></div>
             <div class="row"><span class="key">CtrlO</span> <span class="desc">切换详细输出</span></div>
-            <div class="row"><span class="key">/effort</span> <span class="desc">○ low · ◐ med · ● high<span class="badge-new" data-added="2026-03-23">NEW</span></span></div>
+            <div class="row"><span class="key">/effort</span> <span class="desc">○ low · ◐ medium · ● high · ★ max</span></div>
 
             <div class="sub-header">Git Worktrees</div>
             <div class="row"><span class="key">--worktree name</span> <span class="desc">Isolated branch per feature</span></div>
@@ -245,21 +253,29 @@
             <div class="row"><span class="key">.claude/settings.local.json</span> <span class="desc">仅本地</span></div>
             <div class="row"><span class="key">~/.claude.json</span> <span class="desc">OAuth、MCP、状态</span></div>
             <div class="row"><span class="key">.mcp.json</span> <span class="desc">项目 MCP 服务器</span></div>
+            <div class="row"><span class="key">managed-settings.d/</span> <span class="desc">Drop-in policy fragments<span class="badge-new" data-added="2026-03-25">NEW</span></span></div>
 
             <div class="sub-header">Key Settings</div>
             <div class="row"><span class="key">modelOverrides</span> <span class="desc">将模型选择器映射到自定义 ID</span></div>
             <div class="row"><span class="key">autoMemoryDirectory</span> <span class="desc">自定义记忆目录</span></div>
             <div class="row"><span class="key">worktree.sparsePaths</span> <span class="desc">稀疏检出目录<span class="badge-new" data-added="2026-03-23">NEW</span></span></div>
+            <div class="row"><span class="key">sandbox.failIfUnavailable</span> <span class="desc">Exit if sandbox fails</span></div>
+            <div class="row"><span class="key">hooks: if</span> <span class="desc">Conditional hooks (permission rule syntax)</span></div>
+            <div class="row"><span class="key">PermissionDenied</span> <span class="desc">Hook: auto-mode denial<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
+            <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">Opt-in (off by default now)<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
+            <div class="row"><span class="key">allowedChannelPlugins</span> <span class="desc">Admin channel plugin allowlist</span></div>
 
             <div class="sub-header">Key Env Vars</div>
             <div class="row"><span class="key">ANTHROPIC_API_KEY</span></div>
             <div class="row"><span class="key">ANTHROPIC_MODEL</span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_EFFORT_LEVEL</span> <span class="desc">low/med/high</span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_EFFORT_LEVEL</span> <span class="desc">low/medium/high/max/auto</span></div>
             <div class="row"><span class="key">MAX_THINKING_TOKENS</span> <span class="desc">0=off</span></div>
             <div class="row"><span class="key">ANTHROPIC_CUSTOM_MODEL_OPTION</span> <span class="desc">自定义 /model 条目</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_PLUGIN_SEED_DIR</span> <span class="desc">多个插件种子目录</span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB</span> <span class="desc">Strip creds from subprocs</span></div>
+            <div class="row"><span class="key">CLAUDE_STREAM_IDLE_TIMEOUT_MS</span> <span class="desc">Streaming watchdog (def 90s)</span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_NO_FLICKER</span> <span class="desc">Alt-screen rendering (=1)<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDECODE</span> <span class="desc">检测 CC shell（=1）</span></div>
-            <div class="row"><span class="key">IS_DEMO</span> <span class="desc">演示模式（隐藏邮箱/组织）</span></div>
           </div>
         </section>
 
@@ -282,6 +298,7 @@
             <div class="row"><span class="key">allowed-tools</span> <span class="desc">跳过权限提示</span></div>
             <div class="row"><span class="key">model</span> <span class="desc">为 skill 覆写模型</span></div>
             <div class="row"><span class="key">effort</span> <span class="desc">覆写 effort 等级<span class="badge-new" data-added="2026-03-23">NEW</span></span></div>
+            <div class="row"><span class="key">paths: [globs]</span> <span class="desc">Path-specific (YAML list)<span class="badge-new" data-added="2026-03-26">NEW</span></span></div>
             <div class="row"><span class="key">context: fork</span> <span class="desc">在 subagent 中运行</span></div>
             <div class="row"><span class="key">$ARGUMENTS</span> <span class="desc">用户输入占位符</span></div>
             <div class="row"><span class="key">${CLAUDE_SKILL_DIR}</span> <span class="desc">skill 自身目录</span></div>
@@ -299,7 +316,9 @@
             <div class="row"><span class="key">memory: user|project</span> <span class="desc">持久记忆</span></div>
             <div class="row"><span class="key">background: true</span> <span class="desc">Background task</span></div>
             <div class="row"><span class="key">maxTurns</span> <span class="desc">Limit agentic turns</span></div>
-            <div class="row"><span class="key">SendMessage</span> <span class="desc">Resume agents (replaces resume)<span class="badge-new" data-added="2026-03-23">NEW</span></span></div>
+            <div class="row"><span class="key">initialPrompt</span> <span class="desc">Auto-submit first turn<span class="badge-new" data-added="2026-03-25">NEW</span></span></div>
+            <div class="row"><span class="key">SendMessage</span> <span class="desc">Resume agents (replaces resume)</span></div>
+            <div class="row"><span class="key">@agent-name</span> <span class="desc">Mention named subagents<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
           </div>
         </section>
 
@@ -330,10 +349,11 @@
             <div class="row"><span class="key">--bare</span> <span class="desc">Minimal headless (no hooks/LSP)<span class="badge-new" data-added="2026-03-23">NEW</span></span></div>
             <div class="row"><span class="key">--channels</span> <span class="desc">Permission relay / MCP push<span class="badge-new" data-added="2026-03-23">NEW</span></span></div>
             <div class="row"><span class="key">--remote</span> <span class="desc">Web session</span></div>
-            <div class="row"><span class="key">--effort</span> <span class="desc">low/med/high/max</span></div>
+            <div class="row"><span class="key">--effort</span> <span class="desc">low/medium/high/max</span></div>
             <div class="row"><span class="key">--permission-mode</span> <span class="desc">plan/default/…</span></div>
             <div class="row"><span class="key">--dangerously-skip-permissions</span> <span class="desc">Skip all prompts ⚠️</span></div>
             <div class="row"><span class="key">--chrome</span> <span class="desc">Chrome</span></div>
+            <div class="row"><span class="key">PowerShell tool</span> <span class="desc">Windows opt-in preview<span class="badge-new" data-added="2026-03-26">NEW</span></span></div>
           </div>
         </section>
     </main>
