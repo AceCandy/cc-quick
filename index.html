@@ -271,7 +271,6 @@
             <div class="row"><span class="key">CLAUDE_CODE_EFFORT_LEVEL</span> <span class="desc">low/medium/high/max/auto</span></div>
             <div class="row"><span class="key">MAX_THINKING_TOKENS</span> <span class="desc">0=off</span></div>
             <div class="row"><span class="key">ANTHROPIC_CUSTOM_MODEL_OPTION</span> <span class="desc">自定义 /model 条目</span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_PLUGIN_SEED_DIR</span> <span class="desc">多个插件种子目录</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB</span> <span class="desc">Strip creds from subprocs</span></div>
             <div class="row"><span class="key">CLAUDE_STREAM_IDLE_TIMEOUT_MS</span> <span class="desc">Streaming watchdog (def 90s)</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_NO_FLICKER</span> <span class="desc">Alt-screen rendering (=1)<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
@@ -311,9 +310,9 @@
             <div class="row"><span class="key">Bash</span> <span class="desc">终端独立上下文</span></div>
 
             <div class="sub-header">Agent Frontmatter</div>
-            <div class="row"><span class="key">permissionMode</span> <span class="desc">default/acceptEdits/plan/dontAsk/bypass</span></div>
+            <div class="row"><span class="key">permissionMode</span> <span class="desc">default/acceptEdits/plan/dontAsk/bypassPermissions</span></div>
             <div class="row"><span class="key">isolation: worktree</span> <span class="desc">在 Git worktree 中运行</span></div>
-            <div class="row"><span class="key">memory: user|project</span> <span class="desc">持久记忆</span></div>
+            <div class="row"><span class="key">memory: user|project|local</span> <span class="desc">持久记忆</span></div>
             <div class="row"><span class="key">background: true</span> <span class="desc">Background task</span></div>
             <div class="row"><span class="key">maxTurns</span> <span class="desc">Limit agentic turns</span></div>
             <div class="row"><span class="key">initialPrompt</span> <span class="desc">Auto-submit first turn<span class="badge-new" data-added="2026-03-25">NEW</span></span></div>
