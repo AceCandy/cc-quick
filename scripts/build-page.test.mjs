@@ -131,6 +131,62 @@ test('renderPage 遇到缺失的 section id 会抛出显式错误', () => {
   assert.throws(() => renderPage(template, localized), /layout.*missing/);
 });
 
+test('renderPage 渲染结构化 footer 并保留本地说明行', () => {
+  const template = `
+    <footer class="footer">
+      {{FOOTER_HTML}}
+      <div class="footer-row">
+        <span class="footer-item">页面由上游内容自动同步生成；未命中词表时默认保留原文。</span>
+      </div>
+    </footer>
+  `;
+  const localized = {
+    version: '1.0.0',
+    lastUpdated: '2026-04-01',
+    changelog: [],
+    layout: [],
+    sections: [],
+    footer: [
+      {
+        label: '权限模式',
+        items: [
+          {
+            code: 'default',
+            desc: '每次提示'
+          },
+          {
+            code: '--dangerously-skip-permissions',
+            desc: 'CLI 参数'
+          }
+        ]
+      },
+      {
+        label: '关键环境变量',
+        items: [
+          {
+            code: 'CLAUDE_STREAM_IDLE_TIMEOUT_MS',
+            desc: '（默认 90 秒）'
+          },
+          {
+            code: 'ANTHROPIC_API_KEY',
+            desc: ''
+          }
+        ]
+      }
+    ]
+  };
+
+  const html = renderPage(template, localized);
+
+  assert.match(html, /<span class="footer-label">权限模式:<\/span>/);
+  assert.match(html, /<span class="footer-item"><code>default<\/code> 每次提示<\/span>/);
+  assert.match(html, /<span class="footer-item"><code>--dangerously-skip-permissions<\/code> CLI 参数<\/span>/);
+  assert.match(html, /<span class="footer-label">关键环境变量:<\/span>/);
+  assert.match(html, /<span class="footer-item"><code>CLAUDE_STREAM_IDLE_TIMEOUT_MS<\/code> （默认 90 秒）<\/span>/);
+  assert.match(html, /<span class="footer-item"><code>ANTHROPIC_API_KEY<\/code><\/span>/);
+  assert.match(html, /页面由上游内容自动同步生成；未命中词表时默认保留原文。/);
+});
+
 test('renderPage 使用真实 upstream fixture 保留全部 wrapper 分组', () => {
   const upstreamHtml = readFileSync(new URL('../data/upstream/storyfox.html', import.meta.url), 'utf8');
   const template = readFileSync(new URL('../templates/index.template.html', import.meta.url), 'utf8');
@@ -158,4 +214,8 @@ test('renderPage 使用真实 upstream fixture 保留全部 wrapper 分组', () 
     html,
     /<div class="section-skills-cli">\s*<section class="section section-skills">[\s\S]*<section class="section section-cli">[\s\S]*<\/div>/
   );
+  assert.match(html, /<span class="footer-label">权限模式:<\/span>/);
+  assert.match(html, /<span class="footer-item"><code>default<\/code> 每次提示<\/span>/);
+  assert.match(html, /<span class="footer-label">关键环境变量:<\/span>/);
+  assert.match(html, /<span class="footer-item"><code>CLAUDE_CODE_MAX_OUTPUT_TOKENS<\/code> （默认 32K）<\/span>/);
 });

@@ -93,6 +93,46 @@ function parseSection($, sectionEl) {
   return { id, className, title, groups };
 }
 
+function parseFooterLabel(text = '') {
+  return normalizeText(text).replace(/:\s*$/, '');
+}
+
+function parseFooterItem($, itemEl) {
+  const item = $(itemEl).clone();
+  const codeEl = item.find('code').first();
+  const code = normalizeText(codeEl.text());
+  if (!code) {
+    throw new Error('footer-item 缺少 code');
+  }
+  codeEl.remove();
+  return {
+    code,
+    desc: normalizeText(item.text())
+  };
+}
+
+function parseFooter($) {
+  const footer = $('.footer').first();
+  if (!footer.length) {
+    return [];
+  }
+
+  const rows = [];
+  footer.children('.footer-row').each((_, rowEl) => {
+    const row = $(rowEl);
+    const labelEl = row.children('.footer-label').first();
+    if (!labelEl.length) {
+      return;
+    }
+
+    const label = parseFooterLabel(labelEl.text());
+    const items = row.children('.footer-item').toArray().map((itemEl) => parseFooterItem($, itemEl));
+    rows.push({ label, items });
+  });
+
+  return rows;
+}
+
 export function parsePage(html) {
   const $ = cheerio.load(html);
   const version = requireText($.root(), '.version-info', 'version-info');
@@ -100,6 +140,7 @@ export function parsePage(html) {
   const changelogList = requireElement($.root(), '.changelog-list', 'changelog-list');
   const changelog = [];
   const layout = [];
+  const footer = parseFooter($);
 
   changelogList.children('li').each((_, element) => {
     changelog.push(normalizeText($(element).text()));
@@ -156,7 +197,7 @@ export function parsePage(html) {
     });
   });
 
-  return { version, lastUpdated, changelog, layout, sections };
+  return { version, lastUpdated, changelog, layout, sections, footer };
 }
 
 async function main() {

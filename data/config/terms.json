@@ -135,5 +135,10 @@
   "Full tools, complex tasks": "全工具，适合复杂任务",
   "Terminal separate context": "终端独立上下文",
   "Run in git worktree": "在 Git worktree 中运行",
-  "Persistent memory": "持久记忆"
+  "Persistent memory": "持久记忆",
+  "(0=off)": "（0=关闭）",
+  "(def 32K)": "（默认 32K）",
+  "(def 90s)": "（默认 90 秒）",
+  "(strip creds)": "（剥离敏感信息）",
+  "(alt-screen)": "（备用屏渲染）"
 }

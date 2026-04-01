@@ -11,42 +11,73 @@ export function applyTerms(text, terms) {
   return result;
 }
 
+function localizeDesc({ itemKey, desc, itemMap, terms, unmappedItems, scope, group, preferFooterDesc = false }) {
+  const mapped = itemMap[itemKey];
+  const mappedDesc = preferFooterDesc ? mapped?.footerDesc ?? mapped?.desc : mapped?.desc;
+  if (mappedDesc) {
+    return mappedDesc;
+  }
+
+  const localizedDesc = desc ? applyTerms(desc, terms) : desc;
+  unmappedItems.push({
+    section: scope,
+    group,
+    key: itemKey,
+    desc
+  });
+  return localizedDesc;
+}
+
 export function transformUpstream(upstream, maps) {
   const { sectionMap = {}, itemMap = {}, terms = {} } = maps ?? {};
   const unmappedItems = [];
+  const sections = (upstream.sections ?? []).map((section) => ({
+    id: section.id,
+    className: section.className,
+    title: sectionMap[section.title] || section.title,
+    groups: (section.groups ?? []).map((group) => ({
+      title: group.title,
+      items: (group.items ?? []).map((item) => ({
+        key: item.key,
+        desc: localizeDesc({
+          itemKey: item.key,
+          desc: item.desc,
+          itemMap,
+          terms,
+          unmappedItems,
+          scope: section.title,
+          group: group.title,
+          preferFooterDesc: false
+        }),
+        badge: item.badge,
+        added: item.added
+      }))
+    }))
+  }));
+  const footer = (upstream.footer ?? []).map((row) => ({
+    label: sectionMap[row.label] || row.label,
+    items: (row.items ?? []).map((item) => ({
+      code: item.code,
+      desc: localizeDesc({
+        itemKey: item.code,
+        desc: item.desc,
+        itemMap,
+        terms,
+        unmappedItems,
+        scope: 'Footer',
+        group: row.label,
+        preferFooterDesc: true
+      })
+    }))
+  }));
 
   const localized = {
     version: upstream.version,
     lastUpdated: upstream.lastUpdated,
     changelog: upstream.changelog,
     layout: upstream.layout,
-    sections: (upstream.sections ?? []).map((section) => ({
-      id: section.id,
-      className: section.className,
-      title: sectionMap[section.title] || section.title,
-      groups: (section.groups ?? []).map((group) => ({
-        title: group.title,
-        items: (group.items ?? []).map((item) => {
-          const mapped = itemMap[item.key];
-          let desc = item.desc;
-          if (mapped?.desc) {
-            desc = mapped.desc;
-          } else {
-            if (desc) {
-              desc = applyTerms(desc, terms);
-            }
-            unmappedItems.push({ section: section.title, group: group.title, key: item.key, desc: item.desc });
-          }
-
-          return {
-            key: item.key,
-            desc,
-            badge: item.badge,
-            added: item.added
-          };
-        })
-      }))
-    }))
+    sections,
+    footer
   };
 
   return { localized, unmappedItems };

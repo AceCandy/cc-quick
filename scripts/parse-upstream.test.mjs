@@ -108,6 +108,63 @@ test('parsePage preserves wrapper layout and section fields', () => {
   });
 });
 
+test('parsePage 解析 footer 中带 label 的结构化条目', () => {
+  const html = `
+    <div class="version-info">v1</div>
+    <div class="last-updated">today</div>
+    <ul class="changelog-list"><li>entry</li></ul>
+    <main class="main-grid"></main>
+    <footer class="footer">
+      <div class="footer-row">
+        <span class="footer-label">Permission Modes:</span>
+        <span class="footer-item"><code>default</code> prompts</span>
+        <span class="footer-sep">·</span>
+        <span class="footer-item"><code>acceptEdits</code> auto-accept edits</span>
+      </div>
+      <div class="footer-row">
+        <span class="footer-label">Key Env Vars:</span>
+        <span class="footer-item"><code>ANTHROPIC_API_KEY</code></span>
+        <span class="footer-sep">·</span>
+        <span class="footer-item"><code>CLAUDE_STREAM_IDLE_TIMEOUT_MS</code> (def 90s)</span>
+      </div>
+      <div class="footer-row">
+        <span class="footer-item">Static note should be ignored</span>
+      </div>
+    </footer>
+  `;
+
+  const parsed = parsePage(html);
+
+  assert.deepEqual(parsed.footer, [
+    {
+      label: 'Permission Modes',
+      items: [
+        {
+          code: 'default',
+          desc: 'prompts'
+        },
+        {
+          code: 'acceptEdits',
+          desc: 'auto-accept edits'
+        }
+      ]
+    },
+    {
+      label: 'Key Env Vars',
+      items: [
+        {
+          code: 'ANTHROPIC_API_KEY',
+          desc: ''
+        },
+        {
+          code: 'CLAUDE_STREAM_IDLE_TIMEOUT_MS',
+          desc: '(def 90s)'
+        }
+      ]
+    }
+  ]);
+});
+
 test('parsePage falls back to title-based ids for standalone sections', () => {
   const html = `
     <div class="version-info">v1</div>
@@ -274,6 +331,33 @@ test('parsePage 使用真实 upstream fixture 保留 wrapper 分组', () => {
       id: 'skills-cli',
       className: 'section-skills-cli',
       children: ['skills', 'cli']
+    }
+  ]);
+  assert.deepEqual(parsed.footer, [
+    {
+      label: 'Permission Modes',
+      items: [
+        { code: 'default', desc: 'prompts' },
+        { code: 'acceptEdits', desc: 'auto-accept edits' },
+        { code: 'plan', desc: 'read-only' },
+        { code: 'dontAsk', desc: 'deny unless allowed' },
+        { code: 'bypassPermissions', desc: 'skip all' },
+        { code: '--dangerously-skip-permissions', desc: 'CLI flag' }
+      ]
+    },
+    {
+      label: 'Key Env Vars',
+      items: [
+        { code: 'ANTHROPIC_API_KEY', desc: '' },
+        { code: 'ANTHROPIC_MODEL', desc: '' },
+        { code: 'CLAUDE_CODE_EFFORT_LEVEL', desc: '(low/medium/high/max/auto)' },
+        { code: 'MAX_THINKING_TOKENS', desc: '(0=off)' },
+        { code: 'CLAUDE_CODE_MAX_OUTPUT_TOKENS', desc: '(def 32K)' },
+        { code: 'CLAUDE_CODE_DISABLE_CRON', desc: '' },
+        { code: 'CLAUDE_CODE_SUBPROCESS_ENV_SCRUB', desc: '(strip creds)' },
+        { code: 'CLAUDE_STREAM_IDLE_TIMEOUT_MS', desc: '(def 90s)' },
+        { code: 'CLAUDE_CODE_NO_FLICKER', desc: '(alt-screen)' }
+      ]
     }
   ]);
 });

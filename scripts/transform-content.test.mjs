@@ -73,21 +73,56 @@ test('transformUpstream 保留 layout 并按规则翻译 section 与 item', () =
           }
         ]
       }
+    ],
+    footer: [
+      {
+        label: 'Permission Modes',
+        items: [
+          {
+            code: 'default',
+            desc: 'prompts'
+          },
+          {
+            code: 'acceptEdits',
+            desc: 'auto-accept edits'
+          }
+        ]
+      },
+      {
+        label: 'Key Env Vars',
+        items: [
+          {
+            code: 'CLAUDE_STREAM_IDLE_TIMEOUT_MS',
+            desc: '(def 90s)'
+          },
+          {
+            code: 'ANTHROPIC_API_KEY',
+            desc: ''
+          }
+        ]
+      }
     ]
   };
 
   const maps = {
     sectionMap: {
-      'Known Section': '已知章节'
+      'Known Section': '已知章节',
+      'Permission Modes': '权限模式',
+      'Key Env Vars': '关键环境变量'
     },
     itemMap: {
       'item-map-hit': {
         desc: 'Item map wins over keyboard terms'
+      },
+      default: {
+        footerDesc: '每次提示'
       }
     },
     terms: {
       keyboard: '键盘',
-      'keyboard shortcuts': '键盘快捷键'
+      'keyboard shortcuts': '键盘快捷键',
+      'auto-accept edits': '自动接受编辑',
+      '(def 90s)': '（默认 90 秒）'
     }
   };
 
@@ -109,6 +144,34 @@ test('transformUpstream 保留 layout 并按规则翻译 section 与 item', () =
       }
     ]
   );
+  assert.deepEqual(localized.footer, [
+    {
+      label: '权限模式',
+      items: [
+        {
+          code: 'default',
+          desc: '每次提示'
+        },
+        {
+          code: 'acceptEdits',
+          desc: '自动接受编辑'
+        }
+      ]
+    },
+    {
+      label: '关键环境变量',
+      items: [
+        {
+          code: 'CLAUDE_STREAM_IDLE_TIMEOUT_MS',
+          desc: '（默认 90 秒）'
+        },
+        {
+          code: 'ANTHROPIC_API_KEY',
+          desc: ''
+        }
+      ]
+    }
+  ]);
   assert.deepEqual(localized.sections[0].groups[0].items[0], {
     key: 'item-map-hit',
     desc: 'Item map wins over keyboard terms',
@@ -151,6 +214,24 @@ test('transformUpstream 保留 layout 并按规则翻译 section 与 item', () =
       group: 'Group Two',
       key: 'unmapped-hit',
       desc: 'Leave this text alone'
+    },
+    {
+      section: 'Footer',
+      group: 'Permission Modes',
+      key: 'acceptEdits',
+      desc: 'auto-accept edits'
+    },
+    {
+      section: 'Footer',
+      group: 'Key Env Vars',
+      key: 'CLAUDE_STREAM_IDLE_TIMEOUT_MS',
+      desc: '(def 90s)'
+    },
+    {
+      section: 'Footer',
+      group: 'Key Env Vars',
+      key: 'ANTHROPIC_API_KEY',
+      desc: ''
     }
   ]);
 });
@@ -161,6 +242,7 @@ test('transformUpstream 将空 desc 的 item 保留原值并记录到 unmappedIt
     lastUpdated: '2026-04-01',
     changelog: [],
     layout: [],
+    footer: [],
     sections: [
       {
         id: 'empty-values',

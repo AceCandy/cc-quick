@@ -17,6 +17,24 @@ export function badgeHtml(item = {}) {
   return `<span class="badge-new" data-added="${escapeHtml(item.added || '')}">${escapeHtml(item.badge)}</span>`;
 }
 
+function renderFooterItem(item) {
+  const descHtml = item.desc ? ` ${escapeHtml(item.desc)}` : '';
+  return `<span class="footer-item"><code>${escapeHtml(item.code)}</code>${descHtml}</span>`;
+}
+
+function renderFooter(localized) {
+  return (localized.footer ?? [])
+    .map((row) => {
+      const items = (row.items ?? []).map((item) => renderFooterItem(item)).join('\n        <span class="footer-sep">·</span>\n        ');
+      if (!items) {
+        return '';
+      }
+      return `<div class="footer-row">\n        <span class="footer-label">${escapeHtml(row.label)}:</span>\n        ${items}\n      </div>`;
+    })
+    .filter(Boolean)
+    .join('\n\n      ');
+}
+
 function resolveSection(sectionMap, sectionId) {
   const section = sectionMap.get(sectionId);
   if (!section) {
@@ -68,12 +86,14 @@ export function renderPage(template, localized) {
     .map((item) => `<li>${escapeHtml(item)}</li>`)
     .join('\n        ');
   const sectionsHtml = localized.layout.map((layoutItem) => renderLayoutItem(layoutItem, sectionMap)).join('\n\n      ');
+  const footerHtml = renderFooter(localized);
 
   return template
     .replace('{{VERSION}}', escapeHtml(localized.version || 'Claude Code'))
     .replace('{{LAST_UPDATED}}', escapeHtml(localized.lastUpdated || ''))
     .replace('{{CHANGELOG_ITEMS}}', changelogItems)
-    .replace('{{SECTIONS_HTML}}', sectionsHtml);
+    .replace('{{SECTIONS_HTML}}', sectionsHtml)
+    .replace('{{FOOTER_HTML}}', footerHtml);
 }
 
 async function main() {
