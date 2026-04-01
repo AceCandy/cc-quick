@@ -44,7 +44,8 @@
     </div>
 
     <main class="main-grid">
-      <section class="section">
+      <div class="section-keyboard-mcp">
+        <section class="section section-keyboard">
           <div class="section-header">⌨️ 键盘快捷键</div>
           <div class="section-content">
             <div class="sub-header">General Controls</div>
@@ -92,8 +93,7 @@
             <div class="row"><span class="key">Q / Esc</span> <span class="desc">Exit transcript</span></div>
           </div>
         </section>
-
-      <section class="section">
+        <section class="section section-mcp">
           <div class="section-header">🔌 MCP 服务器</div>
           <div class="section-content">
             <div class="sub-header">Add Servers</div>
@@ -114,8 +114,10 @@
             <div class="row"><span class="key">2KB cap</span> <span class="desc">Tool desc + server instructions limit<span class="badge-new" data-added="2026-03-26">NEW</span></span></div>
           </div>
         </section>
+      </div>
 
-      <section class="section">
+      <div class="section-slash-memory">
+        <section class="section section-slash">
           <div class="section-header">⚡ 斜杠命令</div>
           <div class="section-content">
             <div class="sub-header">Session</div>
@@ -174,8 +176,7 @@
             <div class="row"><span class="key">/stickers</span> <span class="desc">订购贴纸！🎉</span></div>
           </div>
         </section>
-
-      <section class="section">
+        <section class="section section-memory">
           <div class="section-header">📁 记忆与文件</div>
           <div class="section-content">
             <div class="sub-header">CLAUDE.md Locations</div>
@@ -194,8 +195,10 @@
             <div class="row"><span class="key"></span> <span class="desc">MEMORY.md + 主题文件，自动加载 (25KB/200 lines max)</span></div>
           </div>
         </section>
+      </div>
 
-      <section class="section">
+      <div class="section-workflows-config">
+        <section class="section section-workflows">
           <div class="section-header">🧠 工作流与技巧</div>
           <div class="section-content">
             <div class="sub-header">Plan Mode</div>
@@ -243,8 +246,7 @@
             <div class="row"><span class="key">--remote</span> <span class="desc">Web session on claude.ai</span></div>
           </div>
         </section>
-
-      <section class="section">
+        <section class="section section-config">
           <div class="section-header">⚙️ 配置与环境变量</div>
           <div class="section-content">
             <div class="sub-header">Config Files</div>
@@ -277,8 +279,10 @@
             <div class="row"><span class="key">CLAUDECODE</span> <span class="desc">检测 CC shell（=1）</span></div>
           </div>
         </section>
+      </div>
 
-      <section class="section">
+      <div class="section-skills-cli">
+        <section class="section section-skills">
           <div class="section-header">🔧 Skills 与 Agents</div>
           <div class="section-content">
             <div class="sub-header">Built-in Skills</div>
@@ -320,8 +324,7 @@
             <div class="row"><span class="key">@agent-name</span> <span class="desc">Mention named subagents<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
           </div>
         </section>
-
-      <section class="section">
+        <section class="section section-cli">
           <div class="section-header">🖥️ CLI 与参数</div>
           <div class="section-content">
             <div class="sub-header">Core Commands</div>
@@ -355,6 +358,7 @@
             <div class="row"><span class="key">PowerShell tool</span> <span class="desc">Windows opt-in preview<span class="badge-new" data-added="2026-03-26">NEW</span></span></div>
           </div>
         </section>
+      </div>
     </main>
 
     <footer class="footer">
