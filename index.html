@@ -22,8 +22,8 @@
           </button>
         </div>
         <div class="header-meta">
-          <span class="version-info">Claude Code v2.1.89</span>
-          <span class="last-updated">Last updated: April 1, 2026</span>
+          <span class="version-info">Claude Code v2.1.88</span>
+          <span class="last-updated">Last updated: March 31, 2026</span>
         </div>
       </div>
     </header>
@@ -34,12 +34,12 @@
         <span class="changelog-dismiss" onclick="event.stopPropagation(); this.closest('.changelog').remove()">✕</span>
       </div>
       <ul class="changelog-list">
-        <li>PreToolUse &quot;defer&quot; decision — pause &amp; resume headless (v2.1.89)</li>
-        <li>MCP_CONNECTION_NONBLOCKING=true for -p mode (v2.1.89)</li>
-        <li>Auto mode denied → /permissions Recent tab + retry (v2.1.89)</li>
-        <li>Edit works on Bash-viewed files without Read (v2.1.89)</li>
-        <li>/buddy — hatch a creature that watches you code 🐣 (v2.1.89)</li>
-        <li>Autocompact thrash loop detection &amp; stop (v2.1.89)</li>
+        <li>CLAUDE_CODE_NO_FLICKER=1 alt-screen rendering (v2.1.88)</li>
+        <li>PermissionDenied hook event (v2.1.88)</li>
+        <li>Named subagents in @ mention typeahead (v2.1.88)</li>
+        <li>Thinking summaries off by default (showThinkingSummaries) (v2.1.88)</li>
+        <li>PowerShell tool for Windows (opt-in preview) (v2.1.84)</li>
+        <li>Conditional if field for hooks (permission rule syntax) (v2.1.85)</li>
       </ul>
     </div>
 
@@ -173,7 +173,6 @@
             <div class="row"><span class="key">/help</span> <span class="desc">显示帮助与命令</span></div>
             <div class="row"><span class="key">/feedback</span> <span class="desc">提交反馈（别名：/bug）</span></div>
             <div class="row"><span class="key">/release-notes</span> <span class="desc">View full changelog</span></div>
-            <div class="row"><span class="key">/buddy</span> <span class="desc">Hatch a coding companion 🐣<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
             <div class="row"><span class="key">/stickers</span> <span class="desc">订购贴纸！🎉</span></div>
           </div>
         </section>
@@ -226,7 +225,7 @@
             <div class="sub-header">Context Management</div>
             <div class="row"><span class="key">/context</span> <span class="desc">可视化上下文（网格）</span></div>
             <div class="row"><span class="key">/compact [focus]</span> <span class="desc">按焦点压缩上下文</span></div>
-            <div class="row"><span class="key">Auto-compact</span> <span class="desc">约 95% 容量时触发 (thrash loop detection)<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
+            <div class="row"><span class="key">Auto-compact</span> <span class="desc">约 95% 容量时触发</span></div>
             <div class="row"><span class="key">1M context</span> <span class="desc">Opus 4.6 (Max/Team/Ent)</span></div>
             <div class="row"><span class="key">CLAUDE.md</span> <span class="desc">压缩后依然保留！</span></div>
 
@@ -264,9 +263,8 @@
             <div class="row"><span class="key">worktree.sparsePaths</span> <span class="desc">稀疏检出目录<span class="badge-new" data-added="2026-03-23">NEW</span></span></div>
             <div class="row"><span class="key">sandbox.failIfUnavailable</span> <span class="desc">Exit if sandbox fails</span></div>
             <div class="row"><span class="key">hooks: if</span> <span class="desc">Conditional hooks (permission rule syntax)</span></div>
-            <div class="row"><span class="key">PermissionDenied</span> <span class="desc">Hook: auto-mode denial</span></div>
-            <div class="row"><span class="key">PreToolUse: &quot;defer&quot;</span> <span class="desc">Pause headless → resume with -p --resume<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
-            <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">Opt-in (off by default now)</span></div>
+            <div class="row"><span class="key">PermissionDenied</span> <span class="desc">Hook: auto-mode denial<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
+            <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">Opt-in (off by default now)<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">allowedChannelPlugins</span> <span class="desc">Admin channel plugin allowlist</span></div>
 
             <div class="sub-header">Key Env Vars</div>
@@ -277,8 +275,7 @@
             <div class="row"><span class="key">ANTHROPIC_CUSTOM_MODEL_OPTION</span> <span class="desc">自定义 /model 条目</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB</span> <span class="desc">Strip creds from subprocs</span></div>
             <div class="row"><span class="key">CLAUDE_STREAM_IDLE_TIMEOUT_MS</span> <span class="desc">Streaming watchdog （默认 90 秒）</span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_NO_FLICKER</span> <span class="desc">Alt-screen rendering (=1)</span></div>
-            <div class="row"><span class="key">MCP_CONNECTION_NONBLOCKING</span> <span class="desc">Skip MCP wait in -p mode (=true)<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_NO_FLICKER</span> <span class="desc">Alt-screen rendering (=1)<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDECODE</span> <span class="desc">检测 CC shell（=1）</span></div>
           </div>
         </section>
@@ -324,7 +321,7 @@
             <div class="row"><span class="key">maxTurns</span> <span class="desc">Limit agentic turns</span></div>
             <div class="row"><span class="key">initialPrompt</span> <span class="desc">Auto-submit first turn<span class="badge-new" data-added="2026-03-25">NEW</span></span></div>
             <div class="row"><span class="key">SendMessage</span> <span class="desc">Resume agents (replaces resume)</span></div>
-            <div class="row"><span class="key">@agent-name</span> <span class="desc">Mention named subagents</span></div>
+            <div class="row"><span class="key">@agent-name</span> <span class="desc">Mention named subagents<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
           </div>
         </section>
         <section class="section section-cli">
@@ -399,8 +396,6 @@
         <span class="footer-item"><code>CLAUDE_STREAM_IDLE_TIMEOUT_MS</code> （默认 90 秒）</span>
         <span class="footer-sep">·</span>
         <span class="footer-item"><code>CLAUDE_CODE_NO_FLICKER</code> （备用屏渲染）</span>
-        <span class="footer-sep">·</span>
-        <span class="footer-item"><code>MCP_CONNECTION_NONBLOCKING</code> (skip MCP wait)</span>
       </div>
       <div class="footer-row">
         <span class="footer-item">页面由上游内容自动同步生成；未命中词表时默认保留原文。</span>
