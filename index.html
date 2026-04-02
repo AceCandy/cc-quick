@@ -22,8 +22,8 @@
           </button>
         </div>
         <div class="header-meta">
-          <span class="version-info">Claude Code v2.1.88</span>
-          <span class="last-updated">Last updated: March 31, 2026</span>
+          <span class="version-info">Claude Code v2.1.90</span>
+          <span class="last-updated">Last updated: April 2, 2026</span>
         </div>
       </div>
     </header>
@@ -34,12 +34,12 @@
         <span class="changelog-dismiss" onclick="event.stopPropagation(); this.closest('.changelog').remove()">✕</span>
       </div>
       <ul class="changelog-list">
-        <li>CLAUDE_CODE_NO_FLICKER=1 alt-screen rendering (v2.1.88)</li>
-        <li>PermissionDenied hook event (v2.1.88)</li>
-        <li>Named subagents in @ mention typeahead (v2.1.88)</li>
-        <li>Thinking summaries off by default (showThinkingSummaries) (v2.1.88)</li>
-        <li>PowerShell tool for Windows (opt-in preview) (v2.1.84)</li>
-        <li>Conditional if field for hooks (permission rule syntax) (v2.1.85)</li>
+        <li>/powerup — interactive feature lessons with demos (v2.1.90)</li>
+        <li>&quot;defer&quot; permission decision for PreToolUse hooks (v2.1.89)</li>
+        <li>MCP_CONNECTION_NONBLOCKING=true for -p mode (v2.1.89)</li>
+        <li>Auto mode denied → notification + /permissions Recent tab (v2.1.89)</li>
+        <li>Autocompact thrash loop detection (stops after 3x) (v2.1.89)</li>
+        <li>SSE + transcript write performance: linear (was quadratic) (v2.1.90)</li>
       </ul>
     </div>
 
@@ -157,6 +157,7 @@
             <div class="row"><span class="key">/add-dir &lt;path&gt;</span> <span class="desc">添加工作目录</span></div>
 
             <div class="sub-header">Special</div>
+            <div class="row"><span class="key">/powerup</span> <span class="desc">Interactive feature lessons<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
             <div class="row"><span class="key">/btw &lt;question&gt;</span> <span class="desc">旁支提问（不占上下文）</span></div>
             <div class="row"><span class="key">/plan [desc]</span> <span class="desc">计划模式（+ 自动开始）</span></div>
             <div class="row"><span class="key">/loop [interval]</span> <span class="desc">创建周期任务</span></div>
@@ -211,6 +212,9 @@
             <div class="row"><span class="key">CtrlO</span> <span class="desc">切换详细输出</span></div>
             <div class="row"><span class="key">/effort</span> <span class="desc">○ low · ◐ medium · ● high · ★ max</span></div>
 
+            <div class="sub-header">Auto Mode Denied</div>
+            <div class="row"><span class="key">/permissions → Recent</span> <span class="desc">Retry denied with R<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
+
             <div class="sub-header">Git Worktrees</div>
             <div class="row"><span class="key">--worktree name</span> <span class="desc">Isolated branch per feature</span></div>
             <div class="row"><span class="key">isolation: worktree</span> <span class="desc">Agent in own worktree</span></div>
@@ -225,7 +229,7 @@
             <div class="sub-header">Context Management</div>
             <div class="row"><span class="key">/context</span> <span class="desc">可视化上下文（网格）</span></div>
             <div class="row"><span class="key">/compact [focus]</span> <span class="desc">按焦点压缩上下文</span></div>
-            <div class="row"><span class="key">Auto-compact</span> <span class="desc">约 95% 容量时触发</span></div>
+            <div class="row"><span class="key">Auto-compact</span> <span class="desc">约 95% 容量时触发 (thrash detection: 3x)<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
             <div class="row"><span class="key">1M context</span> <span class="desc">Opus 4.6 (Max/Team/Ent)</span></div>
             <div class="row"><span class="key">CLAUDE.md</span> <span class="desc">压缩后依然保留！</span></div>
 
@@ -266,6 +270,7 @@
             <div class="row"><span class="key">PermissionDenied</span> <span class="desc">Hook: auto-mode denial<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">Opt-in (off by default now)<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">allowedChannelPlugins</span> <span class="desc">Admin channel plugin allowlist</span></div>
+            <div class="row"><span class="key">hooks: &quot;defer&quot;</span> <span class="desc">Pause headless → resume later<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
 
             <div class="sub-header">Key Env Vars</div>
             <div class="row"><span class="key">ANTHROPIC_API_KEY</span></div>
@@ -276,6 +281,7 @@
             <div class="row"><span class="key">CLAUDE_CODE_SUBPROCESS_ENV_SCRUB</span> <span class="desc">Strip creds from subprocs</span></div>
             <div class="row"><span class="key">CLAUDE_STREAM_IDLE_TIMEOUT_MS</span> <span class="desc">Streaming watchdog （默认 90 秒）</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_NO_FLICKER</span> <span class="desc">Alt-screen rendering (=1)<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
+            <div class="row"><span class="key">MCP_CONNECTION_NONBLOCKING</span> <span class="desc">Skip MCP wait in -p<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDECODE</span> <span class="desc">检测 CC shell（=1）</span></div>
           </div>
         </section>
