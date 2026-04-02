@@ -8,3 +8,9 @@ node_modules/
 data/upstream/
 data/parsed/
 data/generated/
+
+# Local AI-generated process artifacts that are not part of app code/runtime
+.impeccable.md
+.ace-tool/
+docs/superpowers/
+AGENTS.md
