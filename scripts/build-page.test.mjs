@@ -58,11 +58,36 @@ test('renderSection 使用 section.className 并渲染 badge', () => {
     ]
   });
 
-  assert.match(html, /<section class="section section-special">/);
-  assert.match(html, /<div class="section-header">A &amp; &quot;B&quot;<\/div>/);
-  assert.match(html, /<div class="sub-header">Group &lt;1&gt;<\/div>/);
+  assert.match(html, /<section class="section section-special" aria-labelledby="section-special">/);
+  assert.match(html, /<h2 class="section-title" id="section-special">A &amp; &quot;B&quot;<\/h2>/);
+  assert.match(html, /<h3 class="group-title" id="section-special-group-group-1">Group &lt;1&gt;<\/h3>/);
   assert.match(html, /<span class="key">Ctrl &lt;1&gt;<\/span>/);
   assert.match(html, /<span class="badge-new" data-added="2026-04-01">NEW<\/span>/);
+});
+
+test('renderSection 输出语义标题和稳定锚点', () => {
+  const html = renderSection({
+    id: 'keyboard',
+    className: 'section section-keyboard',
+    title: '⌨️ 键盘快捷键',
+    groups: [
+      {
+        title: 'General Controls',
+        items: [
+          {
+            key: 'CtrlC',
+            desc: '取消当前输入或生成',
+            badge: null,
+            added: null
+          }
+        ]
+      }
+    ]
+  });
+
+  assert.match(html, /<section class="section section-keyboard"[^>]*>/);
+  assert.match(html, /<h2 class="section-title" id="section-keyboard">⌨️ 键盘快捷键<\/h2>/);
+  assert.match(html, /<h3 class="group-title" id="section-keyboard-group-general-controls">General Controls<\/h3>/);
 });
 
 test('renderPage 按 layout 渲染 wrapper、section 顺序和 standalone', () => {
@@ -94,9 +119,9 @@ test('renderPage 按 layout 渲染 wrapper、section 顺序和 standalone', () =
 
   const html = renderPage(template, localized);
   const wrapperIndex = html.indexOf('<div class="section-alpha-beta">');
-  const betaIndex = html.indexOf('<section class="section section-beta">');
-  const alphaIndex = html.indexOf('<section class="section section-alpha">');
-  const soloIndex = html.indexOf('<section class="section section-solo">');
+  const betaIndex = html.indexOf('<section class="section section-beta" aria-labelledby="section-beta">');
+  const alphaIndex = html.indexOf('<section class="section section-alpha" aria-labelledby="section-alpha">');
+  const soloIndex = html.indexOf('<section class="section section-solo" aria-labelledby="section-solo">');
 
   assert.notEqual(wrapperIndex, -1);
   assert.notEqual(betaIndex, -1);
@@ -107,8 +132,72 @@ test('renderPage 按 layout 渲染 wrapper、section 顺序和 standalone', () =
   assert.ok(alphaIndex < soloIndex);
   assert.match(
     html,
-    /<div class="section-alpha-beta">\s*<section class="section section-beta">[\s\S]*<section class="section section-alpha">[\s\S]*<\/section>\s*<\/div>\s*<section class="section section-solo">/
+    /<div class="section-alpha-beta">\s*<section class="section section-beta" aria-labelledby="section-beta">[\s\S]*<section class="section section-alpha" aria-labelledby="section-alpha">[\s\S]*<\/section>\s*<\/div>\s*<section class="section section-solo" aria-labelledby="section-solo">/
   );
+});
+
+test('renderPage 输出 skip link、目录和附录容器', () => {
+  const template = `
+    <a class="skip-link" href="#main-content">跳到正文</a>
+    <div class="page-shell">
+      <aside class="page-sidebar">{{NAV_HTML}}</aside>
+      <main id="main-content">{{SECTIONS_HTML}}</main>
+    </div>
+    <section class="appendix" aria-labelledby="appendix-title">
+      <h2 id="appendix-title">附录</h2>
+      {{FOOTER_HTML}}
+    </section>
+  `;
+  const localized = {
+    version: '1.0.0',
+    lastUpdated: '2026-04-01',
+    changelog: [],
+    layout: [
+      {
+        type: 'section',
+        id: 'keyboard'
+      }
+    ],
+    sections: [
+      {
+        id: 'keyboard',
+        className: 'section section-keyboard',
+        title: '键盘快捷键',
+        groups: [
+          {
+            title: 'General Controls',
+            items: [
+              {
+                key: 'CtrlC',
+                desc: '取消当前输入或生成',
+                badge: null,
+                added: null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    footer: [
+      {
+        label: '权限模式',
+        items: [
+          {
+            code: 'default',
+            desc: '每次提示'
+          }
+        ]
+      }
+    ]
+  };
+
+  const html = renderPage(template, localized);
+
+  assert.match(html, /<a class="skip-link" href="#main-content">跳到正文<\/a>/);
+  assert.match(html, /<nav class="page-nav" aria-label="页面目录">/);
+  assert.match(html, /<a class="page-nav-link" href="#section-keyboard">键盘快捷键<\/a>/);
+  assert.match(html, /<a class="page-nav-sublink" href="#section-keyboard-group-general-controls">General Controls<\/a>/);
+  assert.match(html, /<section class="appendix" aria-labelledby="appendix-title">/);
 });
 
 test('renderPage 遇到缺失的 section id 会抛出显式错误', () => {
@@ -200,22 +289,47 @@ test('renderPage 使用真实 upstream fixture 保留全部 wrapper 分组', () 
 
   assert.match(
     html,
-    /<div class="section-keyboard-mcp">\s*<section class="section section-keyboard">[\s\S]*<section class="section section-mcp">[\s\S]*<\/div>/
+    /<nav class="page-nav" aria-label="页面目录">[\s\S]*<a class="page-nav-link" href="#section-keyboard">⌨️ 键盘快捷键<\/a>/
   );
   assert.match(
     html,
-    /<div class="section-slash-memory">\s*<section class="section section-slash">[\s\S]*<section class="section section-memory">[\s\S]*<\/div>/
+    /<div class="section-keyboard-mcp">\s*<section class="section section-keyboard" aria-labelledby="section-keyboard">[\s\S]*<section class="section section-mcp" aria-labelledby="section-mcp">[\s\S]*<\/div>/
   );
   assert.match(
     html,
-    /<div class="section-workflows-config">\s*<section class="section section-workflows">[\s\S]*<section class="section section-config">[\s\S]*<\/div>/
+    /<div class="section-slash-memory">\s*<section class="section section-slash" aria-labelledby="section-slash">[\s\S]*<section class="section section-memory" aria-labelledby="section-memory">[\s\S]*<\/div>/
   );
   assert.match(
     html,
-    /<div class="section-skills-cli">\s*<section class="section section-skills">[\s\S]*<section class="section section-cli">[\s\S]*<\/div>/
+    /<div class="section-workflows-config">\s*<section class="section section-workflows" aria-labelledby="section-workflows">[\s\S]*<section class="section section-config" aria-labelledby="section-config">[\s\S]*<\/div>/
+  );
+  assert.match(
+    html,
+    /<div class="section-skills-cli">\s*<section class="section section-skills" aria-labelledby="section-skills">[\s\S]*<section class="section section-cli" aria-labelledby="section-cli">[\s\S]*<\/div>/
   );
   assert.match(html, /<span class="footer-label">权限模式:<\/span>/);
   assert.match(html, /<span class="footer-item"><code>default<\/code> 每次提示<\/span>/);
   assert.match(html, /<span class="footer-label">关键环境变量:<\/span>/);
   assert.match(html, /<span class="footer-item"><code>CLAUDE_CODE_MAX_OUTPUT_TOKENS<\/code> （默认 32K）<\/span>/);
+});
+
+test('renderPage 使用真实模板时，正文先于目录输出且 OS 切换有可见标签', () => {
+  const upstreamHtml = readFileSync(new URL('../data/upstream/storyfox.html', import.meta.url), 'utf8');
+  const template = readFileSync(new URL('../templates/index.template.html', import.meta.url), 'utf8');
+  const sectionMap = JSON.parse(readFileSync(new URL('../data/config/section-map.json', import.meta.url), 'utf8'));
+  const itemMap = JSON.parse(readFileSync(new URL('../data/config/item-map.json', import.meta.url), 'utf8'));
+  const terms = JSON.parse(readFileSync(new URL('../data/config/terms.json', import.meta.url), 'utf8'));
+  const upstream = parsePage(upstreamHtml);
+  const { localized } = transformUpstream(upstream, { sectionMap, itemMap, terms });
+
+  const html = renderPage(template, localized);
+  const mainIndex = html.indexOf('<main id="main-content" class="page-content">');
+  const sidebarIndex = html.indexOf('<aside class="page-sidebar">');
+
+  assert.notEqual(mainIndex, -1);
+  assert.notEqual(sidebarIndex, -1);
+  assert.ok(mainIndex < sidebarIndex);
+  assert.match(html, /<button class="os-btn active"[^>]*>[\s\S]*<span class="os-btn-label">Mac<\/span>/);
+  assert.match(html, /<button class="os-btn"[^>]*>[\s\S]*<span class="os-btn-label">Win<\/span>/);
+  assert.doesNotMatch(html, /onclick=/);
 });

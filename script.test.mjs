@@ -10,6 +10,14 @@ class FakeClassList {
     this.classes = new Set(initial);
   }
 
+  add(name) {
+    this.classes.add(name);
+  }
+
+  remove(name) {
+    this.classes.delete(name);
+  }
+
   toggle(name, force) {
     if (force) {
       this.classes.add(name);
@@ -40,11 +48,13 @@ class FakeElement {
     this.style = style;
     this.listeners = new Map();
     this.children = [];
+    this.removed = false;
   }
 
   querySelectorAll(selector) {
-    if (selector === '.os-btn') {
-      return this.children.filter((child) => child.classList.contains('os-btn'));
+    if (selector.startsWith('.')) {
+      const className = selector.slice(1);
+      return this.children.filter((child) => child.classList.contains(className));
     }
 
     return [];
@@ -63,6 +73,10 @@ class FakeElement {
 
   getAttribute(name) {
     return this.attributes[name];
+  }
+
+  remove() {
+    this.removed = true;
   }
 }
 
@@ -87,7 +101,8 @@ function createEnvironment({
   keycaps = [],
   platform = 'Win32',
   userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
-  storage = {}
+  storage = {},
+  prefersDark = false
 } = {}) {
   const macButton = new FakeElement({
     dataset: { os: 'mac' },
@@ -100,14 +115,45 @@ function createEnvironment({
   const toggle = new FakeElement();
   toggle.children = [macButton, winButton];
 
+  const lightThemeButton = new FakeElement({
+    dataset: { theme: 'light' },
+    classNames: ['theme-btn', 'active']
+  });
+  const darkThemeButton = new FakeElement({
+    dataset: { theme: 'dark' },
+    classNames: ['theme-btn']
+  });
+  const themeToggle = new FakeElement();
+  themeToggle.children = [lightThemeButton, darkThemeButton];
+
+  const changelog = new FakeElement();
+  const dismissChangelog = new FakeElement();
+  dismissChangelog.closest = function (selector) {
+    return selector === '.changelog' ? changelog : null;
+  };
+
   const keyElements = keyTexts.map((text) => new FakeElement({ textContent: text }));
   const keycapElements = keycaps.map((text) => new FakeElement({ textContent: text }));
   const badges = [];
   const localStorage = createLocalStorage(storage);
+  const documentElement = { dataset: {} };
 
   const document = {
+    documentElement,
     getElementById(id) {
-      return id === 'osToggle' ? toggle : null;
+      if (id === 'osToggle') {
+        return toggle;
+      }
+      if (id === 'themeToggle') {
+        return themeToggle;
+      }
+      if (id === 'changelogPanel') {
+        return changelog;
+      }
+      if (id === 'dismissChangelog') {
+        return dismissChangelog;
+      }
+      return null;
     },
     querySelectorAll(selector) {
       if (selector === '.keycap') {
@@ -127,16 +173,26 @@ function createEnvironment({
     document,
     localStorage,
     navigator: { platform, userAgent },
+    matchMedia(query) {
+      return {
+        matches: prefersDark && query === '(prefers-color-scheme: dark)'
+      };
+    },
     Date,
     console
   });
 
   return {
     context,
+    documentElement,
     keyElements,
     keycapElements,
     macButton,
     winButton,
+    lightThemeButton,
+    darkThemeButton,
+    changelog,
+    dismissChangelog,
     localStorage
   };
 }
@@ -177,4 +233,34 @@ test('原有 keycap 结构继续按上游规则切换', () => {
     ['Alt', 'Shift']
   );
   assert.equal(env.localStorage.getItem('cc-os'), 'win');
+});
+
+test('点击主题按钮时，会同步 data-theme 和 localStorage', () => {
+  const env = createEnvironment();
+
+  executeScript(env.context);
+  env.darkThemeButton.click();
+
+  assert.equal(env.documentElement.dataset.theme, 'dark');
+  assert.equal(env.localStorage.getItem('cc-theme'), 'dark');
+  assert.equal(env.darkThemeButton.classList.contains('active'), true);
+  assert.equal(env.lightThemeButton.classList.contains('active'), false);
+});
+
+test('没有手动主题时，会回退到系统主题', () => {
+  const env = createEnvironment({ prefersDark: true });
+
+  executeScript(env.context);
+
+  assert.equal(env.documentElement.dataset.theme, 'dark');
+  assert.equal(env.localStorage.getItem('cc-theme'), 'dark');
+});
+
+test('点击 changelog 关闭按钮时，会移除 changelog 容器', () => {
+  const env = createEnvironment();
+
+  executeScript(env.context);
+  env.dismissChangelog.click();
+
+  assert.equal(env.changelog.removed, true);
 });

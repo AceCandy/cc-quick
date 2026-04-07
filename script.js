@@ -38,6 +38,9 @@
   function applyOS(os) {
     buttons.forEach(function (button) {
       button.classList.toggle("active", button.dataset.os === os);
+      if (button.setAttribute) {
+        button.setAttribute("aria-pressed", button.dataset.os === os ? "true" : "false");
+      }
     });
 
     document.querySelectorAll(".keycap").forEach(function (keycap) {
@@ -70,6 +73,58 @@
   });
 
   applyOS(saved);
+})();
+
+(function () {
+  var root = document.documentElement;
+  var toggle = document.getElementById("themeToggle");
+  var buttons = toggle ? toggle.querySelectorAll(".theme-btn") : [];
+  var storedTheme = localStorage.getItem("cc-theme");
+  var systemPrefersDark = typeof matchMedia === "function" && matchMedia("(prefers-color-scheme: dark)").matches;
+  var initialTheme = storedTheme || (systemPrefersDark ? "dark" : "light");
+
+  function applyTheme(theme) {
+    if (!root) {
+      return;
+    }
+
+    root.dataset.theme = theme;
+    localStorage.setItem("cc-theme", theme);
+
+    buttons.forEach(function (button) {
+      var active = button.dataset.theme === theme;
+      button.classList.toggle("active", active);
+      if (button.setAttribute) {
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+      }
+    });
+  }
+
+  if (buttons.length > 0) {
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        applyTheme(button.dataset.theme);
+      });
+    });
+  }
+
+  applyTheme(initialTheme);
+})();
+
+(function () {
+  var changelog = document.getElementById("changelogPanel");
+  var dismissButton = document.getElementById("dismissChangelog");
+
+  if (!changelog || !dismissButton) {
+    return;
+  }
+
+  dismissButton.addEventListener("click", function (event) {
+    if (event && typeof event.stopPropagation === "function") {
+      event.stopPropagation();
+    }
+    changelog.remove();
+  });
 })();
 
 (function () {
