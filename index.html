@@ -31,8 +31,8 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info">Claude Code v2.1.92</span>
-          <span class="last-updated">Last updated: April 4, 2026</span>
+          <span class="version-info">Claude Code v2.1.94</span>
+          <span class="last-updated">Last updated: April 7, 2026</span>
         </div>
       </div>
     </header>
@@ -43,12 +43,12 @@
         <button class="changelog-dismiss" id="dismissChangelog" type="button" aria-label="关闭最近变更">✕</button>
       </div>
       <ul class="changelog-list">
-        <li>forceRemoteSettingsRefresh policy — fail-closed startup (v2.1.92)</li>
-        <li>Interactive Bedrock setup wizard on login screen (v2.1.92)</li>
-        <li>Per-model + cache-hit breakdown in /cost (v2.1.92)</li>
-        <li>/release-notes is now an interactive version picker (v2.1.92)</li>
-        <li>Removed /tag and /vim commands (v2.1.92)</li>
-        <li>Write tool diff 60% faster for large files (v2.1.92)</li>
+        <li>CLAUDE_CODE_USE_MANTLE=1 — Amazon Bedrock via Mantle (v2.1.94)</li>
+        <li>Default effort is now higher for API-key, Bedrock/Vertex/Foundry, Team, and Enterprise users (v2.1.94)</li>
+        <li>keep-coding-instructions frontmatter for plugin output styles (v2.1.94)</li>
+        <li>hookSpecificOutput.sessionTitle in UserPromptSubmit hooks (v2.1.94)</li>
+        <li>Slack send-message now shows compact “Slacked #channel” header (v2.1.94)</li>
+        <li>429 + long Retry-After no longer makes agents look stuck (v2.1.94)</li>
       </ul>
     </div>
 
@@ -359,6 +359,7 @@
             <div class="row"><span class="key">CLAUDE_STREAM_IDLE_TIMEOUT_MS</span> <span class="desc">Streaming watchdog （默认 90 秒）</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_NO_FLICKER</span> <span class="desc">Alt-screen rendering (=1)<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">MCP_CONNECTION_NONBLOCKING</span> <span class="desc">Skip MCP wait in -p<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_USE_MANTLE</span> <span class="desc">Use Mantle for Bedrock (=1)<span class="badge-new" data-added="2026-04-07">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDECODE</span> <span class="desc">检测 CC shell（=1）</span></div>
             </section>
           </div>
