@@ -31,8 +31,8 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info">Claude Code v2.1.94</span>
-          <span class="last-updated">Last updated: April 7, 2026</span>
+          <span class="version-info">Claude Code v2.1.97</span>
+          <span class="last-updated">Last updated: April 8, 2026</span>
         </div>
       </div>
     </header>
@@ -43,12 +43,12 @@
         <button class="changelog-dismiss" id="dismissChangelog" type="button" aria-label="关闭最近变更">✕</button>
       </div>
       <ul class="changelog-list">
-        <li>CLAUDE_CODE_USE_MANTLE=1 — Amazon Bedrock via Mantle (v2.1.94)</li>
+        <li>Ctrl+O adds focus view in NO_FLICKER mode with prompt, tool summary, and final response (v2.1.97)</li>
+        <li>refreshInterval refreshes custom status lines every N seconds (v2.1.97)</li>
+        <li>workspace.git_worktree is now included in status line JSON input (v2.1.97)</li>
+        <li>/agents shows a live “● N running” indicator next to agent types (v2.1.97)</li>
+        <li>CLAUDE_CODE_USE_MANTLE=1 enables Amazon Bedrock via Mantle (v2.1.94)</li>
         <li>Default effort is now higher for API-key, Bedrock/Vertex/Foundry, Team, and Enterprise users (v2.1.94)</li>
-        <li>keep-coding-instructions frontmatter for plugin output styles (v2.1.94)</li>
-        <li>hookSpecificOutput.sessionTitle in UserPromptSubmit hooks (v2.1.94)</li>
-        <li>Slack send-message now shows compact “Slacked #channel” header (v2.1.94)</li>
-        <li>429 + long Retry-After no longer makes agents look stuck (v2.1.94)</li>
       </ul>
     </div>
 
@@ -66,7 +66,7 @@
               <div class="row"><span class="key">CtrlC</span> <span class="desc">取消当前输入或生成</span></div>
             <div class="row"><span class="key">CtrlD</span> <span class="desc">退出会话</span></div>
             <div class="row"><span class="key">CtrlL</span> <span class="desc">清屏</span></div>
-            <div class="row"><span class="key">CtrlO</span> <span class="desc">切换详细输出</span></div>
+            <div class="row"><span class="key">CtrlO</span> <span class="desc">切换详细输出<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
             <div class="row"><span class="key">CtrlR</span> <span class="desc">反向搜索历史</span></div>
             <div class="row"><span class="key">CtrlG</span> <span class="desc">在编辑器中打开输入内容</span></div>
             <div class="row"><span class="key">CtrlX CtrlE</span> <span class="desc">在编辑器中打开（别名）</span></div>
@@ -110,7 +110,7 @@
             </section>
 
             <section class="section-group">
-              <h3 class="group-title" id="section-keyboard-group-transcript-mode-ctrl-o">Transcript Mode (Ctrl+O)</h3>
+              <h3 class="group-title" id="section-keyboard-group-transcript-focus-view-ctrl-o">Transcript / Focus View (Ctrl+O)</h3>
               <div class="row"><span class="key">CtrlE</span> <span class="desc">Toggle show all</span></div>
             <div class="row"><span class="key">Q / Esc</span> <span class="desc">Exit transcript</span></div>
             </section>
@@ -189,7 +189,7 @@
             <div class="row"><span class="key">/mcp</span> <span class="desc">管理 MCP 服务器</span></div>
             <div class="row"><span class="key">/hooks</span> <span class="desc">管理 hooks</span></div>
             <div class="row"><span class="key">/skills</span> <span class="desc">列出可用 skills</span></div>
-            <div class="row"><span class="key">/agents</span> <span class="desc">管理 agents</span></div>
+            <div class="row"><span class="key">/agents</span> <span class="desc">管理 agents<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
             <div class="row"><span class="key">/chrome</span> <span class="desc">Chrome 集成</span></div>
             <div class="row"><span class="key">/reload-plugins</span> <span class="desc">热重载 plugins</span></div>
             <div class="row"><span class="key">/add-dir &lt;path&gt;</span> <span class="desc">添加工作目录</span></div>
@@ -224,9 +224,10 @@
           <div class="section-content">
             <section class="section-group">
               <h3 class="group-title" id="section-memory-group-claude-md-locations">CLAUDE.md Locations</h3>
-              <div class="row"><span class="key">./CLAUDE.md</span> <span class="desc">项目级（团队共享）</span></div>
+              <div class="row"><span class="key">./CLAUDE.md or ./.claude/CLAUDE.md</span> <span class="desc">项目级（团队共享）</span></div>
+            <div class="row"><span class="key">./CLAUDE.local.md</span> <span class="desc">Local personal project notes (gitignored)</span></div>
             <div class="row"><span class="key">~/.claude/CLAUDE.md</span> <span class="desc">个人级（所有项目）</span></div>
-            <div class="row"><span class="key">/etc/claude-code/</span> <span class="desc">托管级（组织范围）</span></div>
+            <div class="row"><span class="key">/etc/claude-code/CLAUDE.md</span> <span class="desc">Managed policy (Linux/WSL, org-wide)</span></div>
             </section>
 
             <section class="section-group">
@@ -276,6 +277,7 @@
               <div class="row"><span class="key">--worktree name</span> <span class="desc">Isolated branch per feature</span></div>
             <div class="row"><span class="key">isolation: worktree</span> <span class="desc">Agent in own worktree</span></div>
             <div class="row"><span class="key">sparsePaths</span> <span class="desc">Checkout only needed dirs</span></div>
+            <div class="row"><span class="key">workspace.git_worktree</span> <span class="desc">Status line JSON: linked worktree path<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
             <div class="row"><span class="key">/batch</span> <span class="desc">Auto-creates worktrees</span></div>
             </section>
 
@@ -346,6 +348,7 @@
             <div class="row"><span class="key">hooks: &quot;defer&quot;</span> <span class="desc">Pause headless → resume later</span></div>
             <div class="row"><span class="key">disableSkillShellExec</span> <span class="desc">Block !`cmd` in skills/plugins<span class="badge-new" data-added="2026-04-03">NEW</span></span></div>
             <div class="row"><span class="key">forceRemoteSettingsRefresh</span> <span class="desc">Fail-closed: block startup until fresh<span class="badge-new" data-added="2026-04-04">NEW</span></span></div>
+            <div class="row"><span class="key">refreshInterval</span> <span class="desc">Re-run custom status line every N sec<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
             </section>
 
             <section class="section-group">
@@ -445,7 +448,8 @@
             <div class="row"><span class="key">--add-dir</span> <span class="desc">Add dir</span></div>
             <div class="row"><span class="key">--agent</span> <span class="desc">Use agent</span></div>
             <div class="row"><span class="key">--allowedTools</span> <span class="desc">Pre-approve</span></div>
-            <div class="row"><span class="key">--output-format</span> <span class="desc">json/stream</span></div>
+            <div class="row"><span class="key">--allow-dangerously-skip-permissions</span> <span class="desc">Add bypassPermissions to Shift+Tab cycle</span></div>
+            <div class="row"><span class="key">--output-format</span> <span class="desc">text/json/stream-json</span></div>
             <div class="row"><span class="key">--json-schema</span> <span class="desc">Structured</span></div>
             <div class="row"><span class="key">--max-turns</span> <span class="desc">Limit turns</span></div>
             <div class="row"><span class="key">--max-budget-usd</span> <span class="desc">成本上限</span></div>
@@ -454,7 +458,8 @@
             <div class="row"><span class="key">--verbose</span> <span class="desc">Verbose</span></div>
             <div class="row"><span class="key">--bare</span> <span class="desc">Minimal headless (no hooks/LSP)</span></div>
             <div class="row"><span class="key">--channels</span> <span class="desc">Permission relay / MCP push</span></div>
-            <div class="row"><span class="key">--remote</span> <span class="desc">Web session</span></div>
+            <div class="row"><span class="key">--remote</span> <span class="desc">Create web session on claude.ai</span></div>
+            <div class="row"><span class="key">--remote-control / --rc</span> <span class="desc">Interactive session with Remote Control enabled</span></div>
             <div class="row"><span class="key">--effort</span> <span class="desc">low/medium/high/max</span></div>
             <div class="row"><span class="key">--permission-mode</span> <span class="desc">plan/default/…</span></div>
             <div class="row"><span class="key">--dangerously-skip-permissions</span> <span class="desc">Skip all prompts ⚠️</span></div>
@@ -468,7 +473,7 @@
       </main>
 
       <aside class="page-sidebar">
-        <nav class="page-nav" aria-label="页面目录"><ul class="page-nav-list"><li class="page-nav-item"><a class="page-nav-link" href="#section-keyboard">⌨️ 键盘快捷键</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-general-controls">General Controls</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-mode-switching">Mode Switching</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-input">Input</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-prefixes">Prefixes</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-session-picker">Session Picker</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-transcript-mode-ctrl-o">Transcript Mode (Ctrl+O)</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-mcp">🔌 MCP 服务器</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-mcp-group-add-servers">Add Servers</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-mcp-group-scopes">Scopes</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-mcp-group-manage">Manage</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-slash">⚡ 斜杠命令</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-slash-group-session">Session</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-slash-group-config">Config</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-slash-group-tools">Tools</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-slash-group-special">Special</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-memory">📁 记忆与文件</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-memory-group-claude-md-locations">CLAUDE.md Locations</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-memory-group-rules-import">Rules &amp; Import</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-memory-group-auto-memory">Auto Memory</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-workflows">🧠 工作流与技巧</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-plan-mode">Plan Mode</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-thinking-effort">Thinking &amp; Effort</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-auto-mode-denied">Auto Mode Denied</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-git-worktrees">Git Worktrees</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-voice-mode">Voice Mode</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-context-management">Context Management</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-session-power-moves">Session Power Moves</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-sdk-headless">SDK / Headless</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-scheduling-remote">Scheduling &amp; Remote</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-config">⚙️ 配置与环境变量</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-config-group-config-files">Config Files</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-config-group-key-settings">Key Settings</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-config-group-key-env-vars">Key Env Vars</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-skills">🔧 Skills 与 Agents</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-skills-group-built-in-skills">Built-in Skills</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-skills-group-custom-skill-locations">Custom Skill Locations</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-skills-group-skill-frontmatter">Skill Frontmatter</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-skills-group-built-in-agents">Built-in Agents</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-skills-group-agent-frontmatter">Agent Frontmatter</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-cli">🖥️ CLI 与参数</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-cli-group-core-commands">Core Commands</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-cli-group-key-flags">Key Flags</a></li></ul></li></ul></nav>
+        <nav class="page-nav" aria-label="页面目录"><ul class="page-nav-list"><li class="page-nav-item"><a class="page-nav-link" href="#section-keyboard">⌨️ 键盘快捷键</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-general-controls">General Controls</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-mode-switching">Mode Switching</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-input">Input</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-prefixes">Prefixes</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-session-picker">Session Picker</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-keyboard-group-transcript-focus-view-ctrl-o">Transcript / Focus View (Ctrl+O)</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-mcp">🔌 MCP 服务器</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-mcp-group-add-servers">Add Servers</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-mcp-group-scopes">Scopes</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-mcp-group-manage">Manage</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-slash">⚡ 斜杠命令</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-slash-group-session">Session</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-slash-group-config">Config</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-slash-group-tools">Tools</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-slash-group-special">Special</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-memory">📁 记忆与文件</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-memory-group-claude-md-locations">CLAUDE.md Locations</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-memory-group-rules-import">Rules &amp; Import</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-memory-group-auto-memory">Auto Memory</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-workflows">🧠 工作流与技巧</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-plan-mode">Plan Mode</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-thinking-effort">Thinking &amp; Effort</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-auto-mode-denied">Auto Mode Denied</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-git-worktrees">Git Worktrees</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-voice-mode">Voice Mode</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-context-management">Context Management</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-session-power-moves">Session Power Moves</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-sdk-headless">SDK / Headless</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-workflows-group-scheduling-remote">Scheduling &amp; Remote</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-config">⚙️ 配置与环境变量</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-config-group-config-files">Config Files</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-config-group-key-settings">Key Settings</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-config-group-key-env-vars">Key Env Vars</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-skills">🔧 Skills 与 Agents</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-skills-group-built-in-skills">Built-in Skills</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-skills-group-custom-skill-locations">Custom Skill Locations</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-skills-group-skill-frontmatter">Skill Frontmatter</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-skills-group-built-in-agents">Built-in Agents</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-skills-group-agent-frontmatter">Agent Frontmatter</a></li></ul></li><li class="page-nav-item"><a class="page-nav-link" href="#section-cli">🖥️ CLI 与参数</a><ul class="page-nav-sublist"><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-cli-group-core-commands">Core Commands</a></li><li class="page-nav-subitem"><a class="page-nav-sublink" href="#section-cli-group-key-flags">Key Flags</a></li></ul></li></ul></nav>
       </aside>
     </div>
 
