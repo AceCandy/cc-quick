@@ -67,6 +67,26 @@ export function collectAiCandidates({ unmappedItems = [], itemMap = {}, aiItemMa
   return { candidates, conflicts };
 }
 
+export function collectAiChangelogCandidates({
+  changelog = [],
+  changelogMap = {},
+  changelogAiMap = {}
+}) {
+  const seen = new Set();
+  const candidates = [];
+
+  for (const entry of changelog) {
+    const text = typeof entry === 'string' ? entry.trim() : '';
+    if (!text || changelogMap[text] || changelogAiMap[text] || seen.has(text)) {
+      continue;
+    }
+    seen.add(text);
+    candidates.push(text);
+  }
+
+  return candidates;
+}
+
 export function parseJsonFromModelText(text = '') {
   const trimmed = String(text ?? '').trim();
   if (!trimmed) {
@@ -135,6 +155,22 @@ function buildPrompt(batch) {
   ].join('\n');
 }
 
+function buildChangelogPrompt(entries) {
+  return [
+    '你是一个给中文开发者速查页做变更日志翻译映射的助手。',
+    '任务：把每条 changelog 条目翻译成简体中文，要求简洁、准确、技术语义稳定。',
+    '规则：',
+    '1. 结果必须是纯 JSON 对象，key 必须与输入英文原文完全一致。',
+    '2. value 必须是对应的简体中文字符串，不能输出 markdown、解释或额外字段。',
+    '3. 保留 CLI 参数、环境变量、模型名、数字、版本号、括号语义和常见技术词，不要过度意译。',
+    '',
+    '输入：',
+    JSON.stringify(entries, null, 2),
+    '',
+    '请直接输出 JSON 对象。'
+  ].join('\n');
+}
+
 export function buildTranslationRequestBody({ model, batch }) {
   return {
     model,
@@ -147,19 +183,31 @@ export function buildTranslationRequestBody({ model, batch }) {
   };
 }
 
+function buildChangelogTranslationRequestBody({ model, entries }) {
+  return {
+    model,
+    text: {
+      format: {
+        type: 'json_object'
+      }
+    },
+    input: buildChangelogPrompt(entries)
+  };
+}
+
 export function shouldFallbackToChatCompletions(response = {}) {
   return response?.status === 'completed'
     && Array.isArray(response.output)
     && response.output.length === 0;
 }
 
-export function buildChatCompletionRequestBody({ model, batch, jsonMode = true }) {
+export function buildChatCompletionRequestBody({ model, batch, prompt, jsonMode = true }) {
   const body = {
     model,
     messages: [
       {
         role: 'user',
-        content: buildPrompt(batch)
+        content: prompt ?? buildPrompt(batch)
       }
     ]
   };
@@ -201,8 +249,8 @@ export function shouldRetryChatWithoutJsonMode(response = {}) {
     && !extractChatCompletionText(response);
 }
 
-async function requestChatCompletion({ apiKey, baseUrl, model, batch, jsonMode }) {
-  const requestBody = buildChatCompletionRequestBody({ model, batch, jsonMode });
+async function requestChatCompletion({ apiKey, baseUrl, model, batch, prompt, jsonMode }) {
+  const requestBody = buildChatCompletionRequestBody({ model, batch, prompt, jsonMode });
   const response = await fetch(`${baseUrl.replace(/\/$/, '')}/chat/completions`, {
     method: 'POST',
     headers: {
@@ -219,12 +267,13 @@ async function requestChatCompletion({ apiKey, baseUrl, model, batch, jsonMode }
   return response.json();
 }
 
-async function requestChatCompletionFallback({ apiKey, baseUrl, model, batch }) {
+async function requestChatCompletionFallback({ apiKey, baseUrl, model, batch, prompt }) {
   let payload = await requestChatCompletion({
     apiKey,
     baseUrl,
     model,
     batch,
+    prompt,
     jsonMode: true
   });
 
@@ -234,6 +283,7 @@ async function requestChatCompletionFallback({ apiKey, baseUrl, model, batch }) 
       baseUrl,
       model,
       batch,
+      prompt,
       jsonMode: false
     });
   }
@@ -277,6 +327,41 @@ async function requestBatchTranslations({ apiKey, baseUrl, model, batch }) {
   }
 }
 
+async function requestChangelogTranslations({ apiKey, baseUrl, model, entries }) {
+  const requestBody = buildChangelogTranslationRequestBody({ model, entries });
+
+  const response = await fetch(`${baseUrl.replace(/\/$/, '')}/responses`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      authorization: `Bearer ${apiKey}`
+    },
+    body: JSON.stringify(requestBody)
+  });
+
+  if (!response.ok) {
+    throw new Error(`OpenAI 请求失败: ${response.status} ${response.statusText}`);
+  }
+
+  const payload = await response.json();
+  if (shouldFallbackToChatCompletions(payload)) {
+    return requestChatCompletionFallback({
+      apiKey,
+      baseUrl,
+      model,
+      prompt: buildChangelogPrompt(entries)
+    });
+  }
+
+  const outputText = extractOutputText(payload);
+  try {
+    return parseJsonFromModelText(outputText);
+  } catch (error) {
+    const payloadPreview = JSON.stringify(payload).slice(0, 1200);
+    throw new Error(`${error.message}\n响应片段: ${payloadPreview}`);
+  }
+}
+
 async function readJson(path) {
   return JSON.parse(await readFile(path, 'utf8'));
 }
@@ -287,16 +372,33 @@ async function main() {
     throw new Error('缺少 OPENAI_API_KEY，无法生成 AI 翻译映射');
   }
 
+  const upstream = await readJson('data/parsed/upstream.json');
   const unmappedItems = await readJson('data/parsed/unmapped-items.json');
+  const changelogMap = await readJson('data/config/changelog-map.json');
   const itemMap = await readJson('data/config/item-map.json');
   const aiItemMap = await readJson('data/config/item-map.ai.json');
+  let changelogAiMap = {};
+  try {
+    // changelog 的 AI 词表独立维护，避免和人工词表混写。
+    changelogAiMap = await readJson('data/config/changelog-map.ai.json');
+  } catch (error) {
+    if (error && error.code !== 'ENOENT') {
+      throw error;
+    }
+  }
   const { candidates, conflicts } = collectAiCandidates({ unmappedItems, itemMap, aiItemMap });
+  // changelog 只补齐双词表都未命中的英文原文，避免重复请求模型。
+  const changelogCandidates = collectAiChangelogCandidates({
+    changelog: upstream.changelog,
+    changelogMap,
+    changelogAiMap
+  });
 
   if (conflicts.length > 0) {
     console.warn(`检测到 ${conflicts.length} 个同 key 多描述条目，已按首次出现优先生成 AI 映射`);
   }
 
-  if (candidates.length === 0) {
+  if (candidates.length === 0 && changelogCandidates.length === 0) {
     console.log('没有需要生成的 AI 翻译候选');
     return;
   }
@@ -314,8 +416,29 @@ async function main() {
   }
 
   const nextAiItemMap = mergeAiItemMap(aiItemMap, mergedSuggestions);
-  await writeFile('data/config/item-map.ai.json', `${JSON.stringify(nextAiItemMap, null, 2)}\n`, 'utf8');
-  console.log(`已写入 AI 翻译映射 ${Object.keys(mergedSuggestions).length} 条`);
+  if (candidates.length > 0) {
+    await writeFile('data/config/item-map.ai.json', `${JSON.stringify(nextAiItemMap, null, 2)}\n`, 'utf8');
+    console.log(`已写入 AI 翻译映射 ${Object.keys(mergedSuggestions).length} 条`);
+  }
+
+  const mergedChangelogSuggestions = {};
+  for (const batch of chunkItems(changelogCandidates, 40)) {
+    const translated = await requestChangelogTranslations({
+      apiKey,
+      baseUrl: DEFAULT_BASE_URL,
+      model: DEFAULT_MODEL,
+      entries: batch
+    });
+
+    Object.assign(mergedChangelogSuggestions, translated);
+  }
+
+  const nextChangelogAiMap = mergeAiItemMap(changelogAiMap, mergedChangelogSuggestions);
+  if (changelogCandidates.length > 0) {
+    // 只有拿到新增翻译时才落盘，避免 workflow 空提交。
+    await writeFile('data/config/changelog-map.ai.json', `${JSON.stringify(nextChangelogAiMap, null, 2)}\n`, 'utf8');
+    console.log(`已写入 AI changelog 映射 ${Object.keys(mergedChangelogSuggestions).length} 条`);
+  }
 }
 
 const currentFile = fileURLToPath(import.meta.url).replaceAll('\\', '/');

@@ -88,6 +88,7 @@ export function transformUpstream(upstream, maps) {
     sectionMap = {},
     groupTitleMap = {},
     changelogMap = {},
+    changelogAiMap = {},
     itemMap = {},
     aiItemMap = {},
     terms = {}
@@ -138,7 +139,8 @@ export function transformUpstream(upstream, maps) {
   const localized = {
     version: upstream.version,
     lastUpdated: formatLastUpdated(upstream.lastUpdated),
-    changelog: (upstream.changelog ?? []).map((entry) => changelogMap[entry] || entry),
+    // changelog 先吃人工词表，再回退 AI 词表，最后才保留原文。
+    changelog: (upstream.changelog ?? []).map((entry) => changelogMap[entry] || changelogAiMap[entry] || entry),
     layout: upstream.layout,
     sections,
     footer
@@ -152,6 +154,15 @@ async function main() {
   const sectionMap = JSON.parse(await readFile('data/config/section-map.json', 'utf8'));
   const groupTitleMap = JSON.parse(await readFile('data/config/group-title-map.json', 'utf8'));
   const changelogMap = JSON.parse(await readFile('data/config/changelog-map.json', 'utf8'));
+  let changelogAiMap = {};
+  try {
+    // AI 词表允许缺省，首次接入时回退为空对象即可。
+    changelogAiMap = JSON.parse(await readFile('data/config/changelog-map.ai.json', 'utf8'));
+  } catch (error) {
+    if (error && error.code !== 'ENOENT') {
+      throw error;
+    }
+  }
   const itemMap = JSON.parse(await readFile('data/config/item-map.json', 'utf8'));
   let aiItemMap = {};
   try {
@@ -166,6 +177,7 @@ async function main() {
     sectionMap,
     groupTitleMap,
     changelogMap,
+    changelogAiMap,
     itemMap,
     aiItemMap,
     terms

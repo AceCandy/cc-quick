@@ -4,6 +4,7 @@ import {
   buildChatCompletionRequestBody,
   buildTranslationRequestBody,
   collectAiCandidates,
+  collectAiChangelogCandidates,
   extractChatCompletionText,
   mergeAiItemMap,
   parseJsonFromModelText,
@@ -129,6 +130,25 @@ test('collectAiCandidates 遇到同 key 同 scope 不同描述时保留首次出
       descs: ['First desc', 'Second desc']
     }
   ]);
+});
+
+test('collectAiChangelogCandidates 跳过已有手动或 AI 映射，并按原文去重', () => {
+  const candidates = collectAiChangelogCandidates({
+    changelog: [
+      'Manual entry',
+      'AI entry',
+      'Fresh entry',
+      'Fresh entry'
+    ],
+    changelogMap: {
+      'Manual entry': '手动条目'
+    },
+    changelogAiMap: {
+      'AI entry': 'AI 条目'
+    }
+  });
+
+  assert.deepEqual(candidates, ['Fresh entry']);
 });
 
 test('parseJsonFromModelText 支持 markdown fenced json', () => {

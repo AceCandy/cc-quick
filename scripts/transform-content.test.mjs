@@ -452,3 +452,29 @@ test('transformUpstream 优先使用手动映射，其次 AI 映射，再回退 
     }
   ]);
 });
+
+test('transformUpstream 的 changelog 优先使用手动映射，其次 AI 映射，再回退原文', () => {
+  const upstream = {
+    version: '1.0.0',
+    lastUpdated: '2026-04-01',
+    changelog: ['manual-entry', 'ai-entry', 'raw-entry'],
+    layout: [],
+    sections: [],
+    footer: []
+  };
+
+  const { localized } = transformUpstream(upstream, {
+    changelogMap: {
+      'manual-entry': '手动 changelog'
+    },
+    changelogAiMap: {
+      'ai-entry': 'AI changelog'
+    }
+  });
+
+  assert.deepEqual(localized.changelog, [
+    '手动 changelog',
+    'AI changelog',
+    'raw-entry'
+  ]);
+});
