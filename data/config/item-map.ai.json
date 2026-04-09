@@ -8,6 +8,9 @@
   "--agent": {
     "desc": "使用 agent"
   },
+  "--allow-dangerously-skip-permissions": {
+    "desc": "将 bypassPermissions 添加到 Shift+Tab 循环"
+  },
   "--allowedTools": {
     "desc": "预先批准"
   },
@@ -59,6 +62,9 @@
   "--remote": {
     "desc": "claude.ai 上的 Web 会话"
   },
+  "--remote-control / --rc": {
+    "desc": "启用 Remote Control 的交互式会话"
+  },
   "--verbose": {
     "desc": "详细输出"
   },
@@ -74,8 +80,14 @@
   "!`cmd`": {
     "desc": "动态上下文注入"
   },
+  "./CLAUDE.local.md": {
+    "desc": "本地个人项目笔记（gitignored）"
+  },
   "./CLAUDE.md": {
     "desc": "项目级（团队共享）"
+  },
+  "./CLAUDE.md or ./.claude/CLAUDE.md": {
+    "desc": "项目（团队共享）"
   },
   ".claude/rules/*.md": {
     "desc": "项目规则"
@@ -121,6 +133,9 @@
   },
   "/etc/claude-code/": {
     "desc": "托管（组织范围）"
+  },
+  "/etc/claude-code/CLAUDE.md": {
+    "desc": "托管策略（Linux/WSL，全组织）"
   },
   "/loop 5m msg": {
     "desc": "周期性任务"
@@ -242,6 +257,9 @@
   "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB": {
     "desc": "从子进程中剥离凭据"
   },
+  "CLAUDE_CODE_USE_MANTLE": {
+    "desc": "为 Bedrock 使用 Mantle (=1)"
+  },
   "CLAUDE_STREAM_IDLE_TIMEOUT_MS": {
     "desc": "流式看门狗（默认 90s）"
   },
@@ -338,6 +356,9 @@
   "Q / Esc": {
     "desc": "退出 transcript"
   },
+  "refreshInterval": {
+    "desc": "每 N 秒重新运行自定义状态行"
+  },
   "sandbox.failIfUnavailable": {
     "desc": "sandbox 失败时退出"
   },
@@ -352,6 +373,9 @@
   },
   "sparsePaths": {
     "desc": "仅检出所需目录"
+  },
+  "workspace.git_worktree": {
+    "desc": "状态行 JSON：已链接的 worktree 路径"
   },
   "worktree.sparsePaths": {
     "desc": "稀疏检出目录"
