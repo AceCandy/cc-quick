@@ -12,7 +12,12 @@
   <a class="skip-link" href="#main-content">跳到正文</a>
   <div class="page">
     <header class="header">
-      <h1>Claude Code 中文速查表</h1>
+      <div class="header-title">
+        <h1>Claude Code 中文速查表</h1>
+        <button class="changelog-trigger" type="button" aria-controls="changelogPanel" aria-expanded="false">
+          最近变更
+        </button>
+      </div>
       <div class="header-right">
         <div class="header-controls">
           <div class="os-toggle" id="osToggle" aria-label="系统快捷键切换">
@@ -31,21 +36,16 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info">{{VERSION}}</span>
+          <span class="version-info">{{VERSION_HTML}}</span>
           <span class="last-updated">{{LAST_UPDATED}}</span>
         </div>
       </div>
-    </header>
-
-    <div class="changelog" id="changelogPanel">
-      <div class="changelog-header">
-        <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer">📋 最近变更</a>
-        <button class="changelog-dismiss" id="dismissChangelog" type="button" aria-label="关闭最近变更">✕</button>
+      <div class="changelog-panel" id="changelogPanel" hidden>
+        <ul class="changelog-list">
+          {{CHANGELOG_ITEMS}}
+        </ul>
       </div>
-      <ul class="changelog-list">
-        {{CHANGELOG_ITEMS}}
-      </ul>
-    </div>
+    </header>
 
     <div class="page-shell">
       <main id="main-content" class="page-content">
@@ -55,7 +55,7 @@
       </main>
 
       <aside class="page-sidebar">
-        {{NAV_HTML}}
+        {{SECTION_SWITCHER_HTML}}
       </aside>
     </div>
 

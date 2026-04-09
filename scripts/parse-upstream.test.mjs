@@ -165,6 +165,35 @@ test('parsePage 解析 footer 中带 label 的结构化条目', () => {
   ]);
 });
 
+test('parsePage 合并连续两行的 key-only 与 desc-only 条目', () => {
+  const html = `
+    <div class="version-info">v1</div>
+    <div class="last-updated">today</div>
+    <ul class="changelog-list"><li>entry</li></ul>
+    <main class="main-grid">
+      <section class="section section-memory">
+        <div class="section-header">Memory</div>
+        <div class="section-content">
+          <div class="sub-header">Auto Memory</div>
+          <div class="row"><span class="key">~/.claude/projects/&lt;proj&gt;/memory/</span></div>
+          <div class="row"><span class="desc">MEMORY.md + topic files, auto-loaded (25KB/200 lines max)</span></div>
+        </div>
+      </section>
+    </main>
+  `;
+
+  const parsed = parsePage(html);
+
+  assert.deepEqual(parsed.sections[0].groups[0].items, [
+    {
+      key: '~/.claude/projects/<proj>/memory/',
+      desc: 'MEMORY.md + topic files, auto-loaded (25KB/200 lines max)',
+      badge: null,
+      added: null
+    }
+  ]);
+});
+
 test('parsePage falls back to title-based ids for standalone sections', () => {
   const html = `
     <div class="version-info">v1</div>

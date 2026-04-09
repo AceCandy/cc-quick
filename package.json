@@ -7,6 +7,7 @@
     "sync:parse": "node scripts/parse-upstream.mjs",
     "sync:transform": "node scripts/transform-content.mjs",
     "sync:build": "node scripts/build-page.mjs",
+    "sync:ai-map": "node scripts/fill-ai-item-map.mjs",
     "sync": "npm run sync:fetch && npm run sync:parse && npm run sync:transform && npm run sync:build"
   },
   "dependencies": {

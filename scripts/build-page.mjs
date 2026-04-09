@@ -17,6 +17,153 @@ export function badgeHtml(item = {}) {
   return `<span class="badge-new" data-added="${escapeHtml(item.added || '')}">${escapeHtml(item.badge)}</span>`;
 }
 
+const CHANGELOG_URL = 'https://code.claude.com/docs/en/changelog';
+
+const KEYCAP_TOKENS = new Set([
+  'Ctrl',
+  'Shift',
+  'Alt',
+  'Esc',
+  'Tab',
+  'Enter',
+  'Space',
+  '⇧',
+  '⌥',
+  '↑↓',
+  '←→',
+  '/',
+  '!',
+  '@',
+  '\\'
+]);
+
+function tokenizeChord(chord = '') {
+  let remaining = String(chord ?? '').trim();
+  if (!remaining) {
+    return [];
+  }
+
+  if (remaining === 'EscEsc') {
+    return ['Esc', 'Esc'];
+  }
+
+  if (remaining === '\\Enter') {
+    return ['\\', 'Enter'];
+  }
+
+  const tokens = [];
+  while (remaining) {
+    if (remaining.startsWith('\\') && remaining !== '\\') {
+      tokens.push('\\');
+      remaining = remaining.slice(1);
+      continue;
+    }
+
+    const prefix = ['Ctrl', 'Shift', 'Alt', 'Esc', '⇧', '⌥'].find(
+      (candidate) => remaining.startsWith(candidate) && remaining !== candidate
+    );
+    if (prefix) {
+      tokens.push(prefix);
+      remaining = remaining.slice(prefix.length);
+      continue;
+    }
+
+    if (remaining.startsWith('Space') && remaining !== 'Space') {
+      tokens.push('Space');
+      remaining = remaining.slice('Space'.length);
+      continue;
+    }
+
+    tokens.push(remaining);
+    remaining = '';
+  }
+
+  return tokens.filter(Boolean);
+}
+
+function areKeycapTokens(tokens = []) {
+  return tokens.every((token) => KEYCAP_TOKENS.has(token) || /^[A-Z]$/.test(token));
+}
+
+function parseKeyParts(keyText = '') {
+  const value = String(keyText ?? '').trim();
+  if (!value) {
+    return null;
+  }
+
+  if (/^\/\S+/.test(value) || /^--/.test(value) || /[.:~"]/u.test(value) || value.includes('<')) {
+    return null;
+  }
+
+  if (value === 'Space (hold)') {
+    return [
+      { type: 'token', value: 'Space' },
+      { type: 'text', value: ' (hold)' }
+    ];
+  }
+
+  if (value.includes(' / ')) {
+    const segments = value.split(' / ');
+    const parts = [];
+    for (const [index, segment] of segments.entries()) {
+      const tokens = tokenizeChord(segment);
+      if (!tokens.length || !areKeycapTokens(tokens)) {
+        return null;
+      }
+      for (const token of tokens) {
+        parts.push({ type: 'token', value: token });
+      }
+      if (index < segments.length - 1) {
+        parts.push({ type: 'text', value: ' / ' });
+      }
+    }
+    return parts;
+  }
+
+  const chords = value.split(' ');
+  if (chords.length > 1) {
+    const parts = [];
+    for (const [index, chord] of chords.entries()) {
+      const tokens = tokenizeChord(chord);
+      if (!tokens.length || !areKeycapTokens(tokens)) {
+        return null;
+      }
+      for (const token of tokens) {
+        parts.push({ type: 'token', value: token });
+      }
+      if (index < chords.length - 1) {
+        parts.push({ type: 'text', value: ' ' });
+      }
+    }
+    return parts;
+  }
+
+  const tokens = tokenizeChord(value);
+  if (!tokens.length || !areKeycapTokens(tokens)) {
+    return null;
+  }
+
+  return tokens.map((token) => ({ type: 'token', value: token }));
+}
+
+function renderKey(keyText = '') {
+  const parts = parseKeyParts(keyText);
+  if (!parts) {
+    return `<span class="key">${escapeHtml(keyText)}</span>`;
+  }
+
+  const innerHtml = parts
+    .map((part) => {
+      if (part.type === 'text') {
+        return `<span class="key-joiner">${escapeHtml(part.value)}</span>`;
+      }
+      return `<span class="keycap">${escapeHtml(part.value)}</span>`;
+    })
+    .join('');
+
+  return `<span class="key key-chord">${innerHtml}</span>`;
+}
+
 function slugify(value = '') {
   const normalized = String(value ?? '')
     .normalize('NFKD')
@@ -55,6 +202,23 @@ function renderFooter(localized) {
     .join('\n\n      ');
 }
 
+function renderVersionInfo(versionText = '') {
+  const value = String(versionText ?? '').trim();
+  if (!value) {
+    return '';
+  }
+
+  const match = value.match(/^(.*?)(v\d+(?:\.\d+)+)$/i);
+  if (!match) {
+    return `<span class="version-label">${escapeHtml(value)}</span>`;
+  }
+
+  const label = match[1].trim();
+  const version = match[2].trim();
+  const labelHtml = label ? `<span class="version-label">${escapeHtml(label)}</span>` : '';
+  return `${labelHtml}<span class="version-badge">${escapeHtml(version)}</span>`;
+}
+
 function resolveSection(sectionMap, sectionId) {
   const section = sectionMap.get(sectionId);
   if (!section) {
@@ -77,23 +241,16 @@ function collectOrderedSections(layout, sectionMap) {
   });
 }
 
-function renderNavSection(section) {
-  const sectionId = sectionAnchorId(section);
-  const groups = (section.groups ?? [])
-    .filter((group) => group.title)
-    .map((group, index) => {
-      const groupId = groupAnchorId(section, group, index);
-      return `<li class="page-nav-subitem"><a class="page-nav-sublink" href="#${escapeHtml(groupId)}">${escapeHtml(group.title)}</a></li>`;
+function renderSectionSwitcher(orderedSections) {
+  const items = orderedSections
+    .map((section, index) => {
+      const sectionId = sectionAnchorId(section);
+      const isActive = index === 0;
+      return `<li class="section-switcher-item"><button class="section-switcher-btn${isActive ? ' active' : ''}" type="button" data-section-target="${escapeHtml(sectionId)}" aria-pressed="${isActive ? 'true' : 'false'}">${escapeHtml(section.title)}</button></li>`;
     })
-    .join('');
-  const groupsHtml = groups ? `<ul class="page-nav-sublist">${groups}</ul>` : '';
+    .join('\n        ');
 
-  return `<li class="page-nav-item"><a class="page-nav-link" href="#${escapeHtml(sectionId)}">${escapeHtml(section.title)}</a>${groupsHtml}</li>`;
-}
-
-function renderNav(orderedSections) {
-  const items = orderedSections.map((section) => renderNavSection(section)).join('');
-  return `<nav class="page-nav" aria-label="页面目录"><ul class="page-nav-list">${items}</ul></nav>`;
+  return `<nav class="section-switcher" aria-label="速查主题切换"><ul class="section-switcher-list">${items}</ul></nav>`;
 }
 
 export function renderSection(section) {
@@ -105,14 +262,14 @@ export function renderSection(section) {
       const rowsHtml = (group.items ?? [])
         .map((item) => {
           const descHtml = item.desc ? ` <span class="desc">${escapeHtml(item.desc)}${badgeHtml(item)}</span>` : '';
-          return `<div class="row"><span class="key">${escapeHtml(item.key)}</span>${descHtml}</div>`;
+          return `<div class="row">${renderKey(item.key)}${descHtml}</div>`;
         })
         .join('\n            ');
-      return `<section class="section-group">\n              ${groupTitle}\n              ${rowsHtml}\n            </section>`;
+      return `<section class="section-group">\n              ${groupTitle}\n              <div class="group-rows">\n                ${rowsHtml}\n              </div>\n            </section>`;
     })
     .join('\n\n            ');
 
-  return `<section class="${escapeHtml(section.className || 'section')}" aria-labelledby="${escapeHtml(sectionAnchorId(section))}">\n          <header class="section-header">\n            <h2 class="section-title" id="${escapeHtml(sectionAnchorId(section))}">${escapeHtml(section.title)}</h2>\n          </header>\n          <div class="section-content">\n            ${groupsHtml}\n          </div>\n        </section>`;
+  return `<section class="${escapeHtml(section.className || 'section')}" data-section-panel="${escapeHtml(sectionAnchorId(section))}" aria-labelledby="${escapeHtml(sectionAnchorId(section))}">\n          <header class="section-header">\n            <h2 class="section-title" id="${escapeHtml(sectionAnchorId(section))}">${escapeHtml(section.title)}</h2>\n          </header>\n          <div class="section-content">\n            ${groupsHtml}\n          </div>\n        </section>`;
 }
 
 function renderLayoutItem(layoutItem, sectionMap) {
@@ -139,17 +296,17 @@ export function renderPage(template, localized) {
   const sectionMap = new Map((localized.sections ?? []).map((section) => [section.id, section]));
   const orderedSections = collectOrderedSections(localized.layout, sectionMap);
   const changelogItems = (localized.changelog ?? [])
-    .map((item) => `<li>${escapeHtml(item)}</li>`)
+    .map((item) => `<li><a class="changelog-link" href="${CHANGELOG_URL}" target="_blank" rel="noreferrer noopener">${escapeHtml(item)}</a></li>`)
     .join('\n        ');
   const sectionsHtml = localized.layout.map((layoutItem) => renderLayoutItem(layoutItem, sectionMap)).join('\n\n      ');
-  const navHtml = renderNav(orderedSections);
+  const sectionSwitcherHtml = renderSectionSwitcher(orderedSections);
   const footerHtml = renderFooter(localized);
 
   return template
-    .replace('{{VERSION}}', escapeHtml(localized.version || 'Claude Code'))
+    .replace('{{VERSION_HTML}}', renderVersionInfo(localized.version || 'Claude Code'))
     .replace('{{LAST_UPDATED}}', escapeHtml(localized.lastUpdated || ''))
     .replace('{{CHANGELOG_ITEMS}}', changelogItems)
-    .replace('{{NAV_HTML}}', navHtml)
+    .replace('{{SECTION_SWITCHER_HTML}}', sectionSwitcherHtml)
     .replace('{{SECTIONS_HTML}}', sectionsHtml)
     .replace('{{FOOTER_HTML}}', footerHtml);
 }

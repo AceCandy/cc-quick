@@ -1,0 +1,8 @@
+{
+  "forceRemoteSettingsRefresh policy — fail-closed startup (v2.1.92)": "forceRemoteSettingsRefresh 策略改为失败即关闭启动（v2.1.92）",
+  "Interactive Bedrock setup wizard on login screen (v2.1.92)": "登录界面新增交互式 Bedrock 设置向导（v2.1.92）",
+  "Per-model + cache-hit breakdown in /cost (v2.1.92)": "/cost 新增按模型与缓存命中的成本拆分（v2.1.92）",
+  "/release-notes is now an interactive version picker (v2.1.92)": "/release-notes 现已改成交互式版本选择器（v2.1.92）",
+  "Removed /tag and /vim commands (v2.1.92)": "移除了 /tag 与 /vim 命令（v2.1.92）",
+  "Write tool diff 60% faster for large files (v2.1.92)": "大文件场景下 Write 工具 diff 提速 60%（v2.1.92）"
+}

@@ -110,6 +110,12 @@ test('transformUpstream 保留 layout 并按规则翻译 section 与 item', () =
       'Permission Modes': '权限模式',
       'Key Env Vars': '关键环境变量'
     },
+    groupTitleMap: {
+      'Group One': '分组一'
+    },
+    changelogMap: {
+      'entry-1': '条目一'
+    },
     itemMap: {
       'item-map-hit': {
         desc: 'Item map wins over keyboard terms'
@@ -129,6 +135,8 @@ test('transformUpstream 保留 layout 并按规则翻译 section 与 item', () =
   const { localized, unmappedItems } = transformUpstream(upstream, maps);
 
   assert.deepEqual(localized.layout, upstream.layout);
+  assert.equal(localized.lastUpdated, '最近更新：2026年4月1日');
+  assert.deepEqual(localized.changelog, ['条目一']);
   assert.deepEqual(
     localized.sections.map(({ id, className, title }) => ({ id, className, title })),
     [
@@ -144,6 +152,8 @@ test('transformUpstream 保留 layout 并按规则翻译 section 与 item', () =
       }
     ]
   );
+  assert.equal(localized.sections[0].groups[0].title, '分组一');
+  assert.equal(localized.sections[1].groups[0].title, 'Group Two');
   assert.deepEqual(localized.footer, [
     {
       label: '权限模式',
@@ -236,6 +246,25 @@ test('transformUpstream 保留 layout 并按规则翻译 section 与 item', () =
   ]);
 });
 
+test('transformUpstream 会将 upstream 的英文更新时间格式化为中文日期', () => {
+  const upstream = {
+    version: '1.0.0',
+    lastUpdated: 'Last updated: April 4, 2026',
+    changelog: [],
+    layout: [],
+    footer: [],
+    sections: []
+  };
+
+  const { localized } = transformUpstream(upstream, {
+    sectionMap: {},
+    itemMap: {},
+    terms: {}
+  });
+
+  assert.equal(localized.lastUpdated, '最近更新：2026年4月4日');
+});
+
 test('transformUpstream 将空 desc 的 item 保留原值并记录到 unmappedItems', () => {
   const upstream = {
     version: '1.0.0',
@@ -305,6 +334,121 @@ test('transformUpstream 将空 desc 的 item 保留原值并记录到 unmappedIt
       group: 'Empty Group',
       key: 'null-desc',
       desc: null
+    }
+  ]);
+});
+
+test('transformUpstream 优先使用手动映射，其次 AI 映射，再回退 terms', () => {
+  const upstream = {
+    version: '1.0.0',
+    lastUpdated: '2026-04-01',
+    changelog: [],
+    layout: [],
+    sections: [
+      {
+        id: 'section-ai',
+        className: 'section section-ai',
+        title: 'AI Section',
+        groups: [
+          {
+            title: 'Group',
+            items: [
+              {
+                key: 'manual-key',
+                desc: 'manual source',
+                badge: null,
+                added: null
+              },
+              {
+                key: 'ai-key',
+                desc: 'ai source',
+                badge: null,
+                added: null
+              },
+              {
+                key: 'terms-key',
+                desc: 'keyboard shortcuts only',
+                badge: null,
+                added: null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    footer: [
+      {
+        label: 'Permission Modes',
+        items: [
+          {
+            code: 'acceptEdits',
+            desc: 'auto-accept edits'
+          }
+        ]
+      }
+    ]
+  };
+
+  const { localized, unmappedItems } = transformUpstream(upstream, {
+    sectionMap: {
+      'Permission Modes': '权限模式'
+    },
+    itemMap: {
+      'manual-key': {
+        desc: '手动映射'
+      }
+    },
+    aiItemMap: {
+      'ai-key': {
+        desc: 'AI 映射'
+      },
+      acceptEdits: {
+        footerDesc: 'AI 页脚映射'
+      }
+    },
+    terms: {
+      'keyboard shortcuts': '键盘快捷键',
+      'auto-accept edits': '自动接受编辑'
+    }
+  });
+
+  assert.deepEqual(localized.sections[0].groups[0].items, [
+    {
+      key: 'manual-key',
+      desc: '手动映射',
+      badge: null,
+      added: null
+    },
+    {
+      key: 'ai-key',
+      desc: 'AI 映射',
+      badge: null,
+      added: null
+    },
+    {
+      key: 'terms-key',
+      desc: '键盘快捷键 only',
+      badge: null,
+      added: null
+    }
+  ]);
+  assert.deepEqual(localized.footer, [
+    {
+      label: '权限模式',
+      items: [
+        {
+          code: 'acceptEdits',
+          desc: 'AI 页脚映射'
+        }
+      ]
+    }
+  ]);
+  assert.deepEqual(unmappedItems, [
+    {
+      section: 'AI Section',
+      group: 'Group',
+      key: 'terms-key',
+      desc: 'keyboard shortcuts only'
     }
   ]);
 });

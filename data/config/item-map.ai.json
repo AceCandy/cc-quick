@@ -1,0 +1,359 @@
+{
+  "": {
+    "desc": "MEMORY.md + 主题文件，自动加载（最大 25KB/200 行）"
+  },
+  "--add-dir": {
+    "desc": "添加目录"
+  },
+  "--agent": {
+    "desc": "使用 agent"
+  },
+  "--allowedTools": {
+    "desc": "预先批准"
+  },
+  "--bare": {
+    "desc": "最小化无头模式（无 hooks/LSP）"
+  },
+  "--channels": {
+    "desc": "权限中继 / MCP 推送"
+  },
+  "--chrome": {
+    "desc": "Chrome"
+  },
+  "--console": {
+    "desc": "通过 Anthropic Console 认证"
+  },
+  "--dangerously-skip-permissions": {
+    "desc": "跳过所有提示 ⚠️"
+  },
+  "--effort": {
+    "desc": "low/medium/high/max"
+  },
+  "--json-schema": {
+    "desc": "结构化"
+  },
+  "--max-budget-usd": {
+    "desc": "成本上限"
+  },
+  "--max-budget-usd 5": {
+    "desc": "成本上限"
+  },
+  "--max-turns": {
+    "desc": "限制轮数"
+  },
+  "--model": {
+    "desc": "设置模型"
+  },
+  "--output-format": {
+    "desc": "json/stream"
+  },
+  "--output-format json": {
+    "desc": "结构化输出"
+  },
+  "--permission-mode": {
+    "desc": "plan/default/…"
+  },
+  "--permission-mode plan": {
+    "desc": "以 plan 模式启动"
+  },
+  "--remote": {
+    "desc": "claude.ai 上的 Web 会话"
+  },
+  "--verbose": {
+    "desc": "详细输出"
+  },
+  "--worktree name": {
+    "desc": "每个功能一个隔离分支"
+  },
+  "-n / --name": {
+    "desc": "会话名称"
+  },
+  "-w": {
+    "desc": "Git worktree"
+  },
+  "!`cmd`": {
+    "desc": "动态上下文注入"
+  },
+  "./CLAUDE.md": {
+    "desc": "项目级（团队共享）"
+  },
+  ".claude/rules/*.md": {
+    "desc": "项目规则"
+  },
+  ".claude/settings.json": {
+    "desc": "项目级（共享）"
+  },
+  ".claude/settings.local.json": {
+    "desc": "仅本地"
+  },
+  ".claude/skills/<name>/": {
+    "desc": "项目技能"
+  },
+  ".mcp.json": {
+    "desc": "项目 MCP 服务器"
+  },
+  "\"ultrathink\"": {
+    "desc": "当前轮次的最大 effort"
+  },
+  "@agent-name": {
+    "desc": "提及已命名的子 agent"
+  },
+  "@path/to/file": {
+    "desc": "在 CLAUDE.md 中导入"
+  },
+  "/batch": {
+    "desc": "自动创建 worktree"
+  },
+  "/btw question": {
+    "desc": "侧边提问，不消耗上下文"
+  },
+  "/claude-api": {
+    "desc": "加载 API + SDK 参考"
+  },
+  "/debug [desc]": {
+    "desc": "从调试日志排查问题"
+  },
+  "/diff": {
+    "desc": "交互式 diff 查看器"
+  },
+  "/effort": {
+    "desc": "○ 低 · ◐ 中 · ● 高 · ★ 最大"
+  },
+  "/etc/claude-code/": {
+    "desc": "托管（组织范围）"
+  },
+  "/loop 5m msg": {
+    "desc": "周期性任务"
+  },
+  "/permissions": {
+    "desc": "查看/更新权限"
+  },
+  "/permissions → Recent": {
+    "desc": "用 R 重试被拒绝的操作"
+  },
+  "/powerup": {
+    "desc": "交互式功能教程"
+  },
+  "/rc": {
+    "desc": "远程控制（默认使用 hostname 前缀）"
+  },
+  "/release-notes": {
+    "desc": "交互式版本更新日志"
+  },
+  "/simplify": {
+    "desc": "代码审查（3 个并行 agent）"
+  },
+  "~/.claude.json": {
+    "desc": "OAuth、MCP、状态"
+  },
+  "~/.claude/CLAUDE.md": {
+    "desc": "个人（所有项目）"
+  },
+  "~/.claude/projects/<proj>/memory/": {
+    "desc": "MEMORY.md + 主题文件，自动加载（最大 25KB/200 行）"
+  },
+  "~/.claude/rules/*.md": {
+    "desc": "用户规则"
+  },
+  "~/.claude/settings.json": {
+    "desc": "用户设置"
+  },
+  "~/.claude/skills/<name>/": {
+    "desc": "个人 skills"
+  },
+  "${CLAUDE_SKILL_DIR}": {
+    "desc": "skill 自身目录"
+  },
+  "$ARGUMENTS": {
+    "desc": "用户输入占位符"
+  },
+  "1M context": {
+    "desc": "Opus 4.6（Max/Team/Ent）"
+  },
+  "20 languages": {
+    "desc": "EN、ES、FR、DE、CZ、PL…"
+  },
+  "2KB cap": {
+    "desc": "工具 desc + 服务器指令上限"
+  },
+  "allowed-tools": {
+    "desc": "跳过权限提示"
+  },
+  "allowedChannelPlugins": {
+    "desc": "管理员 channel plugin 允许列表"
+  },
+  "AltO": {
+    "desc": "切换快速模式"
+  },
+  "ANTHROPIC_CUSTOM_MODEL_OPTION": {
+    "desc": "自定义 /model 条目"
+  },
+  "Auto-compact": {
+    "desc": "~95% 容量（抖动检测：3x）"
+  },
+  "autoMemoryDirectory": {
+    "desc": "自定义 memory 目录"
+  },
+  "background: true": {
+    "desc": "后台任务"
+  },
+  "Bash": {
+    "desc": "终端独立上下文"
+  },
+  "Bedrock wizard": {
+    "desc": "登录时交互式 AWS 设置"
+  },
+  "cat file | claude -p": {
+    "desc": "管道输入"
+  },
+  "claude": {
+    "desc": "交互式"
+  },
+  "claude -c": {
+    "desc": "继续上一次对话"
+  },
+  "claude -p \"q\"": {
+    "desc": "无头模式"
+  },
+  "claude -p \"query\"": {
+    "desc": "非交互式"
+  },
+  "claude -r \"n\"": {
+    "desc": "恢复"
+  },
+  "claude -r \"name\"": {
+    "desc": "按名称恢复"
+  },
+  "claude \"q\"": {
+    "desc": "带 prompt"
+  },
+  "claude update": {
+    "desc": "更新"
+  },
+  "CLAUDE_CODE_EFFORT_LEVEL": {
+    "desc": "low/medium/high/max/auto"
+  },
+  "CLAUDE_CODE_MAX_OUTPUT_TOKENS": {
+    "footerDesc": "（默认 32K）"
+  },
+  "CLAUDE_CODE_NO_FLICKER": {
+    "desc": "备用屏渲染 (=1)"
+  },
+  "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB": {
+    "desc": "从子进程中剥离凭据"
+  },
+  "CLAUDE_STREAM_IDLE_TIMEOUT_MS": {
+    "desc": "流式看门狗（默认 90s）"
+  },
+  "CLAUDE.md": {
+    "desc": "压缩后仍保留！"
+  },
+  "CLAUDECODE": {
+    "desc": "检测 CC shell (=1)"
+  },
+  "context: fork": {
+    "desc": "在子代理中运行"
+  },
+  "CtrlE": {
+    "desc": "切换显示全部"
+  },
+  "CtrlX CtrlK": {
+    "desc": "终止后台代理"
+  },
+  "description": {
+    "desc": "自动调用触发器"
+  },
+  "disableSkillShellExec": {
+    "desc": "阻止 skills/plugins 中的 !`cmd`"
+  },
+  "effort": {
+    "desc": "覆盖 effort 级别"
+  },
+  "Explore": {
+    "desc": "快速只读（Haiku）"
+  },
+  "forceRemoteSettingsRefresh": {
+    "desc": "失败即关闭：阻止启动直到配置刷新"
+  },
+  "General": {
+    "desc": "全工具，适合复杂任务"
+  },
+  "hooks: \"defer\"": {
+    "desc": "暂停 headless → 稍后恢复"
+  },
+  "hooks: if": {
+    "desc": "条件 hooks（permission rule 语法）"
+  },
+  "initialPrompt": {
+    "desc": "自动提交首轮"
+  },
+  "isolation: worktree": {
+    "desc": "在自己的 worktree 中运行 Agent"
+  },
+  "managed-settings.d/": {
+    "desc": "可直接放入的策略片段"
+  },
+  "MAX_THINKING_TOKENS": {
+    "desc": "0=关闭"
+  },
+  "maxResultSizeChars": {
+    "desc": "_meta 注解覆盖（最多 500K）"
+  },
+  "maxTurns": {
+    "desc": "限制 agentic 轮数"
+  },
+  "MCP_CONNECTION_NONBLOCKING": {
+    "desc": "在 -p 中跳过 MCP 等待"
+  },
+  "memory: user|project|local": {
+    "desc": "持久化记忆"
+  },
+  "model": {
+    "desc": "为 skill 覆盖模型"
+  },
+  "modelOverrides": {
+    "desc": "将模型选择器映射到自定义 ID"
+  },
+  "paths: [globs]": {
+    "desc": "路径定向（YAML 列表）"
+  },
+  "paths: frontmatter": {
+    "desc": "路径定向规则"
+  },
+  "PermissionDenied": {
+    "desc": "Hook：自动模式拒绝"
+  },
+  "permissionMode": {
+    "desc": "default/acceptEdits/plan/dontAsk/bypassPermissions"
+  },
+  "Plan": {
+    "desc": "用于 plan 模式的研究"
+  },
+  "plugin bin/": {
+    "desc": "为 Bash 工具随附可执行文件"
+  },
+  "PowerShell tool": {
+    "desc": "Windows 可选预览"
+  },
+  "Q / Esc": {
+    "desc": "退出 transcript"
+  },
+  "sandbox.failIfUnavailable": {
+    "desc": "sandbox 失败时退出"
+  },
+  "SendMessage": {
+    "desc": "恢复代理（替代 resume）"
+  },
+  "showThinkingSummaries": {
+    "desc": "可选启用（现默认关闭）"
+  },
+  "Space (hold)": {
+    "desc": "按住录音，松开发送"
+  },
+  "sparsePaths": {
+    "desc": "仅检出所需目录"
+  },
+  "worktree.sparsePaths": {
+    "desc": "稀疏检出目录"
+  }
+}

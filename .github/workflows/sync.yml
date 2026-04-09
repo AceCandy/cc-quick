@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+    # 只在源码/配置变更时触发，避免生成物回推造成循环执行。
     paths:
       - '.github/workflows/sync.yml'
       - 'scripts/**'

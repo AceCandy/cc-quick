@@ -1,0 +1,72 @@
+name: Refresh AI Translation Map
+
+on:
+  workflow_run:
+    workflows:
+      - Sync cc.storyfox.cz
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ai-translate:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+      OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Skip when OPENAI_API_KEY is missing
+        if: env.OPENAI_API_KEY == ''
+        run: echo "OPENAI_API_KEY 未配置，跳过 AI 翻译映射更新"
+
+      - name: Setup Node
+        if: env.OPENAI_API_KEY != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install deps
+        if: env.OPENAI_API_KEY != ''
+        run: npm ci
+
+      - name: Refresh upstream snapshot
+        if: env.OPENAI_API_KEY != ''
+        run: |
+          npm run sync:fetch
+          npm run sync:parse
+          npm run sync:transform
+
+      - name: Refresh AI translation map
+        if: env.OPENAI_API_KEY != ''
+        run: npm run sync:ai-map
+
+      - name: Rebuild localized page
+        if: env.OPENAI_API_KEY != ''
+        run: |
+          npm run sync:transform
+          npm run sync:build
+
+      - name: Commit changes
+        if: env.OPENAI_API_KEY != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html data/
+          git diff --cached --quiet || git commit -m "chore: refresh ai translation map"
+
+      - name: Push changes
+        if: env.OPENAI_API_KEY != ''
+        run: git push

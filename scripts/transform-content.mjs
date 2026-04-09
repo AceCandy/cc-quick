@@ -2,6 +2,21 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+const MONTH_MAP = {
+  january: 1,
+  february: 2,
+  march: 3,
+  april: 4,
+  may: 5,
+  june: 6,
+  july: 7,
+  august: 8,
+  september: 9,
+  october: 10,
+  november: 11,
+  december: 12
+};
+
 export function applyTerms(text, terms) {
   let result = text;
   const entries = Object.entries(terms ?? {}).sort((a, b) => b[0].length - a[0].length);
@@ -11,11 +26,27 @@ export function applyTerms(text, terms) {
   return result;
 }
 
-function localizeDesc({ itemKey, desc, itemMap, terms, unmappedItems, scope, group, preferFooterDesc = false }) {
+function localizeDesc({
+  itemKey,
+  desc,
+  itemMap,
+  aiItemMap,
+  terms,
+  unmappedItems,
+  scope,
+  group,
+  preferFooterDesc = false
+}) {
   const mapped = itemMap[itemKey];
   const mappedDesc = preferFooterDesc ? mapped?.footerDesc ?? mapped?.desc : mapped?.desc;
   if (mappedDesc) {
     return mappedDesc;
+  }
+
+  const aiMapped = aiItemMap[itemKey];
+  const aiMappedDesc = preferFooterDesc ? aiMapped?.footerDesc ?? aiMapped?.desc : aiMapped?.desc;
+  if (aiMappedDesc) {
+    return aiMappedDesc;
   }
 
   const localizedDesc = desc ? applyTerms(desc, terms) : desc;
@@ -28,21 +59,53 @@ function localizeDesc({ itemKey, desc, itemMap, terms, unmappedItems, scope, gro
   return localizedDesc;
 }
 
+function formatLastUpdated(lastUpdated) {
+  const text = String(lastUpdated ?? '').trim();
+  if (!text) {
+    return text;
+  }
+
+  const isoMatch = text.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+  if (isoMatch) {
+    const [, year, month, day] = isoMatch;
+    return `最近更新：${year}年${Number(month)}月${Number(day)}日`;
+  }
+
+  const englishMatch = text.match(/^Last updated:\s+([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})$/i);
+  if (englishMatch) {
+    const [, monthName, day, year] = englishMatch;
+    const month = MONTH_MAP[monthName.toLowerCase()];
+    if (month) {
+      return `最近更新：${year}年${month}月${Number(day)}日`;
+    }
+  }
+
+  return text;
+}
+
 export function transformUpstream(upstream, maps) {
-  const { sectionMap = {}, itemMap = {}, terms = {} } = maps ?? {};
+  const {
+    sectionMap = {},
+    groupTitleMap = {},
+    changelogMap = {},
+    itemMap = {},
+    aiItemMap = {},
+    terms = {}
+  } = maps ?? {};
   const unmappedItems = [];
   const sections = (upstream.sections ?? []).map((section) => ({
     id: section.id,
     className: section.className,
     title: sectionMap[section.title] || section.title,
     groups: (section.groups ?? []).map((group) => ({
-      title: group.title,
+      title: groupTitleMap[group.title] || group.title,
       items: (group.items ?? []).map((item) => ({
         key: item.key,
         desc: localizeDesc({
           itemKey: item.key,
           desc: item.desc,
           itemMap,
+          aiItemMap,
           terms,
           unmappedItems,
           scope: section.title,
@@ -62,6 +125,7 @@ export function transformUpstream(upstream, maps) {
         itemKey: item.code,
         desc: item.desc,
         itemMap,
+        aiItemMap,
         terms,
         unmappedItems,
         scope: 'Footer',
@@ -73,8 +137,8 @@ export function transformUpstream(upstream, maps) {
 
   const localized = {
     version: upstream.version,
-    lastUpdated: upstream.lastUpdated,
-    changelog: upstream.changelog,
+    lastUpdated: formatLastUpdated(upstream.lastUpdated),
+    changelog: (upstream.changelog ?? []).map((entry) => changelogMap[entry] || entry),
     layout: upstream.layout,
     sections,
     footer
@@ -86,9 +150,26 @@ export function transformUpstream(upstream, maps) {
 async function main() {
   const upstream = JSON.parse(await readFile('data/parsed/upstream.json', 'utf8'));
   const sectionMap = JSON.parse(await readFile('data/config/section-map.json', 'utf8'));
+  const groupTitleMap = JSON.parse(await readFile('data/config/group-title-map.json', 'utf8'));
+  const changelogMap = JSON.parse(await readFile('data/config/changelog-map.json', 'utf8'));
   const itemMap = JSON.parse(await readFile('data/config/item-map.json', 'utf8'));
+  let aiItemMap = {};
+  try {
+    aiItemMap = JSON.parse(await readFile('data/config/item-map.ai.json', 'utf8'));
+  } catch (error) {
+    if (error && error.code !== 'ENOENT') {
+      throw error;
+    }
+  }
   const terms = JSON.parse(await readFile('data/config/terms.json', 'utf8'));
-  const { localized, unmappedItems } = transformUpstream(upstream, { sectionMap, itemMap, terms });
+  const { localized, unmappedItems } = transformUpstream(upstream, {
+    sectionMap,
+    groupTitleMap,
+    changelogMap,
+    itemMap,
+    aiItemMap,
+    terms
+  });
 
   await mkdir('data/generated', { recursive: true });
   await writeFile('data/generated/localized.json', JSON.stringify(localized, null, 2), 'utf8');

@@ -58,9 +58,13 @@ test('renderSection 使用 section.className 并渲染 badge', () => {
     ]
   });
 
-  assert.match(html, /<section class="section section-special" aria-labelledby="section-special">/);
+  assert.match(
+    html,
+    /<section class="section section-special" data-section-panel="section-special" aria-labelledby="section-special">/
+  );
   assert.match(html, /<h2 class="section-title" id="section-special">A &amp; &quot;B&quot;<\/h2>/);
   assert.match(html, /<h3 class="group-title" id="section-special-group-group-1">Group &lt;1&gt;<\/h3>/);
+  assert.match(html, /<div class="group-rows">[\s\S]*<span class="key">Ctrl &lt;1&gt;<\/span>[\s\S]*<\/div>/);
   assert.match(html, /<span class="key">Ctrl &lt;1&gt;<\/span>/);
   assert.match(html, /<span class="badge-new" data-added="2026-04-01">NEW<\/span>/);
 });
@@ -88,6 +92,59 @@ test('renderSection 输出语义标题和稳定锚点', () => {
   assert.match(html, /<section class="section section-keyboard"[^>]*>/);
   assert.match(html, /<h2 class="section-title" id="section-keyboard">⌨️ 键盘快捷键<\/h2>/);
   assert.match(html, /<h3 class="group-title" id="section-keyboard-group-general-controls">General Controls<\/h3>/);
+});
+
+test('renderSection 对可识别快捷键渲染 keycap，对命令保持纯文本 key', () => {
+  const html = renderSection({
+    id: 'keyboard',
+    className: 'section section-keyboard',
+    title: '⌨️ 键盘快捷键',
+    groups: [
+      {
+        title: 'General Controls',
+        items: [
+          {
+            key: 'CtrlC',
+            desc: '取消当前输入或生成',
+            badge: null,
+            added: null
+          },
+          {
+            key: 'CtrlX CtrlE',
+            desc: '在编辑器中打开（别名）',
+            badge: null,
+            added: null
+          },
+          {
+            key: 'Q / Esc',
+            desc: '退出 transcript',
+            badge: null,
+            added: null
+          },
+          {
+            key: '/clear',
+            desc: '清空对话',
+            badge: null,
+            added: null
+          }
+        ]
+      }
+    ]
+  });
+
+  assert.match(
+    html,
+    /<span class="key key-chord"><span class="keycap">Ctrl<\/span><span class="keycap">C<\/span><\/span>/
+  );
+  assert.match(
+    html,
+    /<span class="key key-chord"><span class="keycap">Ctrl<\/span><span class="keycap">X<\/span><span class="key-joiner"> <\/span><span class="keycap">Ctrl<\/span><span class="keycap">E<\/span><\/span>/
+  );
+  assert.match(
+    html,
+    /<span class="key key-chord"><span class="keycap">Q<\/span><span class="key-joiner"> \/ <\/span><span class="keycap">Esc<\/span><\/span>/
+  );
+  assert.match(html, /<span class="key">\/clear<\/span>/);
 });
 
 test('renderPage 按 layout 渲染 wrapper、section 顺序和 standalone', () => {
@@ -119,9 +176,15 @@ test('renderPage 按 layout 渲染 wrapper、section 顺序和 standalone', () =
 
   const html = renderPage(template, localized);
   const wrapperIndex = html.indexOf('<div class="section-alpha-beta">');
-  const betaIndex = html.indexOf('<section class="section section-beta" aria-labelledby="section-beta">');
-  const alphaIndex = html.indexOf('<section class="section section-alpha" aria-labelledby="section-alpha">');
-  const soloIndex = html.indexOf('<section class="section section-solo" aria-labelledby="section-solo">');
+  const betaIndex = html.indexOf(
+    '<section class="section section-beta" data-section-panel="section-beta" aria-labelledby="section-beta">'
+  );
+  const alphaIndex = html.indexOf(
+    '<section class="section section-alpha" data-section-panel="section-alpha" aria-labelledby="section-alpha">'
+  );
+  const soloIndex = html.indexOf(
+    '<section class="section section-solo" data-section-panel="section-solo" aria-labelledby="section-solo">'
+  );
 
   assert.notEqual(wrapperIndex, -1);
   assert.notEqual(betaIndex, -1);
@@ -132,30 +195,26 @@ test('renderPage 按 layout 渲染 wrapper、section 顺序和 standalone', () =
   assert.ok(alphaIndex < soloIndex);
   assert.match(
     html,
-    /<div class="section-alpha-beta">\s*<section class="section section-beta" aria-labelledby="section-beta">[\s\S]*<section class="section section-alpha" aria-labelledby="section-alpha">[\s\S]*<\/section>\s*<\/div>\s*<section class="section section-solo" aria-labelledby="section-solo">/
+    /<div class="section-alpha-beta">\s*<section class="section section-beta" data-section-panel="section-beta" aria-labelledby="section-beta">[\s\S]*<section class="section section-alpha" data-section-panel="section-alpha" aria-labelledby="section-alpha">[\s\S]*<\/section>\s*<\/div>\s*<section class="section section-solo" data-section-panel="section-solo" aria-labelledby="section-solo">/
   );
 });
 
-test('renderPage 输出 skip link、目录和附录容器', () => {
-  const template = `
-    <a class="skip-link" href="#main-content">跳到正文</a>
-    <div class="page-shell">
-      <aside class="page-sidebar">{{NAV_HTML}}</aside>
-      <main id="main-content">{{SECTIONS_HTML}}</main>
-    </div>
-    <section class="appendix" aria-labelledby="appendix-title">
-      <h2 id="appendix-title">附录</h2>
-      {{FOOTER_HTML}}
-    </section>
-  `;
+test('renderPage 输出 section 切换契约与 changelog 触发按钮', () => {
+  const template = readFileSync(new URL('../templates/index.template.html', import.meta.url), 'utf8');
   const localized = {
-    version: '1.0.0',
+    version: 'Claude Code v1.0.0',
     lastUpdated: '2026-04-01',
-    changelog: [],
+    changelog: ['2026-04-01 新增 section 切换契约'],
     layout: [
       {
+        type: 'wrapper',
+        id: 'keyboard-mcp',
+        className: 'section-keyboard-mcp',
+        children: ['keyboard', 'mcp']
+      },
+      {
         type: 'section',
-        id: 'keyboard'
+        id: 'solo'
       }
     ],
     sections: [
@@ -170,6 +229,42 @@ test('renderPage 输出 skip link、目录和附录容器', () => {
               {
                 key: 'CtrlC',
                 desc: '取消当前输入或生成',
+                badge: null,
+                added: null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'mcp',
+        className: 'section section-mcp',
+        title: 'MCP',
+        groups: [
+          {
+            title: 'General Controls',
+            items: [
+              {
+                key: 'CtrlM',
+                desc: '打开 MCP 面板',
+                badge: null,
+                added: null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'solo',
+        className: 'section section-solo',
+        title: '单项',
+        groups: [
+          {
+            title: 'General Controls',
+            items: [
+              {
+                key: 'CtrlS',
+                desc: '打开单项',
                 badge: null,
                 added: null
               }
@@ -192,11 +287,43 @@ test('renderPage 输出 skip link、目录和附录容器', () => {
   };
 
   const html = renderPage(template, localized);
+  const switcherButtons = [...html.matchAll(
+    /<button class="section-switcher-btn( active)?" type="button" data-section-target="([^"]+)" aria-pressed="(true|false)">([^<]+)<\/button>/g
+  )];
 
   assert.match(html, /<a class="skip-link" href="#main-content">跳到正文<\/a>/);
-  assert.match(html, /<nav class="page-nav" aria-label="页面目录">/);
-  assert.match(html, /<a class="page-nav-link" href="#section-keyboard">键盘快捷键<\/a>/);
-  assert.match(html, /<a class="page-nav-sublink" href="#section-keyboard-group-general-controls">General Controls<\/a>/);
+  assert.doesNotMatch(html, /id="densityToggle"/);
+  assert.match(
+    html,
+    /<span class="version-info"><span class="version-label">Claude Code<\/span><span class="version-badge">v1\.0\.0<\/span><\/span>/
+  );
+  assert.match(html, /<button class="changelog-trigger"[^>]*aria-controls="changelogPanel"[^>]*>/);
+  assert.match(html, /<button class="changelog-trigger"[^>]*aria-expanded="false"[^>]*>/);
+  assert.match(
+    html,
+    /<header class="header">[\s\S]*<div class="changelog-panel" id="changelogPanel" hidden>[\s\S]*<\/div>[\s\S]*<\/header>/
+  );
+  assert.match(
+    html,
+    /<li><a class="changelog-link" href="https:\/\/code\.claude\.com\/docs\/en\/changelog" target="_blank" rel="noreferrer noopener">2026-04-01 新增 section 切换契约<\/a><\/li>/
+  );
+  assert.match(html, /<nav class="section-switcher" aria-label="速查主题切换">/);
+  assert.equal(switcherButtons.length, 3);
+  assert.deepEqual(
+    switcherButtons.map((match) => match[2]),
+    ['section-keyboard', 'section-mcp', 'section-solo']
+  );
+  assert.deepEqual(
+    switcherButtons.map((match) => match[4]),
+    ['键盘快捷键', 'MCP', '单项']
+  );
+  assert.equal(switcherButtons[0][3], 'true');
+  assert.equal(switcherButtons[1][3], 'false');
+  assert.equal(switcherButtons[2][3], 'false');
+  assert.match(html, /data-section-panel="section-keyboard"/);
+  assert.match(html, /data-section-panel="section-mcp"/);
+  assert.match(html, /data-section-panel="section-solo"/);
+  assert.match(html, /id="section-keyboard-group-general-controls"/);
   assert.match(html, /<section class="appendix" aria-labelledby="appendix-title">/);
 });
 
@@ -287,25 +414,24 @@ test('renderPage 使用真实 upstream fixture 保留全部 wrapper 分组', () 
 
   const html = renderPage(template, localized);
 
+  assert.match(html, /<nav class="section-switcher" aria-label="速查主题切换">/);
+  assert.match(html, /data-section-target="section-keyboard"/);
+  assert.match(html, /data-section-panel="section-keyboard"/);
   assert.match(
     html,
-    /<nav class="page-nav" aria-label="页面目录">[\s\S]*<a class="page-nav-link" href="#section-keyboard">⌨️ 键盘快捷键<\/a>/
+    /<div class="section-keyboard-mcp">\s*<section class="section section-keyboard" data-section-panel="section-keyboard" aria-labelledby="section-keyboard">[\s\S]*<section class="section section-mcp" data-section-panel="section-mcp" aria-labelledby="section-mcp">[\s\S]*<\/div>/
   );
   assert.match(
     html,
-    /<div class="section-keyboard-mcp">\s*<section class="section section-keyboard" aria-labelledby="section-keyboard">[\s\S]*<section class="section section-mcp" aria-labelledby="section-mcp">[\s\S]*<\/div>/
+    /<div class="section-slash-memory">\s*<section class="section section-slash" data-section-panel="section-slash" aria-labelledby="section-slash">[\s\S]*<section class="section section-memory" data-section-panel="section-memory" aria-labelledby="section-memory">[\s\S]*<\/div>/
   );
   assert.match(
     html,
-    /<div class="section-slash-memory">\s*<section class="section section-slash" aria-labelledby="section-slash">[\s\S]*<section class="section section-memory" aria-labelledby="section-memory">[\s\S]*<\/div>/
+    /<div class="section-workflows-config">\s*<section class="section section-workflows" data-section-panel="section-workflows" aria-labelledby="section-workflows">[\s\S]*<section class="section section-config" data-section-panel="section-config" aria-labelledby="section-config">[\s\S]*<\/div>/
   );
   assert.match(
     html,
-    /<div class="section-workflows-config">\s*<section class="section section-workflows" aria-labelledby="section-workflows">[\s\S]*<section class="section section-config" aria-labelledby="section-config">[\s\S]*<\/div>/
-  );
-  assert.match(
-    html,
-    /<div class="section-skills-cli">\s*<section class="section section-skills" aria-labelledby="section-skills">[\s\S]*<section class="section section-cli" aria-labelledby="section-cli">[\s\S]*<\/div>/
+    /<div class="section-skills-cli">\s*<section class="section section-skills" data-section-panel="section-skills" aria-labelledby="section-skills">[\s\S]*<section class="section section-cli" data-section-panel="section-cli" aria-labelledby="section-cli">[\s\S]*<\/div>/
   );
   assert.match(html, /<span class="footer-label">权限模式:<\/span>/);
   assert.match(html, /<span class="footer-item"><code>default<\/code> 每次提示<\/span>/);

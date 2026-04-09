@@ -40,6 +40,25 @@ function parseSectionId(className, title) {
   return slugifyText(title);
 }
 
+function parseRowItem(node) {
+  const row = node.clone();
+  const key = normalizeText(row.find('.key').first().text());
+  const descEl = row.find('.desc').first();
+  const badgeEl = descEl.find('.badge-new').first();
+  const badge = badgeEl.length ? normalizeText(badgeEl.text()) : null;
+  const added = badgeEl.length ? badgeEl.attr('data-added') || null : null;
+  if (badgeEl.length) {
+    badgeEl.remove();
+  }
+
+  return {
+    key,
+    desc: normalizeText(descEl.text()),
+    badge,
+    added
+  };
+}
+
 function parseSection($, sectionEl) {
   const section = $(sectionEl);
   const className = normalizeText(section.attr('class') || '');
@@ -55,10 +74,29 @@ function parseSection($, sectionEl) {
   const id = parseSectionId(className, title);
   const groups = [];
   let currentGroup = null;
+  let pendingItem = null;
+
+  function ensureCurrentGroup() {
+    if (!currentGroup) {
+      currentGroup = { title: '', items: [] };
+      groups.push(currentGroup);
+    }
+  }
+
+  function flushPendingItem() {
+    if (!pendingItem) {
+      return;
+    }
+
+    ensureCurrentGroup();
+    currentGroup.items.push(pendingItem);
+    pendingItem = null;
+  }
 
   sectionContent.children().each((_, child) => {
     const node = $(child);
     if (node.hasClass('sub-header')) {
+      flushPendingItem();
       currentGroup = {
         title: normalizeText(node.text()),
         items: []
@@ -68,28 +106,34 @@ function parseSection($, sectionEl) {
     }
 
     if (node.hasClass('row')) {
-      if (!currentGroup) {
-        currentGroup = { title: '', items: [] };
-        groups.push(currentGroup);
+      ensureCurrentGroup();
+      const item = parseRowItem(node);
+
+      // 上游有少量条目会拆成两行：前一行只有 key，后一行只有 desc。
+      if (pendingItem && !item.key && item.desc) {
+        pendingItem.desc = item.desc;
+        pendingItem.badge = item.badge;
+        pendingItem.added = item.added;
+        flushPendingItem();
+        return;
       }
 
-      const key = normalizeText(node.find('.key').first().text());
-      const descEl = node.find('.desc').first();
-      const badgeEl = descEl.find('.badge-new').first();
-      const badge = badgeEl.length ? normalizeText(badgeEl.text()) : null;
-      const added = badgeEl.length ? badgeEl.attr('data-added') || null : null;
-      if (badgeEl.length) {
-        badgeEl.remove();
+      flushPendingItem();
+      if (item.key && !item.desc) {
+        pendingItem = item;
+        return;
       }
-      const desc = normalizeText(descEl.text());
-      currentGroup.items.push({ key, desc, badge, added });
+
+      currentGroup.items.push(item);
       return;
     }
 
+    flushPendingItem();
     const nodeLabel = normalizeText(node.attr('class') || node.prop('tagName') || node[0]?.tagName || 'unknown');
     throw new Error(`section-content 包含不受支持的子节点: ${nodeLabel}`);
   });
 
+  flushPendingItem();
   return { id, className, title, groups };
 }
 
