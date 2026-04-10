@@ -32,6 +32,9 @@
   "--effort": {
     "desc": "low/medium/high/max"
   },
+  "--exclude-dynamic-system-prompt-sections": {
+    "desc": "打印模式：改进跨用户 prompt 缓存"
+  },
   "--json-schema": {
     "desc": "结构化"
   },
@@ -254,6 +257,12 @@
   "CLAUDE_CODE_NO_FLICKER": {
     "desc": "备用屏渲染 (=1)"
   },
+  "CLAUDE_CODE_PERFORCE_MODE": {
+    "desc": "在只读文件上编辑失败时提示 p4 edit"
+  },
+  "CLAUDE_CODE_SCRIPT_CAPS": {
+    "desc": "限制每个会话的 script 调用次数"
+  },
   "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB": {
     "desc": "从子进程中剥离凭据"
   },
@@ -332,6 +341,9 @@
   "modelOverrides": {
     "desc": "将模型选择器映射到自定义 ID"
   },
+  "Monitor tool": {
+    "desc": "从后台脚本流式输出事件"
+  },
   "paths: [globs]": {
     "desc": "路径定向（YAML 列表）"
   },
@@ -352,6 +364,9 @@
   },
   "PowerShell tool": {
     "desc": "Windows 可选预览"
+  },
+  "Q / CtrlC / Esc": {
+    "desc": "退出转录"
   },
   "Q / Esc": {
     "desc": "退出 transcript"
