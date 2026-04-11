@@ -1,8 +1,10 @@
 {
   "--exclude-dynamic-system-prompt-sections improves cross-user prompt caching in print mode (v2.1.98)": "--exclude-dynamic-system-prompt-sections 可改进 print 模式下的跨用户 prompt 缓存（v2.1.98）",
   "/agents now has Running and Library tabs with quick actions for launching or inspecting agents (v2.1.100)": "/agents 现在有 Running 和 Library 选项卡，并提供用于启动或检查 agents 的快速操作（v2.1.100）",
+  "/agents now has Running and Library tabs with quick actions for launching or inspecting agents (v2.1.98)": "/agents 现在有 Running 和 Library 标签页，并提供用于启动或检查 agents 的快捷操作（v2.1.98）",
   "/agents shows a live “● N running” indicator next to agent types (v2.1.97)": "/agents 在 agent 类型旁显示实时“● N running”指示器 (v2.1.97)",
   "/reload-plugins can now pick up plugin-provided skills without restarting Claude Code (v2.1.100)": "/reload-plugins 现在无需重启 Claude Code 即可加载插件提供的 skills（v2.1.100）",
+  "CLAUDE_CODE_CERT_STORE configures TLS CA sources (bundled, system) for Claude Code connections (v2.1.101)": "CLAUDE_CODE_CERT_STORE 为 Claude Code 连接配置 TLS CA 来源（bundled, system）（v2.1.101）",
   "CLAUDE_CODE_PERFORCE_MODE fails edits on read-only files with a p4 edit hint instead of overwriting silently (v2.1.98)": "CLAUDE_CODE_PERFORCE_MODE 会在只读文件上编辑失败，并给出 p4 edit 提示，而不是静默覆盖（v2.1.98）",
   "CLAUDE_CODE_USE_MANTLE=1 enables Amazon Bedrock via Mantle (v2.1.94)": "CLAUDE_CODE_USE_MANTLE=1 通过 Mantle 启用 Amazon Bedrock (v2.1.94)",
   "Ctrl+O adds focus view in NO_FLICKER mode with prompt, tool summary, and final response (v2.1.97)": "Ctrl+O 在 NO_FLICKER 模式下新增 focus view，显示 prompt、tool summary 和 final response (v2.1.97)",

@@ -161,6 +161,12 @@
   "/simplify": {
     "desc": "代码审查（3 个并行 agent）"
   },
+  "/ultraplan": {
+    "desc": "在浏览器中起草计划，然后远程执行或发回终端"
+  },
+  "/ultraplan <prompt>": {
+    "desc": "在浏览器会话中起草计划，然后远程执行或发回终端"
+  },
   "~/.claude.json": {
     "desc": "OAuth、MCP、状态"
   },
@@ -193,6 +199,9 @@
   },
   "2KB cap": {
     "desc": "工具 desc + 服务器指令上限"
+  },
+  "2KB each": {
+    "desc": "工具描述和服务器指令各自都截断为 2KB"
   },
   "allowed-tools": {
     "desc": "跳过权限提示"
@@ -247,6 +256,9 @@
   },
   "claude update": {
     "desc": "更新"
+  },
+  "CLAUDE_CODE_CERT_STORE": {
+    "desc": "逗号分隔的 TLS CA 来源：bundled、system（默认：两者）"
   },
   "CLAUDE_CODE_EFFORT_LEVEL": {
     "desc": "low/medium/high/max/auto"
