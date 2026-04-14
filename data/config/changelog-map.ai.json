@@ -3,6 +3,7 @@
   "/agents now has Running and Library tabs with quick actions for launching or inspecting agents (v2.1.100)": "/agents 现在有 Running 和 Library 选项卡，并提供用于启动或检查 agents 的快速操作（v2.1.100）",
   "/agents now has Running and Library tabs with quick actions for launching or inspecting agents (v2.1.98)": "/agents 现在有 Running 和 Library 标签页，并提供用于启动或检查 agents 的快捷操作（v2.1.98）",
   "/agents shows a live “● N running” indicator next to agent types (v2.1.97)": "/agents 在 agent 类型旁显示实时“● N running”指示器 (v2.1.97)",
+  "/proactive is now an alias for /loop (v2.1.105)": "/proactive 现在是 /loop 的别名（v2.1.105）",
   "/reload-plugins can now pick up plugin-provided skills without restarting Claude Code (v2.1.100)": "/reload-plugins 现在无需重启 Claude Code 即可加载插件提供的 skills（v2.1.100）",
   "/ultraplan now auto-creates a default cloud environment when remote planning features need one (v2.1.101)": "当远程规划功能需要云环境时，/ultraplan 现在会自动创建默认云环境（v2.1.101）",
   "CLAUDE_CODE_CERT_STORE configures TLS CA sources (bundled, system) for Claude Code connections (v2.1.101)": "CLAUDE_CODE_CERT_STORE 为 Claude Code 连接配置 TLS CA 来源（bundled, system）（v2.1.101）",
@@ -10,8 +11,11 @@
   "CLAUDE_CODE_USE_MANTLE=1 enables Amazon Bedrock via Mantle (v2.1.94)": "CLAUDE_CODE_USE_MANTLE=1 通过 Mantle 启用 Amazon Bedrock (v2.1.94)",
   "Ctrl+O adds focus view in NO_FLICKER mode with prompt, tool summary, and final response (v2.1.97)": "Ctrl+O 在 NO_FLICKER 模式下新增 focus view，显示 prompt、tool summary 和 final response (v2.1.97)",
   "Default effort is now higher for API-key, Bedrock/Vertex/Foundry, Team, and Enterprise users (v2.1.94)": "API-key、Bedrock/Vertex/Foundry、Team 和 Enterprise 用户的默认 effort 现在更高 (v2.1.94)",
+  "EnterWorktree tool gains a path parameter to switch into an existing worktree (v2.1.105)": "EnterWorktree 工具新增 path 参数，可切换到现有 worktree（v2.1.105）",
   "Interactive Google Vertex AI setup wizard is now available from the login screen under “3rd-party platform” (v2.1.98)": "登录界面“第三方平台”下现已提供交互式 Google Vertex AI 设置向导（v2.1.98）",
   "Monitor streams events from background scripts, making long-running automation easier to watch (v2.1.98)": "Monitor 可从后台脚本流式接收事件，使长时间运行的自动化更易于监控（v2.1.98）",
+  "PreCompact hook support: hooks can block compaction by exiting with code 2 or returning {\"decision\":\"block\"} (v2.1.105)": "支持 PreCompact hook：hooks 可通过以 code 2 退出或返回 {\"decision\":\"block\"} 来阻止 compaction（v2.1.105）",
   "refreshInterval refreshes custom status lines every N seconds (v2.1.97)": "refreshInterval 每 N 秒刷新一次自定义状态行 (v2.1.97)",
+  "Show thinking hints sooner during long operations (v2.1.107)": "在长时间操作期间更早显示思考提示（v2.1.107）",
   "workspace.git_worktree is now included in status line JSON input (v2.1.97)": "workspace.git_worktree 现已包含在 status line JSON input 中 (v2.1.97)"
 }
