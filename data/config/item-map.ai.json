@@ -167,6 +167,9 @@
   "/rc": {
     "desc": "远程控制（默认使用 hostname 前缀）"
   },
+  "/recap": {
+    "desc": "返回会话时获取上下文摘要"
+  },
   "/release-notes": {
     "desc": "交互式版本更新日志"
   },

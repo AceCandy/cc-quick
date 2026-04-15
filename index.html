@@ -42,11 +42,11 @@
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Improved extended-thinking indicator with a rotating progress hint (v2.1.109)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Added ENABLE_PROMPT_CACHING_1H env var for 1-hour prompt cache TTL; /undo is now an alias for /rewind (v2.1.108)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">New recap feature: context when returning to a session, configurable via /recap or CLAUDE_CODE_ENABLE_AWAY_SUMMARY (v2.1.108)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Improved /model to warn before switching mid-conversation; /resume defaults to current directory (v2.1.108)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Reduced memory footprint for file reads, edits, and syntax highlighting by loading language grammars on demand (v2.1.108)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">改进了 extended-thinking 指示器，增加了旋转进度提示 (v2.1.109)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增 ENABLE_PROMPT_CACHING_1H 环境变量，用于 1 小时 prompt 缓存 TTL；/undo 现在是 /rewind 的别名 (v2.1.108)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增 recap 功能：返回会话时的上下文，可通过 /recap 或 CLAUDE_CODE_ENABLE_AWAY_SUMMARY 配置 (v2.1.108)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">改进 /model，在对话中切换前会发出警告；/resume 默认使用当前目录 (v2.1.108)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">通过按需加载语言 grammar，降低了文件读取、编辑和语法高亮的内存占用 (v2.1.108)</a></li>
         </ul>
       </div>
     </header>
@@ -171,7 +171,7 @@
             <div class="row"><span class="key">/diff</span> <span class="desc">交互式 diff 查看器</span></div>
             <div class="row"><span class="key">/copy [N]</span> <span class="desc">复制最后一条（或第 N 条）回复</span></div>
             <div class="row"><span class="key">/rewind</span> <span class="desc">回退对话 / 代码检查点</span></div>
-            <div class="row"><span class="key">/recap</span> <span class="desc">Get context summary when returning to a session<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
+            <div class="row"><span class="key">/recap</span> <span class="desc">返回会话时获取上下文摘要<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">/export</span> <span class="desc">导出对话</span></div>
               </div>
             </section>
