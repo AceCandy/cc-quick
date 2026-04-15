@@ -36,19 +36,23 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.107</span></span>
-          <span class="last-updated">最近更新：2026年4月14日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.109</span></span>
+          <span class="last-updated">最近更新：2026年4月15日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">在长时间操作期间更早显示思考提示（v2.1.107）</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Improved extended-thinking indicator with a rotating progress hint (v2.1.109)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Added ENABLE_PROMPT_CACHING_1H env var for 1-hour prompt cache TTL; /undo is now an alias for /rewind (v2.1.108)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">New recap feature: context when returning to a session, configurable via /recap or CLAUDE_CODE_ENABLE_AWAY_SUMMARY (v2.1.108)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Improved /model to warn before switching mid-conversation; /resume defaults to current directory (v2.1.108)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Reduced memory footprint for file reads, edits, and syntax highlighting by loading language grammars on demand (v2.1.108)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">在长时间操作期间更早显示思考提示（v2.1.107）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">EnterWorktree 工具新增 path 参数，可切换到现有 worktree（v2.1.105）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">支持 PreCompact hook：hooks 可通过以 code 2 退出或返回 {&quot;decision&quot;:&quot;block&quot;} 来阻止 compaction（v2.1.105）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/proactive 现在是 /loop 的别名（v2.1.105）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">CLAUDE_CODE_CERT_STORE 为 Claude Code 连接配置 TLS CA 来源（bundled, system）（v2.1.101）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Monitor 可从后台脚本流式接收事件，使长时间运行的自动化更易于监控（v2.1.98）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/agents 现在有 Running 和 Library 标签页，并提供用于启动或检查 agents 的快捷操作（v2.1.98）</a></li>
         </ul>
       </div>
     </header>
@@ -173,6 +177,7 @@
             <div class="row"><span class="key">/diff</span> <span class="desc">交互式 diff 查看器</span></div>
             <div class="row"><span class="key">/copy [N]</span> <span class="desc">复制最后一条（或第 N 条）回复</span></div>
             <div class="row"><span class="key">/rewind</span> <span class="desc">回退对话 / 代码检查点</span></div>
+            <div class="row"><span class="key">/recap</span> <span class="desc">Get context summary when returning to a session</span></div>
             <div class="row"><span class="key">/export</span> <span class="desc">导出对话</span></div>
               </div>
             </section>
