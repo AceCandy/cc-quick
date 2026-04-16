@@ -36,17 +36,17 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.109</span></span>
-          <span class="last-updated">最近更新：2026年4月15日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.110</span></span>
+          <span class="last-updated">最近更新：2026年4月16日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">改进了 extended-thinking 指示器，增加了旋转进度提示 (v2.1.109)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增 ENABLE_PROMPT_CACHING_1H 环境变量，用于 1 小时 prompt 缓存 TTL；/undo 现在是 /rewind 的别名 (v2.1.108)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增 recap 功能：返回会话时的上下文，可通过 /recap 或 CLAUDE_CODE_ENABLE_AWAY_SUMMARY 配置 (v2.1.108)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">改进 /model，在对话中切换前会发出警告；/resume 默认使用当前目录 (v2.1.108)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">通过按需加载语言 grammar，降低了文件读取、编辑和语法高亮的内存占用 (v2.1.108)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">New /tui fullscreen for flicker-free rendering; Ctrl+O now toggles transcript verbose only; focus view toggled via new /focus command (v2.1.110)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Push notification tool (Remote Control + &quot;Push when Claude decides&quot; enabled); /autocompact, /context, /exit, /reload-plugins now work via Remote Control (v2.1.110)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Improved /plugin Installed tab: items needing attention and favorites at top, disabled items folded; /doctor warns on duplicate MCP server configs (v2.1.110)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--resume/--continue now resurrect unexpired scheduled tasks; /recap now works for users with telemetry disabled (v2.1.110)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">改进了 extended-thinking 指示器，增加了旋转进度提示 (v2.1.109)</a></li>
         </ul>
       </div>
     </header>
@@ -66,9 +66,9 @@
                 <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">C</span></span> <span class="desc">取消当前输入或生成</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">D</span></span> <span class="desc">退出会话</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">L</span></span> <span class="desc">清屏</span></div>
-            <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">O</span></span> <span class="desc">切换详细输出<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
+            <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">O</span></span> <span class="desc">切换详细输出<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">R</span></span> <span class="desc">反向搜索历史</span></div>
-            <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">G</span></span> <span class="desc">在编辑器中打开输入内容</span></div>
+            <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">G</span></span> <span class="desc">在编辑器中打开输入内容<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">X</span><span class="key-joiner"> </span><span class="keycap">Ctrl</span><span class="keycap">E</span></span> <span class="desc">在编辑器中打开（别名）</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">B</span></span> <span class="desc">将运行中的任务转到后台</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">T</span></span> <span class="desc">显示或隐藏任务列表</span></div>
@@ -163,15 +163,18 @@
               <div class="group-rows">
                 <div class="row"><span class="key">/clear</span> <span class="desc">清空对话</span></div>
             <div class="row"><span class="key">/compact [focus]</span> <span class="desc">按焦点压缩上下文</span></div>
+            <div class="row"><span class="key">/autocompact</span> <span class="desc">Force auto-compact<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
+            <div class="row"><span class="key">/exit</span> <span class="desc">退出会话<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">/resume</span> <span class="desc">恢复或切换会话</span></div>
             <div class="row"><span class="key">/rename [name]</span> <span class="desc">为当前会话命名</span></div>
             <div class="row"><span class="key">/branch [name]</span> <span class="desc">分叉对话（/fork 别名）</span></div>
+            <div class="row"><span class="key">/focus</span> <span class="desc">Toggle focus view (fullscreen, only final messages)<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">/cost</span> <span class="desc">查看 Token 用量统计<span class="badge-new" data-added="2026-04-04">NEW</span></span></div>
             <div class="row"><span class="key">/context</span> <span class="desc">可视化上下文（网格）</span></div>
             <div class="row"><span class="key">/diff</span> <span class="desc">交互式 diff 查看器</span></div>
             <div class="row"><span class="key">/copy [N]</span> <span class="desc">复制最后一条（或第 N 条）回复</span></div>
             <div class="row"><span class="key">/rewind</span> <span class="desc">回退对话 / 代码检查点</span></div>
-            <div class="row"><span class="key">/recap</span> <span class="desc">返回会话时获取上下文摘要<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
+            <div class="row"><span class="key">/recap</span> <span class="desc">返回会话时获取上下文摘要<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">/export</span> <span class="desc">导出对话</span></div>
               </div>
             </section>
@@ -209,7 +212,8 @@
             <section class="section-group">
               <h3 class="group-title" id="section-slash-group-特殊项">特殊项</h3>
               <div class="group-rows">
-                <div class="row"><span class="key">/powerup</span> <span class="desc">交互式功能教程<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
+                <div class="row"><span class="key">/tui [fullscreen]</span> <span class="desc">TUI mode — flicker-free rendering; use fullscreen for fullscreen<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
+            <div class="row"><span class="key">/powerup</span> <span class="desc">交互式功能教程<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
             <div class="row"><span class="key">/btw &lt;question&gt;</span> <span class="desc">旁支提问（不占上下文）</span></div>
             <div class="row"><span class="key">/plan [desc]</span> <span class="desc">计划模式（+ 自动开始）</span></div>
             <div class="row"><span class="key">/loop [interval]</span> <span class="desc">创建周期任务</span></div>
@@ -384,6 +388,8 @@
             <div class="row"><span class="key">sandbox.failIfUnavailable</span> <span class="desc">sandbox 失败时退出</span></div>
             <div class="row"><span class="key">hooks: if</span> <span class="desc">条件 hooks（permission rule 语法）</span></div>
             <div class="row"><span class="key">Monitor tool</span> <span class="desc">从后台脚本流式输出事件<span class="badge-new" data-added="2026-04-09">NEW</span></span></div>
+            <div class="row"><span class="key">autoScrollEnabled</span> <span class="desc">Disable auto-scroll in fullscreen mode<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
+            <div class="row"><span class="key">tui</span> <span class="desc">Enable TUI mode (fullscreen rendering)<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">PermissionDenied</span> <span class="desc">Hook：自动模式拒绝<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">可选启用（现默认关闭）<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">allowedChannelPlugins</span> <span class="desc">管理员 channel plugin 允许列表</span></div>
