@@ -42,10 +42,10 @@
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">New /tui fullscreen for flicker-free rendering; Ctrl+O now toggles transcript verbose only; focus view toggled via new /focus command (v2.1.110)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Push notification tool (Remote Control + &quot;Push when Claude decides&quot; enabled); /autocompact, /context, /exit, /reload-plugins now work via Remote Control (v2.1.110)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Improved /plugin Installed tab: items needing attention and favorites at top, disabled items folded; /doctor warns on duplicate MCP server configs (v2.1.110)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--resume/--continue now resurrect unexpired scheduled tasks; /recap now works for users with telemetry disabled (v2.1.110)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增 /tui 全屏以实现无闪烁渲染；Ctrl+O 现在仅切换 transcript verbose；可通过新的 /focus 命令切换 focus view（v2.1.110）</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">推送通知工具（启用 Remote Control + &quot;Push when Claude decides&quot;）；/autocompact、/context、/exit、/reload-plugins 现在可通过 Remote Control 使用（v2.1.110）</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">改进 /plugin Installed 选项卡：需要关注的项和收藏项置顶，禁用项折叠；/doctor 会在检测到重复的 MCP server 配置时发出警告（v2.1.110）</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--resume/--continue 现在会恢复未过期的 scheduled tasks；/recap 现在对禁用 telemetry 的用户也可用（v2.1.110）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">改进了 extended-thinking 指示器，增加了旋转进度提示 (v2.1.109)</a></li>
         </ul>
       </div>
@@ -163,12 +163,12 @@
               <div class="group-rows">
                 <div class="row"><span class="key">/clear</span> <span class="desc">清空对话</span></div>
             <div class="row"><span class="key">/compact [focus]</span> <span class="desc">按焦点压缩上下文</span></div>
-            <div class="row"><span class="key">/autocompact</span> <span class="desc">Force auto-compact<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
+            <div class="row"><span class="key">/autocompact</span> <span class="desc">强制自动压缩<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">/exit</span> <span class="desc">退出会话<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">/resume</span> <span class="desc">恢复或切换会话</span></div>
             <div class="row"><span class="key">/rename [name]</span> <span class="desc">为当前会话命名</span></div>
             <div class="row"><span class="key">/branch [name]</span> <span class="desc">分叉对话（/fork 别名）</span></div>
-            <div class="row"><span class="key">/focus</span> <span class="desc">Toggle focus view (fullscreen, only final messages)<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
+            <div class="row"><span class="key">/focus</span> <span class="desc">切换聚焦视图（全屏，仅显示最终消息）<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">/cost</span> <span class="desc">查看 Token 用量统计<span class="badge-new" data-added="2026-04-04">NEW</span></span></div>
             <div class="row"><span class="key">/context</span> <span class="desc">可视化上下文（网格）</span></div>
             <div class="row"><span class="key">/diff</span> <span class="desc">交互式 diff 查看器</span></div>
@@ -212,7 +212,7 @@
             <section class="section-group">
               <h3 class="group-title" id="section-slash-group-特殊项">特殊项</h3>
               <div class="group-rows">
-                <div class="row"><span class="key">/tui [fullscreen]</span> <span class="desc">TUI mode — flicker-free rendering; use fullscreen for fullscreen<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
+                <div class="row"><span class="key">/tui [fullscreen]</span> <span class="desc">TUI 模式——无闪烁渲染；使用 fullscreen 进入全屏<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">/powerup</span> <span class="desc">交互式功能教程<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
             <div class="row"><span class="key">/btw &lt;question&gt;</span> <span class="desc">旁支提问（不占上下文）</span></div>
             <div class="row"><span class="key">/plan [desc]</span> <span class="desc">计划模式（+ 自动开始）</span></div>
@@ -388,8 +388,8 @@
             <div class="row"><span class="key">sandbox.failIfUnavailable</span> <span class="desc">sandbox 失败时退出</span></div>
             <div class="row"><span class="key">hooks: if</span> <span class="desc">条件 hooks（permission rule 语法）</span></div>
             <div class="row"><span class="key">Monitor tool</span> <span class="desc">从后台脚本流式输出事件<span class="badge-new" data-added="2026-04-09">NEW</span></span></div>
-            <div class="row"><span class="key">autoScrollEnabled</span> <span class="desc">Disable auto-scroll in fullscreen mode<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
-            <div class="row"><span class="key">tui</span> <span class="desc">Enable TUI mode (fullscreen rendering)<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
+            <div class="row"><span class="key">autoScrollEnabled</span> <span class="desc">在全屏模式下禁用自动滚动<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
+            <div class="row"><span class="key">tui</span> <span class="desc">启用 TUI 模式（全屏渲染）<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">PermissionDenied</span> <span class="desc">Hook：自动模式拒绝<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">可选启用（现默认关闭）<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">allowedChannelPlugins</span> <span class="desc">管理员 channel plugin 允许列表</span></div>

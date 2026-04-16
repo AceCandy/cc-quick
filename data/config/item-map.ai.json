@@ -128,6 +128,9 @@
   "@path/to/file": {
     "desc": "在 CLAUDE.md 中导入"
   },
+  "/autocompact": {
+    "desc": "强制自动压缩"
+  },
   "/batch": {
     "desc": "自动创建 worktree"
   },
@@ -152,6 +155,12 @@
   "/etc/claude-code/CLAUDE.md": {
     "desc": "托管策略（Linux/WSL，全组织）"
   },
+  "/exit": {
+    "desc": "退出会话"
+  },
+  "/focus": {
+    "desc": "切换聚焦视图（全屏，仅显示最终消息）"
+  },
   "/loop 5m msg": {
     "desc": "周期性任务"
   },
@@ -175,6 +184,9 @@
   },
   "/simplify": {
     "desc": "代码审查（3 个并行 agent）"
+  },
+  "/tui [fullscreen]": {
+    "desc": "TUI 模式——无闪烁渲染；使用 fullscreen 进入全屏"
   },
   "/ultraplan": {
     "desc": "在浏览器中起草计划，然后远程执行或发回终端"
@@ -235,6 +247,9 @@
   },
   "autoMemoryDirectory": {
     "desc": "自定义 memory 目录"
+  },
+  "autoScrollEnabled": {
+    "desc": "在全屏模式下禁用自动滚动"
   },
   "background: true": {
     "desc": "后台任务"
@@ -418,6 +433,9 @@
   },
   "sparsePaths": {
     "desc": "仅检出所需目录"
+  },
+  "tui": {
+    "desc": "启用 TUI 模式（全屏渲染）"
   },
   "workspace.git_worktree": {
     "desc": "状态行 JSON：已链接的 worktree 路径"
