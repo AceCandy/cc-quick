@@ -36,21 +36,21 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.110</span></span>
-          <span class="last-updated">最近更新：2026年4月16日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.112</span></span>
+          <span class="last-updated">最近更新：2026年4月17日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/tui fullscreen enables flicker-free rendering in the same conversation; /tui and tui setting are newNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Ctrl+O now toggles verbose transcript only; focus view moved to new /focus commandNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">autoScrollEnabled config disables conversation auto-scroll in fullscreen modeNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Write tool now notifies the model when you edit proposed content in the IDE before acceptingNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Write tool now informs the model when you edit the proposed content in the IDE diff before acceptingNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Bash tool now enforces the documented maximum timeout instead of accepting arbitrarily large values (v2.1.110)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Session recap now works for users with telemetry disabled (Bedrock, Vertex, Foundry, DISABLE_TELEMETRY); opt out via CLAUDE_CODE_ENABLE_AWAY_SUMMARY=0 (v2.1.110)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--resume/--continue now resurrect unexpired scheduled tasks; /autocompact, /context, /exit, /reload-plugins work from Remote Control clients (v2.1.110)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">改进了 extended-thinking 指示器，增加了旋转进度提示 (v2.1.109)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Claude Opus 4.7 xhigh effort level — between high and max, available via /effort, --effort, and model picker; /effort opens an interactive slider with arrow keys when called without argumentsNEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/ultrareview [PR#] — comprehensive cloud code review using parallel multi-agent analysisNEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/theme adds &quot;Auto (match terminal)&quot; option that follows your terminal's dark/light modeNEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/less-permission-prompts skill — scans transcripts and proposes a prioritized allowlist for .claude/settings.jsonNEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Plan files now named after your prompt (e.g. fix-auth-race-snug-otter.md) instead of random wordsNEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Ctrl+U clears entire input buffer; Ctrl+Y restores it; transcript view footer shows [ (dump to scrollback) and v (open in editor)NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Auto mode no longer requires --enable-auto-mode; available for Max subscribers using Opus 4.7NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Windows PowerShell tool rolling out — opt in with CLAUDE_CODE_USE_POWERSHELL_TOOL; Linux/macOS enable with CLAUDE_CODE_USE_POWERSHELL_TOOL=1 (requires pwsh on PATH)NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/tui fullscreen enables flicker-free rendering in the same conversation; /tui and tui setting are new (v2.1.110)</a></li>
         </ul>
       </div>
     </header>
@@ -71,6 +71,8 @@
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">D</span></span> <span class="desc">退出会话</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">L</span></span> <span class="desc">清屏</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">O</span></span> <span class="desc">切换详细输出<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
+            <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">U</span></span> <span class="desc">Clear entire input buffer<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
+            <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">Y</span></span> <span class="desc">Restore cleared input buffer<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">G</span></span> <span class="desc">在编辑器中打开输入内容</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">R</span></span> <span class="desc">反向搜索历史</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">X</span><span class="key-joiner"> </span><span class="keycap">Ctrl</span><span class="keycap">K</span></span> <span class="desc">终止后台代理</span></div>
@@ -179,9 +181,9 @@
               <div class="group-rows">
                 <div class="row"><span class="key">/model [model]</span> <span class="desc">切换模型（←→ effort）<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">/fast [on|off]</span> <span class="desc">切换快速模式</span></div>
-            <div class="row"><span class="key">/theme</span> <span class="desc">修改颜色主题</span></div>
+            <div class="row"><span class="key">/theme</span> <span class="desc">修改颜色主题<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
             <div class="row"><span class="key">/permissions</span> <span class="desc">查看/更新权限</span></div>
-            <div class="row"><span class="key">/effort [level]</span> <span class="desc">设置 effort（low/med/high/max/auto）</span></div>
+            <div class="row"><span class="key">/effort [level]</span> <span class="desc">设置 effort（low/med/high/max/auto）<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
             <div class="row"><span class="key">/color [color]</span> <span class="desc">设置输入栏颜色</span></div>
             <div class="row"><span class="key">/keybindings</span> <span class="desc">自定义键盘快捷键</span></div>
             <div class="row"><span class="key">/terminal-setup</span> <span class="desc">配置终端快捷键</span></div>
@@ -198,6 +200,7 @@
             <div class="row"><span class="key">/skills</span> <span class="desc">列出可用 skills</span></div>
             <div class="row"><span class="key">/agents</span> <span class="desc">管理 agents<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
             <div class="row"><span class="key">/review [PR]</span> <span class="desc">Review PR locally</span></div>
+            <div class="row"><span class="key">/ultrareview [PR#]</span> <span class="desc">Cloud code review — parallel multi-agent analysis<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
             <div class="row"><span class="key">/simplify [focus]</span> <span class="desc">Code review + fix (3 agents)<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">/security-review</span> <span class="desc">对改动做安全分析</span></div>
             <div class="row"><span class="key">/less-permission-prompts</span> <span class="desc">Add allowlist to reduce prompts<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
@@ -271,6 +274,7 @@
               <div class="group-rows">
                 <div class="row"><span class="key key-chord"><span class="keycap">Shift</span><span class="keycap">Tab</span></span> <span class="desc">轮换权限模式</span></div>
             <div class="row"><span class="key">--permission-mode plan</span> <span class="desc">以 plan 模式启动</span></div>
+            <div class="row"><span class="key">Plan file naming</span> <span class="desc">Files named after your prompt (e.g. fix-auth-race-snug-otter.md)<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
               </div>
             </section>
 
