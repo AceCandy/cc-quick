@@ -42,26 +42,26 @@
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">CLI now spawns a native Claude Code binary instead of bundled JavaScript (per-platform optional dependency)NEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">sandbox.network.deniedDomains — block specific domains even when a broader allowedDomains wildcard would permit themNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fullscreen: Shift+↑/↓ scrolls viewport when extending selection past the visible edgeNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Ctrl+A / Ctrl+E now move to start/end of current logical line in multiline input (readline behavior)NEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Windows: Ctrl+Backspace deletes the previous wordNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Improved /loop: Esc cancels pending wakeups; wakeups display as &quot;Claude resuming /loop wakeup&quot;NEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/extra-usage now works from Remote Control (mobile/web) clientsNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Remote Control clients can now query @-file autocomplete suggestionsNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Improved /ultrareview: faster launch with parallelized checks, diffstat in launch dialog, animated launching stateNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Subagents that stall mid-stream now fail with a clear error after 10 minutes instead of hanging silentlyNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Security: Bash find deny rules no longer auto-approve -exec/-delete; macOS /private paths now treated as dangerous removal targetsNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Claude Opus 4.7 xhigh effort level — between high and max, available via /effort, --effort, and model picker; /effort opens an interactive slider with arrow keys when called without argumentsNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/ultrareview [PR#] — comprehensive cloud code review using parallel multi-agent analysisNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/theme adds &quot;Auto (match terminal)&quot; option that follows your terminal's dark/light modeNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/less-permission-prompts skill — scans transcripts and proposes a prioritized allowlist for .claude/settings.jsonNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Plan files now named after your prompt (e.g. fix-auth-race-snug-otter.md) instead of random wordsNEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Ctrl+U clears entire input buffer; Ctrl+Y restores it; transcript view footer shows [ (dump to scrollback) and v (open in editor)NEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Auto mode no longer requires --enable-auto-mode; available for Max subscribers using Opus 4.7NEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Windows PowerShell tool rolling out — opt in with CLAUDE_CODE_USE_POWERSHELL_TOOL; Linux/macOS enable with CLAUDE_CODE_USE_POWERSHELL_TOOL=1 (requires pwsh on PATH)NEW</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/tui fullscreen enables flicker-free rendering in the same conversation; /tui and tui setting are new (v2.1.110)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">CLI 现在会启动原生的 Claude Code 二进制文件，而不是捆绑的 JavaScript（按平台可选依赖）NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">sandbox.network.deniedDomains — 即使更宽泛的 allowedDomains 通配符允许，也可阻止特定域名NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">全屏：当扩展选区越过可见边缘时，Shift+↑/↓ 会滚动视口NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Ctrl+A / Ctrl+E 现在在多行输入中会移动到当前逻辑行的开头/结尾（readline 行为）NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Windows：Ctrl+Backspace 删除前一个单词NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">改进 /loop：Esc 可取消待处理的唤醒；唤醒显示为“Claude resuming /loop wakeup”NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/extra-usage 现在可在 Remote Control（移动端/网页）客户端中使用NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Remote Control 客户端现在可以查询 @-file 自动补全建议NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">改进 /ultrareview：通过并行检查提升启动速度，启动对话框中显示 diffstat，启动状态动画化NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">在流式传输中途卡住的子代理现在会在 10 分钟后以清晰错误失败，而不是静默挂起NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">安全性：Bash find 拒绝规则不再自动批准 -exec/-delete；macOS 的 /private 路径现在被视为危险删除目标NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Claude Opus 4.7 xhigh 努力度级别——介于 high 和 max 之间，可通过 /effort、--effort 和模型选择器使用；当 /effort 不带参数调用时，会打开一个可用方向键操作的交互式滑块NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/ultrareview [PR#] — 使用并行多代理分析进行全面的云端代码审查NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/theme 新增“Auto (match terminal)”选项，可跟随终端的深色/浅色模式NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/less-permission-prompts skill — 扫描对话记录并为 .claude/settings.json 提出一个按优先级排序的允许列表NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Plan 文件现在会根据你的提示命名（例如 fix-auth-race-snug-otter.md），而不是随机词NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Ctrl+U 清空整个输入缓冲区；Ctrl+Y 恢复它；transcript 视图底部显示 [（转储到滚动回滚区）和 v（在编辑器中打开）NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Auto mode 不再需要 --enable-auto-mode；使用 Opus 4.7 的 Max 订阅用户可用NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Windows PowerShell 工具正在逐步推出——可通过 CLAUDE_CODE_USE_POWERSHELL_TOOL 选择启用；Linux/macOS 使用 CLAUDE_CODE_USE_POWERSHELL_TOOL=1 启用（要求 PATH 中有 pwsh）NEW</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/tui fullscreen 可在同一会话中启用无闪烁渲染；/tui 和 tui 设置为新增（v2.1.110）</a></li>
         </ul>
       </div>
     </header>
@@ -82,8 +82,8 @@
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">D</span></span> <span class="desc">退出会话</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">L</span></span> <span class="desc">清屏</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">O</span></span> <span class="desc">切换详细输出<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
-            <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">U</span></span> <span class="desc">Clear entire input buffer<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
-            <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">Y</span></span> <span class="desc">Restore cleared input buffer<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
+            <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">U</span></span> <span class="desc">清空整个输入缓冲区<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
+            <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">Y</span></span> <span class="desc">恢复已清空的输入缓冲区<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">G</span></span> <span class="desc">在编辑器中打开输入内容</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">R</span></span> <span class="desc">反向搜索历史</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">Ctrl</span><span class="keycap">X</span><span class="key-joiner"> </span><span class="keycap">Ctrl</span><span class="keycap">K</span></span> <span class="desc">终止后台代理</span></div>
@@ -104,7 +104,7 @@
               <h3 class="group-title" id="section-keyboard-group-mac-option-keys-configure-option-as-meta">Mac Option Keys (configure Option as Meta)</h3>
               <div class="group-rows">
                 <div class="row"><span class="key key-chord"><span class="keycap">⌥</span><span class="keycap">P</span></span> <span class="desc">切换模型</span></div>
-            <div class="row"><span class="key key-chord"><span class="keycap">⌥</span><span class="keycap">T</span></span> <span class="desc">Toggle extended thinking</span></div>
+            <div class="row"><span class="key key-chord"><span class="keycap">⌥</span><span class="keycap">T</span></span> <span class="desc">切换扩展思考</span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">⌥</span><span class="keycap">O</span></span> <span class="desc">切换快速模式</span></div>
               </div>
             </section>
@@ -178,11 +178,11 @@
             <div class="row"><span class="key">/diff</span> <span class="desc">交互式 diff 查看器</span></div>
             <div class="row"><span class="key">/copy [N]</span> <span class="desc">复制最后一条（或第 N 条）回复</span></div>
             <div class="row"><span class="key">/recap</span> <span class="desc">返回会话时获取上下文摘要<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
-            <div class="row"><span class="key">/undo</span> <span class="desc">Alias for /rewind<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
+            <div class="row"><span class="key">/undo</span> <span class="desc">/rewind 的别名<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">/rewind</span> <span class="desc">回退对话 / 代码检查点</span></div>
             <div class="row"><span class="key">/export</span> <span class="desc">导出对话</span></div>
             <div class="row"><span class="key">/plan [desc]</span> <span class="desc">计划模式（+ 自动开始）</span></div>
-            <div class="row"><span class="key">/resume [session]</span> <span class="desc">Resume by ID/name</span></div>
+            <div class="row"><span class="key">/resume [session]</span> <span class="desc">按 ID/名称恢复</span></div>
             <div class="row"><span class="key">/focus</span> <span class="desc">切换聚焦视图（全屏，仅显示最终消息）<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
               </div>
             </section>
@@ -210,14 +210,14 @@
             <div class="row"><span class="key">/hooks</span> <span class="desc">管理 hooks</span></div>
             <div class="row"><span class="key">/skills</span> <span class="desc">列出可用 skills</span></div>
             <div class="row"><span class="key">/agents</span> <span class="desc">管理 agents<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
-            <div class="row"><span class="key">/review [PR]</span> <span class="desc">Review PR locally</span></div>
-            <div class="row"><span class="key">/ultrareview [PR#]</span> <span class="desc">Cloud code review — parallel multi-agent analysis<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
-            <div class="row"><span class="key">/simplify [focus]</span> <span class="desc">Code review + fix (3 agents)<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
+            <div class="row"><span class="key">/review [PR]</span> <span class="desc">在本地审查 PR</span></div>
+            <div class="row"><span class="key">/ultrareview [PR#]</span> <span class="desc">云端代码审查 — 并行多 agent 分析<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
+            <div class="row"><span class="key">/simplify [focus]</span> <span class="desc">代码审查 + 修复（3 个 agents）<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">/security-review</span> <span class="desc">对改动做安全分析</span></div>
-            <div class="row"><span class="key">/less-permission-prompts</span> <span class="desc">Add allowlist to reduce prompts<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
-            <div class="row"><span class="key">/loop [interval] [prompt]</span> <span class="desc">周期任务 (/proactive alias)<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
+            <div class="row"><span class="key">/less-permission-prompts</span> <span class="desc">添加 allowlist 以减少提示<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
+            <div class="row"><span class="key">/loop [interval] [prompt]</span> <span class="desc">周期性任务（/proactive 别名）<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">/chrome</span> <span class="desc">Chrome 集成</span></div>
-            <div class="row"><span class="key">/ide</span> <span class="desc">IDE integrations status</span></div>
+            <div class="row"><span class="key">/ide</span> <span class="desc">IDE 集成状态</span></div>
             <div class="row"><span class="key">/reload-plugins</span> <span class="desc">热重载 plugins</span></div>
             <div class="row"><span class="key">/add-dir &lt;path&gt;</span> <span class="desc">添加工作目录</span></div>
               </div>
@@ -227,7 +227,7 @@
               <h3 class="group-title" id="section-slash-group-特殊项">特殊项</h3>
               <div class="group-rows">
                 <div class="row"><span class="key">/btw &lt;question&gt;</span> <span class="desc">旁支提问（不占上下文）</span></div>
-            <div class="row"><span class="key">/extra-usage</span> <span class="desc">Extra usage when rate limited</span></div>
+            <div class="row"><span class="key">/extra-usage</span> <span class="desc">限流时的额外用量</span></div>
             <div class="row"><span class="key">/voice</span> <span class="desc">开启按住说话</span></div>
             <div class="row"><span class="key">/doctor</span> <span class="desc">诊断安装问题</span></div>
             <div class="row"><span class="key">/insights</span> <span class="desc">分析会话报告</span></div>
@@ -285,7 +285,7 @@
               <div class="group-rows">
                 <div class="row"><span class="key key-chord"><span class="keycap">Shift</span><span class="keycap">Tab</span></span> <span class="desc">轮换权限模式</span></div>
             <div class="row"><span class="key">--permission-mode plan</span> <span class="desc">以 plan 模式启动</span></div>
-            <div class="row"><span class="key">Plan file naming</span> <span class="desc">Files named after your prompt (e.g. fix-auth-race-snug-otter.md)<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
+            <div class="row"><span class="key">Plan file naming</span> <span class="desc">文件按你的 prompt 命名（例如 fix-auth-race-snug-otter.md）<span class="badge-new" data-added="2026-04-17">NEW</span></span></div>
               </div>
             </section>
 
@@ -390,7 +390,7 @@
             <div class="row"><span class="key">worktree.sparsePaths</span> <span class="desc">稀疏检出目录</span></div>
             <div class="row"><span class="key">sandbox.failIfUnavailable</span> <span class="desc">sandbox 失败时退出</span></div>
             <div class="row"><span class="key">hooks: if</span> <span class="desc">条件 hooks（permission rule 语法）</span></div>
-            <div class="row"><span class="key">DISABLE_PROMPT_CACHING*</span> <span class="desc">Startup warning when prompt caching is disabled<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
+            <div class="row"><span class="key">DISABLE_PROMPT_CACHING*</span> <span class="desc">禁用 prompt caching 时的启动警告<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">Monitor tool</span> <span class="desc">从后台脚本流式输出事件<span class="badge-new" data-added="2026-04-09">NEW</span></span></div>
             <div class="row"><span class="key">PermissionDenied</span> <span class="desc">Hook：自动模式拒绝<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">可选启用（现默认关闭）<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
@@ -408,12 +408,12 @@
                 <div class="row"><span class="key">ANTHROPIC_API_KEY</span></div>
             <div class="row"><span class="key">ANTHROPIC_MODEL</span></div>
             <div class="row"><span class="key">MAX_THINKING_TOKENS</span> <span class="desc">0=关闭</span></div>
-            <div class="row"><span class="key">ENABLE_PROMPT_CACHING_1H</span> <span class="desc">Opt into 1h prompt cache TTL<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
-            <div class="row"><span class="key">FORCE_PROMPT_CACHING_5M</span> <span class="desc">Force 5-min prompt cache TTL<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_ENABLE_AWAY_SUMMARY</span> <span class="desc">Force recap when telemetry disabled<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
+            <div class="row"><span class="key">ENABLE_PROMPT_CACHING_1H</span> <span class="desc">启用 1h prompt cache TTL<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
+            <div class="row"><span class="key">FORCE_PROMPT_CACHING_5M</span> <span class="desc">强制 5 分钟 prompt cache TTL<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_ENABLE_AWAY_SUMMARY</span> <span class="desc">在 telemetry 禁用时强制生成摘要<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">ANTHROPIC_CUSTOM_MODEL_OPTION</span> <span class="desc">自定义 /model 条目</span></div>
             <div class="row"><span class="key">CLAUDECODE</span> <span class="desc">检测 CC shell (=1)</span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_CRON</span> <span class="desc">Disable scheduled tasks</span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_CRON</span> <span class="desc">禁用计划任务</span></div>
             <div class="row"><span class="key">ANTHROPIC_VERTEX_PROJECT_ID</span></div>
             <div class="row"><span class="key">ANTHROPIC_VERTEX_BASE_URL</span></div>
             <div class="row"><span class="key">ANTHROPIC_BEDROCK_MANTLE_BASE_URL</span></div>
@@ -421,9 +421,9 @@
             <div class="row"><span class="key">ANTHROPIC_FOUNDRY_BASE_URL</span></div>
             <div class="row"><span class="key">AWS_BEARER_TOKEN_BEDROCK</span></div>
             <div class="row"><span class="key">ANTHROPIC_AUTH_TOKEN</span></div>
-            <div class="row"><span class="key">ANTHROPIC_BASE_URL</span> <span class="desc">Proxy/gateway override</span></div>
-            <div class="row"><span class="key">ANTHROPIC_BETAS</span> <span class="desc">Additional beta headers</span></div>
-            <div class="row"><span class="key">API_TIMEOUT_MS</span> <span class="desc">API timeout (default: 600000ms)</span></div>
+            <div class="row"><span class="key">ANTHROPIC_BASE_URL</span> <span class="desc">代理/网关覆盖</span></div>
+            <div class="row"><span class="key">ANTHROPIC_BETAS</span> <span class="desc">额外的 beta headers</span></div>
+            <div class="row"><span class="key">API_TIMEOUT_MS</span> <span class="desc">API 超时（默认：600000ms）</span></div>
             <div class="row"><span class="key">CLAUDE_AUTOCOMPACT_PCT_OVERRIDE</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_AUTO_COMPACT_WINDOW</span></div>
             <div class="row"><span class="key">CLAUDE_AUTO_BACKGROUND_TASKS</span></div>
@@ -431,9 +431,9 @@
             <div class="row"><span class="key">CLAUDE_CODE_ACCESSIBILITY</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_API_KEY_HELPER_TTL_MS</span></div>
-            <div class="row"><span class="key">MCP_TIMEOUT</span> <span class="desc">MCP server startup timeout (ms)</span></div>
+            <div class="row"><span class="key">MCP_TIMEOUT</span> <span class="desc">MCP server 启动超时（ms）</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_AUTO_MEMORY</span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_CRON</span> <span class="desc">Disable scheduled tasks</span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_CRON</span> <span class="desc">禁用计划任务</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_BACKGROUND_TASKS</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_1M_CONTEXT</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_MOUSE</span></div>
@@ -455,7 +455,7 @@
             <section class="section-group">
               <h3 class="group-title" id="section-skills-group-内置-skills">内置 Skills</h3>
               <div class="group-rows">
-                <div class="row"><span class="key">Skill tool</span> <span class="desc">Discovers built-in slash commands (/init, /review, /security-review…)<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
+                <div class="row"><span class="key">Skill tool</span> <span class="desc">发现内置 slash commands（/init、/review、/security-review…）<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">/simplify</span> <span class="desc">代码审查（3 个并行 agent）</span></div>
             <div class="row"><span class="key">/batch</span> <span class="desc">自动创建 worktree</span></div>
             <div class="row"><span class="key">/debug [desc]</span> <span class="desc">从调试日志排查问题</span></div>
@@ -527,10 +527,10 @@
             <div class="row"><span class="key">claude -c</span> <span class="desc">继续上一次对话</span></div>
             <div class="row"><span class="key">claude -r &quot;n&quot;</span> <span class="desc">恢复</span></div>
             <div class="row"><span class="key">claude update</span> <span class="desc">更新</span></div>
-            <div class="row"><span class="key">claude auth login</span> <span class="desc">Sign in (--sso, --console)</span></div>
-            <div class="row"><span class="key">claude agents</span> <span class="desc">List agents</span></div>
-            <div class="row"><span class="key">claude mcp</span> <span class="desc">MCP config</span></div>
-            <div class="row"><span class="key">claude plugin</span> <span class="desc">Plugin management</span></div>
+            <div class="row"><span class="key">claude auth login</span> <span class="desc">登录（--sso, --console）</span></div>
+            <div class="row"><span class="key">claude agents</span> <span class="desc">列出 agents</span></div>
+            <div class="row"><span class="key">claude mcp</span> <span class="desc">MCP 配置</span></div>
+            <div class="row"><span class="key">claude plugin</span> <span class="desc">插件管理</span></div>
               </div>
             </section>
 
@@ -539,13 +539,13 @@
               <div class="group-rows">
                 <div class="row"><span class="key">--model</span> <span class="desc">设置模型</span></div>
             <div class="row"><span class="key">-n / --name</span> <span class="desc">会话名称</span></div>
-            <div class="row"><span class="key">--resume, -r</span> <span class="desc">Resume session</span></div>
-            <div class="row"><span class="key">--continue, -c</span> <span class="desc">Continue most recent</span></div>
+            <div class="row"><span class="key">--resume, -r</span> <span class="desc">恢复会话</span></div>
+            <div class="row"><span class="key">--continue, -c</span> <span class="desc">继续最近一次会话</span></div>
             <div class="row"><span class="key">--add-dir</span> <span class="desc">添加目录</span></div>
             <div class="row"><span class="key">--agent</span> <span class="desc">使用 agent</span></div>
-            <div class="row"><span class="key">--agents</span> <span class="desc">Define agents via JSON</span></div>
+            <div class="row"><span class="key">--agents</span> <span class="desc">通过 JSON 定义 agents</span></div>
             <div class="row"><span class="key">--allowedTools</span> <span class="desc">预先批准</span></div>
-            <div class="row"><span class="key">--disallowedTools</span> <span class="desc">Remove tools</span></div>
+            <div class="row"><span class="key">--disallowedTools</span> <span class="desc">移除 tools</span></div>
             <div class="row"><span class="key">--allow-danger…</span> <span class="desc">为 ⇧Tab 循环添加 bypassPerms</span></div>
             <div class="row"><span class="key">--output-format</span> <span class="desc">json/stream</span></div>
             <div class="row"><span class="key">--json-schema</span> <span class="desc">结构化</span></div>
@@ -555,14 +555,14 @@
             <div class="row"><span class="key">--bare</span> <span class="desc">最小化无头模式（无 hooks/LSP）</span></div>
             <div class="row"><span class="key">--channels</span> <span class="desc">权限中继 / MCP 推送</span></div>
             <div class="row"><span class="key">--remote</span> <span class="desc">claude.ai 上的 Web 会话</span></div>
-            <div class="row"><span class="key">--rc / --remote-control</span> <span class="desc">Remote Control mode</span></div>
+            <div class="row"><span class="key">--rc / --remote-control</span> <span class="desc">Remote Control 模式</span></div>
             <div class="row"><span class="key">--effort</span> <span class="desc">low/medium/high/max</span></div>
             <div class="row"><span class="key">--permission-mode</span> <span class="desc">plan/default/…</span></div>
             <div class="row"><span class="key">--dangerously-skip-permissions</span> <span class="desc">跳过所有提示 ⚠️</span></div>
-            <div class="row"><span class="key">--chrome / --no-chrome</span> <span class="desc">Chrome on/off</span></div>
-            <div class="row"><span class="key">--debug [filter]</span> <span class="desc">Debug logging</span></div>
-            <div class="row"><span class="key">--system-prompt</span> <span class="desc">Custom system prompt</span></div>
-            <div class="row"><span class="key">--settings &lt;file&gt;</span> <span class="desc">Load settings JSON</span></div>
+            <div class="row"><span class="key">--chrome / --no-chrome</span> <span class="desc">开启/关闭 Chrome</span></div>
+            <div class="row"><span class="key">--debug [filter]</span> <span class="desc">调试日志</span></div>
+            <div class="row"><span class="key">--system-prompt</span> <span class="desc">自定义 system prompt</span></div>
+            <div class="row"><span class="key">--settings &lt;file&gt;</span> <span class="desc">加载 settings JSON</span></div>
               </div>
             </section>
           </div>

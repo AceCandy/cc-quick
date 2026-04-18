@@ -8,6 +8,9 @@
   "--agent": {
     "desc": "使用 agent"
   },
+  "--agents": {
+    "desc": "通过 JSON 定义 agents"
+  },
   "--allow-danger…": {
     "desc": "为 ⇧Tab 循环添加 bypassPerms"
   },
@@ -26,14 +29,26 @@
   "--chrome": {
     "desc": "Chrome"
   },
+  "--chrome / --no-chrome": {
+    "desc": "开启/关闭 Chrome"
+  },
   "--console": {
     "desc": "通过 Anthropic Console 认证"
+  },
+  "--continue, -c": {
+    "desc": "继续最近一次会话"
   },
   "--danger-skip-perms": {
     "desc": "跳过所有提示 ⚠️"
   },
   "--dangerously-skip-permissions": {
     "desc": "跳过所有提示 ⚠️"
+  },
+  "--debug [filter]": {
+    "desc": "调试日志"
+  },
+  "--disallowedTools": {
+    "desc": "移除 tools"
   },
   "--effort": {
     "desc": "low/medium/high/max"
@@ -74,11 +89,23 @@
   "--rc": {
     "desc": "远程控制模式"
   },
+  "--rc / --remote-control": {
+    "desc": "Remote Control 模式"
+  },
   "--remote": {
     "desc": "claude.ai 上的 Web 会话"
   },
   "--remote-control / --rc": {
     "desc": "启用 Remote Control 的交互式会话"
+  },
+  "--resume, -r": {
+    "desc": "恢复会话"
+  },
+  "--settings <file>": {
+    "desc": "加载 settings JSON"
+  },
+  "--system-prompt": {
+    "desc": "自定义 system prompt"
   },
   "--verbose": {
     "desc": "详细输出"
@@ -158,8 +185,20 @@
   "/exit": {
     "desc": "退出会话"
   },
+  "/extra-usage": {
+    "desc": "限流时的额外用量"
+  },
   "/focus": {
     "desc": "切换聚焦视图（全屏，仅显示最终消息）"
+  },
+  "/ide": {
+    "desc": "IDE 集成状态"
+  },
+  "/less-permission-prompts": {
+    "desc": "添加 allowlist 以减少提示"
+  },
+  "/loop [interval] [prompt]": {
+    "desc": "周期性任务（/proactive 别名）"
   },
   "/loop 5m msg": {
     "desc": "周期性任务"
@@ -182,8 +221,17 @@
   "/release-notes": {
     "desc": "交互式版本更新日志"
   },
+  "/resume [session]": {
+    "desc": "按 ID/名称恢复"
+  },
+  "/review [PR]": {
+    "desc": "在本地审查 PR"
+  },
   "/simplify": {
     "desc": "代码审查（3 个并行 agent）"
+  },
+  "/simplify [focus]": {
+    "desc": "代码审查 + 修复（3 个 agents）"
   },
   "/tui [fullscreen]": {
     "desc": "TUI 模式——无闪烁渲染；使用 fullscreen 进入全屏"
@@ -193,6 +241,12 @@
   },
   "/ultraplan <prompt>": {
     "desc": "在浏览器会话中起草计划，然后远程执行或发回终端"
+  },
+  "/ultrareview [PR#]": {
+    "desc": "云端代码审查 — 并行多 agent 分析"
+  },
+  "/undo": {
+    "desc": "/rewind 的别名"
   },
   "~/.claude.json": {
     "desc": "OAuth、MCP、状态"
@@ -211,6 +265,15 @@
   },
   "~/.claude/skills/<name>/": {
     "desc": "个人 skills"
+  },
+  "⌥O": {
+    "desc": "切换快速模式"
+  },
+  "⌥P": {
+    "desc": "切换模型"
+  },
+  "⌥T": {
+    "desc": "切换扩展思考"
   },
   "${CLAUDE_SKILL_DIR}": {
     "desc": "skill 自身目录"
@@ -239,8 +302,17 @@
   "AltO": {
     "desc": "切换快速模式"
   },
+  "ANTHROPIC_BASE_URL": {
+    "desc": "代理/网关覆盖"
+  },
+  "ANTHROPIC_BETAS": {
+    "desc": "额外的 beta headers"
+  },
   "ANTHROPIC_CUSTOM_MODEL_OPTION": {
     "desc": "自定义 /model 条目"
+  },
+  "API_TIMEOUT_MS": {
+    "desc": "API 超时（默认：600000ms）"
   },
   "Auto-compact": {
     "desc": "~95% 容量（抖动检测：3x）"
@@ -284,14 +356,32 @@
   "claude \"q\"": {
     "desc": "带 prompt"
   },
+  "claude agents": {
+    "desc": "列出 agents"
+  },
+  "claude auth login": {
+    "desc": "登录（--sso, --console）"
+  },
+  "claude mcp": {
+    "desc": "MCP 配置"
+  },
+  "claude plugin": {
+    "desc": "插件管理"
+  },
   "claude update": {
     "desc": "更新"
   },
   "CLAUDE_CODE_CERT_STORE": {
     "desc": "逗号分隔的 TLS CA 来源：bundled、system（默认：两者）"
   },
+  "CLAUDE_CODE_DISABLE_CRON": {
+    "desc": "禁用计划任务"
+  },
   "CLAUDE_CODE_EFFORT_LEVEL": {
     "desc": "low/medium/high/max/auto"
+  },
+  "CLAUDE_CODE_ENABLE_AWAY_SUMMARY": {
+    "desc": "在 telemetry 禁用时强制生成摘要"
   },
   "CLAUDE_CODE_MAX_OUTPUT_TOKENS": {
     "footerDesc": "（默认 32K）"
@@ -326,11 +416,20 @@
   "CtrlE": {
     "desc": "切换显示全部"
   },
+  "CtrlU": {
+    "desc": "清空整个输入缓冲区"
+  },
   "CtrlX CtrlK": {
     "desc": "终止后台代理"
   },
+  "CtrlY": {
+    "desc": "恢复已清空的输入缓冲区"
+  },
   "description": {
     "desc": "自动调用触发器"
+  },
+  "DISABLE_PROMPT_CACHING*": {
+    "desc": "禁用 prompt caching 时的启动警告"
   },
   "disableSkillShellExec": {
     "desc": "阻止 skills/plugins 中的 !`cmd`"
@@ -338,8 +437,14 @@
   "effort": {
     "desc": "覆盖 effort 级别"
   },
+  "ENABLE_PROMPT_CACHING_1H": {
+    "desc": "启用 1h prompt cache TTL"
+  },
   "Explore": {
     "desc": "快速只读（Haiku）"
+  },
+  "FORCE_PROMPT_CACHING_5M": {
+    "desc": "强制 5 分钟 prompt cache TTL"
   },
   "forceRemoteSettings…": {
     "desc": "阻塞直到获取最新配置"
@@ -377,6 +482,9 @@
   "MCP_CONNECTION_NONBLOCKING": {
     "desc": "在 -p 中跳过 MCP 等待"
   },
+  "MCP_TIMEOUT": {
+    "desc": "MCP server 启动超时（ms）"
+  },
   "memory: user|project|local": {
     "desc": "持久化记忆"
   },
@@ -404,6 +512,9 @@
   "Plan": {
     "desc": "用于 plan 模式的研究"
   },
+  "Plan file naming": {
+    "desc": "文件按你的 prompt 命名（例如 fix-auth-race-snug-otter.md）"
+  },
   "plugin bin/": {
     "desc": "为 Bash 工具随附可执行文件"
   },
@@ -427,6 +538,9 @@
   },
   "showThinkingSummaries": {
     "desc": "可选启用（现默认关闭）"
+  },
+  "Skill tool": {
+    "desc": "发现内置 slash commands（/init、/review、/security-review…）"
   },
   "Space (hold)": {
     "desc": "按住录音，松开发送"
