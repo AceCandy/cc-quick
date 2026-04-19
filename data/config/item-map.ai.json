@@ -413,6 +413,12 @@
   "context: fork": {
     "desc": "在子代理中运行"
   },
+  "CtrlA": {
+    "desc": "移动到逻辑行开头（多行输入）"
+  },
+  "CtrlBackspace": {
+    "desc": "Windows：删除前一个单词"
+  },
   "CtrlE": {
     "desc": "切换显示全部"
   },
@@ -532,6 +538,9 @@
   },
   "sandbox.failIfUnavailable": {
     "desc": "sandbox 失败时退出"
+  },
+  "sandbox.network.deniedDomains": {
+    "desc": "即使更宽泛的 allowedDomains 通配符允许，也会阻止特定域名"
   },
   "SendMessage": {
     "desc": "恢复代理（替代 resume）"
