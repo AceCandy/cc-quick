@@ -233,6 +233,9 @@
   "/simplify [focus]": {
     "desc": "代码审查 + 修复（3 个 agents）"
   },
+  "/theme [name]": {
+    "desc": "创建并切换命名的自定义主题；包含 \"Auto (match terminal)\" 深色/浅色"
+  },
   "/tui [fullscreen]": {
     "desc": "TUI 模式——无闪烁渲染；使用 fullscreen 进入全屏"
   },
@@ -383,6 +386,9 @@
   "CLAUDE_CODE_ENABLE_AWAY_SUMMARY": {
     "desc": "在 telemetry 禁用时强制生成摘要"
   },
+  "CLAUDE_CODE_FORK_SUBAGENT": {
+    "desc": "在外部构建中启用 forked subagents (=1)"
+  },
   "CLAUDE_CODE_MAX_OUTPUT_TOKENS": {
     "footerDesc": "（默认 32K）"
   },
@@ -436,6 +442,9 @@
   },
   "DISABLE_PROMPT_CACHING*": {
     "desc": "禁用 prompt caching 时的启动警告"
+  },
+  "DISABLE_UPDATES": {
+    "desc": "阻止所有更新路径"
   },
   "disableSkillShellExec": {
     "desc": "阻止 skills/plugins 中的 !`cmd`"
@@ -559,6 +568,15 @@
   },
   "tui": {
     "desc": "启用 TUI 模式（全屏渲染）"
+  },
+  "type: \"mcp_tool\"": {
+    "desc": "Hook 步骤直接调用 MCP tool"
+  },
+  "v": {
+    "desc": "Vim 可视模式（字符选择 + operators）"
+  },
+  "V": {
+    "desc": "Vim 可视行模式"
   },
   "workspace.git_worktree": {
     "desc": "状态行 JSON：已链接的 worktree 路径"
