@@ -36,18 +36,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.116</span></span>
-          <span class="last-updated">最近更新：2026年4月20日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.118</span></span>
+          <span class="last-updated">最近更新：2026年4月22日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">安全：sandbox auto-allow 不再绕过 rm/rmdir 的危险路径安全检查（v2.1.116）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Agent frontmatter hooks：在作为主线程 agent 运行时也会触发（v2.1.116）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/resume 在大型会话（40 MB+）上最高快 67%（v2.1.116）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Claude Opus 4.7 xhigh effort level — 介于 high 和 max 之间，可通过 /effort、--effort 和模型选择器使用</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/ultrareview [PR#] — 使用并行多智能体分析进行全面的云端代码审查</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Auto 模式不再需要 --enable-auto-mode；使用 Opus 4.7 的 Max 订阅用户可用</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Vim visual mode (v/V) in prompt editor — selection, operators, visual feedback (v2.1.118)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/usage replaces /cost and /stats (v2.1.118)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Custom named themes: create and switch via /theme (v2.1.118)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/model selection persists across restarts (v2.1.117)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Default effort set to high for Pro/Max subscribers on Opus 4.6 and Sonnet 4.6 (v2.1.117)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Plugin dependencies auto-resolve from configured marketplaces (v2.1.117)</a></li>
         </ul>
       </div>
     </header>
@@ -99,6 +99,8 @@
               <h3 class="group-title" id="section-keyboard-group-输入">输入</h3>
               <div class="group-rows">
                 <div class="row"><span class="key key-chord"><span class="keycap">\</span><span class="keycap">Enter</span></span> <span class="desc">换行（快速）</span></div>
+            <div class="row"><span class="key">v</span> <span class="desc">Vim visual mode (char selection + operators)<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
+            <div class="row"><span class="key key-chord"><span class="keycap">V</span></span> <span class="desc">Vim visual-line mode<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
               </div>
             </section>
 
@@ -159,7 +161,7 @@
                 <div class="row"><span class="key">/clear</span> <span class="desc">清空对话</span></div>
             <div class="row"><span class="key">/compact [focus]</span> <span class="desc">按焦点压缩上下文</span></div>
             <div class="row"><span class="key">/branch [name]</span> <span class="desc">分叉对话（/fork 别名）</span></div>
-            <div class="row"><span class="key">/cost</span> <span class="desc">查看 Token 用量统计<span class="badge-new" data-added="2026-04-04">NEW</span></span></div>
+            <div class="row"><span class="key">/usage</span> <span class="desc">套餐限制与速率状态<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
             <div class="row"><span class="key">/context</span> <span class="desc">可视化上下文（网格）</span></div>
             <div class="row"><span class="key">/diff</span> <span class="desc">交互式 diff 查看器</span></div>
             <div class="row"><span class="key">/copy [N]</span> <span class="desc">复制最后一条（或第 N 条）回复</span></div>
@@ -178,7 +180,7 @@
               <div class="group-rows">
                 <div class="row"><span class="key">/model [model]</span> <span class="desc">切换模型（←→ effort）<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">/fast [on|off]</span> <span class="desc">切换快速模式</span></div>
-            <div class="row"><span class="key">/theme</span> <span class="desc">修改颜色主题</span></div>
+            <div class="row"><span class="key">/theme [name]</span> <span class="desc">Create and switch named custom themes; includes &quot;Auto (match terminal)&quot; dark/light<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
             <div class="row"><span class="key">/permissions</span> <span class="desc">查看/更新权限</span></div>
             <div class="row"><span class="key">/effort [level]</span> <span class="desc">设置 effort（low/med/high/max/auto）</span></div>
             <div class="row"><span class="key">/color [color]</span> <span class="desc">设置输入栏颜色</span></div>
@@ -382,6 +384,7 @@
             <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">可选启用（现默认关闭）<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">allowedChannelPlugins</span> <span class="desc">管理员 channel plugin 允许列表</span></div>
             <div class="row"><span class="key">hooks: &quot;defer&quot;</span> <span class="desc">暂停 headless → 稍后恢复</span></div>
+            <div class="row"><span class="key">type: &quot;mcp_tool&quot;</span> <span class="desc">Hook step invokes an MCP tool directly<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
             <div class="row"><span class="key">disableSkillShellExec</span> <span class="desc">阻止 skills/plugins 中的 !`cmd`<span class="badge-new" data-added="2026-04-03">NEW</span></span></div>
             <div class="row"><span class="key">forceRemoteSettings…</span> <span class="desc">阻塞直到获取最新配置<span class="badge-new" data-added="2026-04-04">NEW</span></span></div>
             <div class="row"><span class="key">refreshInterval</span> <span class="desc">每 N 秒重新运行自定义状态行<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
@@ -402,6 +405,8 @@
             <div class="row"><span class="key">CLAUDE_CODE_ENABLE_AWAY_SUMMARY</span> <span class="desc">在 telemetry 禁用时强制生成摘要<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDECODE</span> <span class="desc">检测 CC shell (=1)</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_CRON</span> <span class="desc">禁用计划任务</span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_FORK_SUBAGENT</span> <span class="desc">Enable forked subagents on external builds (=1)<span class="badge-new" data-added="2026-04-22">NEW</span></span></div>
+            <div class="row"><span class="key">DISABLE_UPDATES</span> <span class="desc">Block all update paths<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
             <div class="row"><span class="key">API_TIMEOUT_MS</span> <span class="desc">API 超时（默认：600000ms）</span></div>
             <div class="row"><span class="key">MCP_TIMEOUT</span> <span class="desc">MCP server 启动超时（ms）</span></div>
             <div class="row"><span class="key">CLAUDE_AUTOCOMPACT_PCT_OVERRIDE</span></div>
