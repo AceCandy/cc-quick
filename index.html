@@ -36,18 +36,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.118</span></span>
-          <span class="last-updated">最近更新：2026年4月22日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.119</span></span>
+          <span class="last-updated">最近更新：2026年4月23日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">提示编辑器中的 Vim 可视模式 (v/V)——选择、操作符、视觉反馈 (v2.1.118)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/config settings persist to ~/.claude/settings.json (v2.1.119)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--from-pr supports GitLab, Bitbucket and GitHub Enterprise (v2.1.119)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Security fixes for blockedMarketplaces (v2.1.119)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">提示编辑器中的 Vim 可视模式 (v/V)——选择、操作符、视觉反馈 (v2.1.118)</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/usage 替代 /cost 和 /stats (v2.1.118)</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">自定义命名主题：通过 /theme 创建和切换 (v2.1.118)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/model 选择会在重启后保持 (v2.1.117)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">对 Opus 4.6 和 Sonnet 4.6 的 Pro/Max 订阅用户，默认 effort 设为 high (v2.1.117)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">插件依赖会从已配置的 marketplace 自动解析 (v2.1.117)</a></li>
         </ul>
       </div>
     </header>
@@ -178,7 +178,8 @@
             <section class="section-group">
               <h3 class="group-title" id="section-slash-group-配置">配置</h3>
               <div class="group-rows">
-                <div class="row"><span class="key">/model [model]</span> <span class="desc">切换模型（←→ effort）<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
+                <div class="row"><span class="key">/config [key [value]]</span> <span class="desc">View/set settings (persists to ~/.claude/settings.json)<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
+            <div class="row"><span class="key">/model [model]</span> <span class="desc">切换模型（←→ effort）<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">/fast [on|off]</span> <span class="desc">切换快速模式</span></div>
             <div class="row"><span class="key">/theme [name]</span> <span class="desc">创建并切换命名的自定义主题；包含 &quot;Auto (match terminal)&quot; 深色/浅色<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
             <div class="row"><span class="key">/permissions</span> <span class="desc">查看/更新权限</span></div>
@@ -536,6 +537,7 @@
             <div class="row"><span class="key">--debug [filter]</span> <span class="desc">调试日志</span></div>
             <div class="row"><span class="key">--system-prompt</span> <span class="desc">自定义 system prompt</span></div>
             <div class="row"><span class="key">--settings &lt;file&gt;</span> <span class="desc">加载 settings JSON</span></div>
+            <div class="row"><span class="key">--from-pr</span> <span class="desc">Load PR context (GitHub / GitLab / Bitbucket / GHE)<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
               </div>
             </section>
           </div>
