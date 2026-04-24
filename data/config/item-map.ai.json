@@ -59,6 +59,9 @@
   "--exclude-dynamic-system-prompt-sections": {
     "desc": "打印模式：改进跨用户 prompt 缓存"
   },
+  "--from-pr": {
+    "desc": "加载 PR 上下文（GitHub / GitLab / Bitbucket / GHE）"
+  },
   "--json-schema": {
     "desc": "结构化"
   },
@@ -166,6 +169,9 @@
   },
   "/claude-api": {
     "desc": "加载 API + SDK 参考"
+  },
+  "/config [key [value]]": {
+    "desc": "查看/设置配置（持久化到 ~/.claude/settings.json）"
   },
   "/debug [desc]": {
     "desc": "从调试日志排查问题"
