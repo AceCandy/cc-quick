@@ -36,18 +36,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.119</span></span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.120</span></span>
           <span class="last-updated">最近更新：2026年4月23日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/config 设置持久保存到 ~/.claude/settings.json (v2.1.119)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Windows: Git Bash no longer required — PowerShell used directly (v2.1.120)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">claude ultrareview [target] non-interactive code review subcommand (v2.1.120)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Skills can reference ${CLAUDE_EFFORT} variable in frontmatter (v2.1.120)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/config 设置持久保存到 ~/.claude/settings.json (v2.1.119)</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--from-pr 支持 GitLab、Bitbucket 和 GitHub Enterprise (v2.1.119)</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">blockedMarketplaces 的安全修复 (v2.1.119)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">提示编辑器中的 Vim 可视模式 (v/V)——选择、操作符、视觉反馈 (v2.1.118)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/usage 替代 /cost 和 /stats (v2.1.118)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">自定义命名主题：通过 /theme 创建和切换 (v2.1.118)</a></li>
         </ul>
       </div>
     </header>
@@ -457,6 +457,7 @@
             <div class="row"><span class="key">context: fork</span> <span class="desc">在子代理中运行</span></div>
             <div class="row"><span class="key">$ARGUMENTS</span> <span class="desc">用户输入占位符</span></div>
             <div class="row"><span class="key">${CLAUDE_SKILL_DIR}</span> <span class="desc">skill 自身目录</span></div>
+            <div class="row"><span class="key">${CLAUDE_EFFORT}</span> <span class="desc">Current effort level (skill variable)<span class="badge-new" data-added="2026-04-25">NEW</span></span></div>
             <div class="row"><span class="key">!`cmd`</span> <span class="desc">动态上下文注入</span></div>
             <div class="row"><span class="key">plugin bin/</span> <span class="desc">为 Bash 工具随附可执行文件<span class="badge-new" data-added="2026-04-03">NEW</span></span></div>
               </div>
@@ -505,6 +506,7 @@
             <div class="row"><span class="key">claude agents</span> <span class="desc">列出 agents</span></div>
             <div class="row"><span class="key">claude mcp</span> <span class="desc">MCP 配置</span></div>
             <div class="row"><span class="key">claude plugin</span> <span class="desc">插件管理</span></div>
+            <div class="row"><span class="key">claude ultrareview [target]</span> <span class="desc">非交互模式 code review (PR / branch / path)<span class="badge-new" data-added="2026-04-25">NEW</span></span></div>
               </div>
             </section>
 
