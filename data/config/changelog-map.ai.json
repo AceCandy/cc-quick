@@ -25,6 +25,7 @@
   "Auto mode no longer requires --enable-auto-mode; available for Max subscribers using Opus 4.7NEW": "Auto mode 不再需要 --enable-auto-mode；使用 Opus 4.7 的 Max 订阅用户可用NEW",
   "Claude Opus 4.7 xhigh effort level — between high and max, available via /effort, --effort, and model picker": "Claude Opus 4.7 xhigh effort level — 介于 high 和 max 之间，可通过 /effort、--effort 和模型选择器使用",
   "Claude Opus 4.7 xhigh effort level — between high and max, available via /effort, --effort, and model picker; /effort opens an interactive slider with arrow keys when called without argumentsNEW": "Claude Opus 4.7 xhigh 努力度级别——介于 high 和 max 之间，可通过 /effort、--effort 和模型选择器使用；当 /effort 不带参数调用时，会打开一个可用方向键操作的交互式滑块NEW",
+  "claude ultrareview [target] non-interactive code review subcommand (v2.1.120)": "claude ultrareview [target] 非交互式代码审查子命令（v2.1.120）",
   "CLAUDE_CODE_CERT_STORE configures TLS CA sources (bundled, system) for Claude Code connections (v2.1.101)": "CLAUDE_CODE_CERT_STORE 为 Claude Code 连接配置 TLS CA 来源（bundled, system）（v2.1.101）",
   "CLAUDE_CODE_PERFORCE_MODE fails edits on read-only files with a p4 edit hint instead of overwriting silently (v2.1.98)": "CLAUDE_CODE_PERFORCE_MODE 会在只读文件上编辑失败，并给出 p4 edit 提示，而不是静默覆盖（v2.1.98）",
   "CLAUDE_CODE_USE_MANTLE=1 enables Amazon Bedrock via Mantle (v2.1.94)": "CLAUDE_CODE_USE_MANTLE=1 通过 Mantle 启用 Amazon Bedrock (v2.1.94)",
@@ -65,10 +66,12 @@
   "Security: Bash find deny rules no longer auto-approve -exec/-delete; macOS /private paths now treated as dangerous removal targetsNEW": "安全性：Bash find 拒绝规则不再自动批准 -exec/-delete；macOS 的 /private 路径现在被视为危险删除目标NEW",
   "Security: sandbox auto-allow no longer bypasses dangerous-path safety check for rm/rmdir (v2.1.116)": "安全：sandbox auto-allow 不再绕过 rm/rmdir 的危险路径安全检查（v2.1.116）",
   "Show thinking hints sooner during long operations (v2.1.107)": "在长时间操作期间更早显示思考提示（v2.1.107）",
+  "Skills can reference ${CLAUDE_EFFORT} variable in frontmatter (v2.1.120)": "Skills 可在 frontmatter 中引用 ${CLAUDE_EFFORT} 变量（v2.1.120）",
   "Stalled subagents now fail with a clear error after 10 minutes instead of hanging silently (v2.1.113)": "卡住的 subagents 现在会在 10 分钟后以明确错误失败，而不是静默挂起 (v2.1.113)",
   "Subagents that stall mid-stream now fail with a clear error after 10 minutes instead of hanging silentlyNEW": "在流式传输中途卡住的子代理现在会在 10 分钟后以清晰错误失败，而不是静默挂起NEW",
   "Vim visual mode (v/V) in prompt editor — selection, operators, visual feedback (v2.1.118)": "提示编辑器中的 Vim 可视模式 (v/V)——选择、操作符、视觉反馈 (v2.1.118)",
   "Windows PowerShell tool rolling out — opt in with CLAUDE_CODE_USE_POWERSHELL_TOOL; Linux/macOS enable with CLAUDE_CODE_USE_POWERSHELL_TOOL=1 (requires pwsh on PATH)NEW": "Windows PowerShell 工具正在逐步推出——可通过 CLAUDE_CODE_USE_POWERSHELL_TOOL 选择启用；Linux/macOS 使用 CLAUDE_CODE_USE_POWERSHELL_TOOL=1 启用（要求 PATH 中有 pwsh）NEW",
   "Windows: Ctrl+Backspace deletes the previous wordNEW": "Windows：Ctrl+Backspace 删除前一个单词NEW",
+  "Windows: Git Bash no longer required — PowerShell used directly (v2.1.120)": "Windows：不再需要 Git Bash —— 直接使用 PowerShell（v2.1.120）",
   "workspace.git_worktree is now included in status line JSON input (v2.1.97)": "workspace.git_worktree 现已包含在 status line JSON input 中 (v2.1.97)"
 }

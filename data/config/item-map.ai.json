@@ -284,6 +284,9 @@
   "⌥T": {
     "desc": "切换扩展思考"
   },
+  "${CLAUDE_EFFORT}": {
+    "desc": "当前 effort 级别（skill 变量）"
+  },
   "${CLAUDE_SKILL_DIR}": {
     "desc": "skill 自身目录"
   },
@@ -376,6 +379,9 @@
   },
   "claude plugin": {
     "desc": "插件管理"
+  },
+  "claude ultrareview [target]": {
+    "desc": "非交互式代码审查（PR / 分支 / 路径）"
   },
   "claude update": {
     "desc": "更新"
