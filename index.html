@@ -36,18 +36,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.120</span></span>
-          <span class="last-updated">最近更新：2026年4月23日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.121</span></span>
+          <span class="last-updated">最近更新：2026年4月28日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Windows：不再需要 Git Bash —— 直接使用 PowerShell（v2.1.120）</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">alwaysLoad option for MCP servers — server stays connected across all sessions (v2.1.121)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">PostToolUse hooks can now replace tool output via hook_output (v2.1.121)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">claude plugin prune removes unused/orphaned plugins (v2.1.121)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Windows：不再需要 Git Bash —— 直接使用 PowerShell（v2.1.120）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">claude ultrareview [target] 非交互式代码审查子命令（v2.1.120）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Skills 可在 frontmatter 中引用 ${CLAUDE_EFFORT} 变量（v2.1.120）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/config 设置持久保存到 ~/.claude/settings.json (v2.1.119)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--from-pr 支持 GitLab、Bitbucket 和 GitHub Enterprise (v2.1.119)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">blockedMarketplaces 的安全修复 (v2.1.119)</a></li>
         </ul>
       </div>
     </header>
@@ -142,6 +142,7 @@
               <div class="group-rows">
                 <div class="row"><span class="key">/mcp</span> <span class="desc">管理 MCP 服务器</span></div>
             <div class="row"><span class="key">claude mcp list</span> <span class="desc">列出所有服务器</span></div>
+            <div class="row"><span class="key">alwaysLoad: true</span> <span class="desc">Keep server connected across all sessions (server config)<span class="badge-new" data-added="2026-04-28">NEW</span></span></div>
             <div class="row"><span class="key">maxResultSizeChars</span> <span class="desc">_meta 注解覆盖（最多 500K）<span class="badge-new" data-added="2026-04-03">NEW</span></span></div>
               </div>
             </section>
@@ -386,6 +387,7 @@
             <div class="row"><span class="key">allowedChannelPlugins</span> <span class="desc">管理员 channel plugin 允许列表</span></div>
             <div class="row"><span class="key">hooks: &quot;defer&quot;</span> <span class="desc">暂停 headless → 稍后恢复</span></div>
             <div class="row"><span class="key">type: &quot;mcp_tool&quot;</span> <span class="desc">Hook 步骤直接调用 MCP tool<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
+            <div class="row"><span class="key">PostToolUse → hook_output</span> <span class="desc">Return hook_output from hook to replace tool result<span class="badge-new" data-added="2026-04-28">NEW</span></span></div>
             <div class="row"><span class="key">disableSkillShellExec</span> <span class="desc">阻止 skills/plugins 中的 !`cmd`<span class="badge-new" data-added="2026-04-03">NEW</span></span></div>
             <div class="row"><span class="key">forceRemoteSettings…</span> <span class="desc">阻塞直到获取最新配置<span class="badge-new" data-added="2026-04-04">NEW</span></span></div>
             <div class="row"><span class="key">refreshInterval</span> <span class="desc">每 N 秒重新运行自定义状态行<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
@@ -506,6 +508,7 @@
             <div class="row"><span class="key">claude agents</span> <span class="desc">列出 agents</span></div>
             <div class="row"><span class="key">claude mcp</span> <span class="desc">MCP 配置</span></div>
             <div class="row"><span class="key">claude plugin</span> <span class="desc">插件管理</span></div>
+            <div class="row"><span class="key">claude plugin prune</span> <span class="desc">Remove unused/orphaned plugins<span class="badge-new" data-added="2026-04-28">NEW</span></span></div>
             <div class="row"><span class="key">claude ultrareview [target]</span> <span class="desc">非交互式代码审查（PR / 分支 / 路径）<span class="badge-new" data-added="2026-04-25">NEW</span></span></div>
               </div>
             </section>
