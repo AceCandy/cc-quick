@@ -301,6 +301,10 @@ test('renderPage 输出 section 切换契约与 changelog 触发按钮', () => {
   assert.match(html, /<button class="changelog-trigger"[^>]*aria-expanded="false"[^>]*>/);
   assert.match(
     html,
+    /<a class="github-star-link" href="https:\/\/github\.com\/AceCandy\/cc-quick" target="_blank" rel="noreferrer noopener" aria-label="在 GitHub 上为 cc-quick 点 Star">/
+  );
+  assert.match(
+    html,
     /<header class="header">[\s\S]*<div class="changelog-panel" id="changelogPanel" hidden>[\s\S]*<\/div>[\s\S]*<\/header>/
   );
   assert.match(

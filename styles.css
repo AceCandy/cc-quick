@@ -7,7 +7,7 @@
   --sticky-shell-top: 1rem;
   --sticky-scroll-margin: 6rem;
   --header-padding: 1rem 1.2rem;
-  --header-title-size: clamp(1.52rem, 1.85vw, 1.9rem);
+  --header-title-size: 1.7rem;
   --header-title-max: 22rem;
   --section-header-padding: 0.9rem 1.1rem 0.8rem 1.35rem;
   --section-content-padding: 0.86rem 1.1rem 0.98rem;
@@ -252,7 +252,7 @@ a,
   max-width: var(--header-title-max);
   font-size: var(--header-title-size);
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .header-right {
@@ -346,6 +346,33 @@ a,
   justify-content: center;
   gap: 0.4rem;
   transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.github-star-link {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.6rem 0.95rem;
+  border: 1px solid var(--control-border);
+  border-radius: 999px;
+  background: var(--control-active-bg);
+  color: var(--control-active-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.86rem;
+  line-height: 1;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.github-star-link:hover,
+.github-star-link:focus-visible {
+  border-color: var(--border-strong);
+  background: color-mix(in srgb, var(--control-active-bg) 86%, var(--keyboard-accent));
+  color: var(--control-active-text);
+  text-decoration: none;
 }
 
 .theme-btn {
@@ -460,11 +487,13 @@ a,
   grid-template-columns: minmax(14rem, 15.75rem) minmax(0, 1fr);
   gap: 0.95rem;
   align-items: start;
+  min-width: 0;
 }
 
 .page-sidebar {
   position: sticky;
   top: var(--sticky-shell-top, 1rem);
+  min-width: 0;
   max-height: calc(100vh - var(--sticky-shell-top, 1rem) - 1rem);
   overflow: auto;
   padding: 0.95rem;
@@ -625,7 +654,7 @@ a,
   margin: 0;
   font-size: var(--section-title-size);
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   scroll-margin-top: var(--sticky-scroll-margin, 6rem);
 }
 
@@ -835,10 +864,17 @@ a,
   .page-sidebar {
     position: static;
     max-height: none;
+    overflow: visible;
   }
 }
 
 @media (max-width: 900px) {
+  :root {
+    --header-title-size: 1.45rem;
+    --row-key-min: 7rem;
+    --row-key-max: 11rem;
+  }
+
   body {
     padding: 0.85rem;
   }
@@ -885,8 +921,19 @@ a,
 }
 
 @media (max-width: 680px) {
+  :root {
+    --base-font-size: 16px;
+    --header-padding: 0.9rem;
+    --section-content-padding: 0.85rem 0.9rem 0.95rem;
+    --section-title-size: 1rem;
+    --group-title-size: 0.72rem;
+    --key-font-size: 0.75rem;
+    --desc-font-size: 0.92rem;
+    --footer-font-size: 0.86rem;
+  }
+
   body {
-    padding: 0.65rem;
+    padding: 0;
   }
 
   .page {
@@ -903,6 +950,8 @@ a,
 
   .header {
     flex-direction: column;
+    position: static;
+    border-radius: 0 0 1.1rem 1.1rem;
   }
 
   .header-title {
@@ -929,10 +978,24 @@ a,
     flex: 1;
   }
 
+  .github-star-link {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .header-meta {
+    width: 100%;
+  }
+
+  .version-info {
+    justify-content: flex-start;
+  }
+
   .page-sidebar {
     position: static;
     max-height: none;
     padding: 0.8rem;
+    overflow: hidden;
   }
 
   .section-switcher {
@@ -944,6 +1007,8 @@ a,
   .section-switcher-list {
     display: flex;
     gap: 0.5rem;
+    max-width: 100%;
+    min-width: 0;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     padding-bottom: 0.15rem;
@@ -993,6 +1058,11 @@ a,
     gap: 0.38rem;
   }
 
+  .key,
+  .keycap {
+    max-width: 100%;
+  }
+
   .footer-row {
     flex-direction: column;
     align-items: flex-start;
@@ -1001,14 +1071,41 @@ a,
   .page-shell {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    min-width: 0;
   }
 
   .page-content {
     order: 1;
+    width: 100%;
   }
 
   .page-sidebar {
     order: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --header-title-size: 1.28rem;
+    --section-header-padding: 0.9rem 0.85rem 0.75rem 1.15rem;
+  }
+
+  .header-title {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .changelog-trigger {
+    min-height: 44px;
+    width: 100%;
+  }
+
+  .section-switcher-btn {
+    max-width: min(72vw, 14rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
