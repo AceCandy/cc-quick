@@ -314,6 +314,9 @@
   "AltO": {
     "desc": "切换快速模式"
   },
+  "alwaysLoad: true": {
+    "desc": "在所有会话中保持服务器连接（server config）"
+  },
   "ANTHROPIC_BASE_URL": {
     "desc": "代理/网关覆盖"
   },
@@ -379,6 +382,9 @@
   },
   "claude plugin": {
     "desc": "插件管理"
+  },
+  "claude plugin prune": {
+    "desc": "移除未使用/孤立的插件"
   },
   "claude ultrareview [target]": {
     "desc": "非交互式代码审查（PR / 分支 / 路径）"
@@ -544,6 +550,9 @@
   },
   "plugin bin/": {
     "desc": "为 Bash 工具随附可执行文件"
+  },
+  "PostToolUse → hook_output": {
+    "desc": "从 hook 返回 hook_output 以替换工具结果"
   },
   "PowerShell tool": {
     "desc": "Windows 可选预览"
