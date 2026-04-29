@@ -33,3 +33,14 @@ test('styles.css 包含 GitHub Star 入口和手机端响应式契约', () => {
   assert.match(styles, /@media \(max-width:\s*680px\) \{[\s\S]*\.section-switcher-list\s*\{[\s\S]*max-width:\s*100%;/);
   assert.match(styles, /@media \(max-width:\s*420px\) \{[\s\S]*\.section-switcher-btn\s*\{[\s\S]*text-overflow:\s*ellipsis;/);
 });
+
+test('styles.css 包含导航三态和 section 切换动效契约', () => {
+  assert.match(styles, /--ease-out-quart:\s*cubic-bezier\(0\.25,\s*1,\s*0\.5,\s*1\);/);
+  assert.match(styles, /\.section-switcher-btn\s*\{[\s\S]*transform:\s*translateX\(0\);/);
+  assert.match(styles, /\.section-switcher-btn::before\s*\{/);
+  assert.match(styles, /\.section-switcher-btn:hover,[\s\S]*\.section-switcher-btn:focus-visible\s*\{[\s\S]*transform:\s*translateX\(2px\);/);
+  assert.match(styles, /\.section-switcher-btn\.active\s*\{[\s\S]*background:\s*var\(--control-active-bg\);/);
+  assert.match(styles, /\.section-switcher-btn\.active::before\s*\{[\s\S]*opacity:\s*0\.9;/);
+  assert.match(styles, /\[data-section-panel\]:not\(\[hidden\]\)\s*\{[\s\S]*animation:\s*section-panel-in 0\.18s var\(--ease-out-quart\);/);
+  assert.match(styles, /@keyframes section-panel-in\s*\{[\s\S]*transform:\s*translateY\(0\.35rem\);/);
+});
