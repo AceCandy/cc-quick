@@ -189,7 +189,11 @@ function createEnvironment({
   headerTop = 16,
   headerHeight = 108,
   sidebarTop = 72,
-  panelTop = 140
+  sidebarLeft = 0,
+  sidebarWidth = 200,
+  panelTop = 140,
+  panelLeft = 220,
+  panelWidth = 800
 } = {}) {
   const macButton = new FakeElement({
     dataset: { os: 'mac' },
@@ -239,11 +243,15 @@ function createEnvironment({
     attributes: { 'data-section-panel': target },
     hidden,
     rectTop: panelTop,
+    rectLeft: panelLeft,
+    rectWidth: panelWidth,
     rectHeight: 320
   }));
   const pageSidebar = new FakeElement({
     classNames: ['page-sidebar'],
     rectTop: sidebarTop,
+    rectLeft: sidebarLeft,
+    rectWidth: sidebarWidth,
     rectHeight: 480
   });
   const header = new FakeElement({
@@ -601,6 +609,46 @@ test('点击 section 按钮时，会把激活面板顶部对齐到左侧导航�
   assert.equal(env.scrollByCalls[0].top, 84);
   assert.equal(env.scrollByCalls[0].left, 0);
   assert.equal(env.scrollByCalls[0].behavior, 'auto');
+});
+
+test('重复点击当前激活 section 时，不应继续滚动页面', () => {
+  const env = createEnvironment({
+    sections: [
+      { target: 'section-keyboard', active: true, hidden: false },
+      { target: 'section-cli', hidden: true }
+    ],
+    sidebarTop: 80,
+    panelTop: 164
+  });
+
+  executeScript(env.context);
+  env.sectionButtons[0].click();
+
+  assert.equal(env.sectionButtons[0].classList.contains('active'), true);
+  assert.equal(env.sectionPanels[0].hidden, false);
+  assert.deepEqual(env.scrollByCalls, []);
+});
+
+test('手机端顶部导航与正文同列时，切换 section 不应触发对齐滚动', () => {
+  const env = createEnvironment({
+    sections: [
+      { target: 'section-keyboard', active: true, hidden: false },
+      { target: 'section-cli', hidden: true }
+    ],
+    sidebarTop: 360,
+    sidebarLeft: 0,
+    sidebarWidth: 390,
+    panelTop: 430,
+    panelLeft: 0,
+    panelWidth: 390
+  });
+
+  executeScript(env.context);
+  env.sectionButtons[1].click();
+
+  assert.equal(env.sectionButtons[1].classList.contains('active'), true);
+  assert.equal(env.sectionPanels[1].hidden, false);
+  assert.deepEqual(env.scrollByCalls, []);
 });
 
 test('初始 hash 指向 group 时，会激活其父 section', () => {

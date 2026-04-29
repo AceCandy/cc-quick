@@ -242,9 +242,16 @@ a,
 .header-title {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.65rem;
   min-width: 0;
+}
+
+.header-heading {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.32rem;
 }
 
 .header h1 {
@@ -349,28 +356,33 @@ a,
 }
 
 .github-star-link {
-  min-height: 44px;
-  min-width: 44px;
-  padding: 0.6rem 0.95rem;
+  min-height: 1.65rem;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.2rem 0.52rem;
   border: 1px solid var(--control-border);
   border-radius: 999px;
-  background: var(--control-active-bg);
-  color: var(--control-active-text);
+  background: color-mix(in srgb, var(--panel) 72%, var(--control-bg));
+  color: var(--text-soft);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
-  font-size: 0.86rem;
+  gap: 0.32rem;
+  font-size: 0.74rem;
   line-height: 1;
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: none;
   transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.github-star-link svg {
+  flex: 0 0 auto;
 }
 
 .github-star-link:hover,
 .github-star-link:focus-visible {
   border-color: var(--border-strong);
-  background: color-mix(in srgb, var(--control-active-bg) 86%, var(--keyboard-accent));
+  background: var(--control-active-bg);
   color: var(--control-active-text);
   text-decoration: none;
 }
@@ -846,7 +858,7 @@ a,
   color: var(--text-muted);
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 760px) {
   .page-shell {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -922,22 +934,22 @@ a,
 
 @media (max-width: 680px) {
   :root {
-    --base-font-size: 16px;
-    --header-padding: 0.9rem;
-    --section-content-padding: 0.85rem 0.9rem 0.95rem;
-    --section-title-size: 1rem;
+    --base-font-size: 15px;
+    --header-padding: 0.75rem 0.85rem;
+    --section-content-padding: 0.78rem 0.85rem 0.9rem;
+    --section-title-size: 0.96rem;
     --group-title-size: 0.72rem;
     --key-font-size: 0.75rem;
-    --desc-font-size: 0.92rem;
+    --desc-font-size: 0.9rem;
     --footer-font-size: 0.86rem;
   }
 
   body {
-    padding: 0;
+    padding: 0.5rem;
   }
 
   .page {
-    gap: 0.75rem;
+    gap: 0.55rem;
   }
 
   .header,
@@ -951,51 +963,90 @@ a,
   .header {
     flex-direction: column;
     position: static;
-    border-radius: 0 0 1.1rem 1.1rem;
+    gap: 0.65rem;
+    border-radius: 1rem;
   }
 
   .header-title {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
     width: 100%;
+    gap: 0.55rem;
+  }
+
+  .header-heading {
+    gap: 0.24rem;
   }
 
   .header-right {
+    gap: 0.5rem;
     justify-content: flex-start;
     width: 100%;
   }
 
   .header-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
     width: 100%;
   }
 
   .os-toggle,
   .theme-toggle {
-    width: 100%;
+    min-width: 0;
     justify-content: space-between;
+  }
+
+  .os-toggle {
+    width: 100%;
   }
 
   .os-btn,
   .theme-btn {
+    min-height: 38px;
+    padding: 0.48rem 0.72rem;
     flex: 1;
   }
 
   .github-star-link {
-    width: 100%;
-    flex: 1 1 100%;
+    min-height: 1.55rem;
+    padding: 0.16rem 0.45rem;
+    font-size: 0.72rem;
   }
 
   .header-meta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.28rem 0.7rem;
     width: 100%;
+    text-align: left;
   }
 
   .version-info {
     justify-content: flex-start;
   }
 
+  .version-badge {
+    min-height: 1.5rem;
+    padding: 0.12rem 0.48rem;
+    font-size: 0.76rem;
+  }
+
+  .last-updated {
+    font-size: 0.82rem;
+  }
+
   .page-sidebar {
-    position: static;
+    position: sticky;
+    top: 0.45rem;
+    z-index: 8;
     max-height: none;
-    padding: 0.8rem;
+    padding: 0.45rem 0.5rem;
     overflow: hidden;
+    border-radius: 0.95rem;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
   }
 
   .section-switcher {
@@ -1022,8 +1073,10 @@ a,
   .section-switcher-btn {
     width: auto;
     white-space: nowrap;
-    min-height: 2.4rem;
-    padding-inline: 0.8rem;
+    min-height: 2.15rem;
+    padding: 0.48rem 0.72rem;
+    border-radius: 0.82rem;
+    font-size: 0.86rem;
   }
 
   .changelog-panel {
@@ -1088,18 +1141,18 @@ a,
 
 @media (max-width: 420px) {
   :root {
-    --header-title-size: 1.28rem;
+    --header-title-size: 1.18rem;
     --section-header-padding: 0.9rem 0.85rem 0.75rem 1.15rem;
   }
 
   .header-title {
     align-items: flex-start;
-    flex-direction: column;
   }
 
   .changelog-trigger {
-    min-height: 44px;
-    width: 100%;
+    min-height: 2rem;
+    padding: 0.34rem 0.58rem;
+    font-size: 0.76rem;
   }
 
   .section-switcher-btn {

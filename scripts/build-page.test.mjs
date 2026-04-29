@@ -305,6 +305,10 @@ test('renderPage 输出 section 切换契约与 changelog 触发按钮', () => {
   );
   assert.match(
     html,
+    /<div class="header-heading">[\s\S]*<h1>Claude Code 中文速查表<\/h1>[\s\S]*<span>GitHub Star<\/span>[\s\S]*<\/div>/
+  );
+  assert.match(
+    html,
     /<header class="header">[\s\S]*<div class="changelog-panel" id="changelogPanel" hidden>[\s\S]*<\/div>[\s\S]*<\/header>/
   );
   assert.match(

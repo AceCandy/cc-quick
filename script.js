@@ -227,8 +227,16 @@ function initSectionSwitcher() {
       return;
     }
 
-    var sidebarTop = sidebar.getBoundingClientRect().top;
-    var panelTop = activePanel.getBoundingClientRect().top;
+    var sidebarRect = sidebar.getBoundingClientRect();
+    var panelRect = activePanel.getBoundingClientRect();
+    var isSideBySide = sidebarRect.right <= panelRect.left || panelRect.right <= sidebarRect.left;
+
+    if (!isSideBySide) {
+      return;
+    }
+
+    var sidebarTop = sidebarRect.top;
+    var panelTop = panelRect.top;
     var offset = panelTop - sidebarTop;
 
     if (Math.abs(offset) < 2) {
@@ -279,8 +287,11 @@ function initSectionSwitcher() {
       }
 
       if (panel) {
+        var wasActive = !panel.hidden;
         setActivePanel(panel, true);
-        alignPanelToSidebar(panel);
+        if (!wasActive) {
+          alignPanelToSidebar(panel);
+        }
       }
     });
   });
