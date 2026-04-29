@@ -508,7 +508,8 @@ a,
   top: var(--sticky-shell-top, 1rem);
   min-width: 0;
   max-height: calc(100vh - var(--sticky-shell-top, 1rem) - 1rem);
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 0.95rem;
   border: 1px solid var(--border);
   border-radius: 1.35rem;
@@ -521,7 +522,8 @@ a,
   top: var(--sticky-shell-top, 1rem);
   display: block;
   max-height: calc(100vh - var(--sticky-shell-top, 1rem) - 1rem);
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .section-switcher-list {
