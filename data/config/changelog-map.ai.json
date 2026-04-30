@@ -44,6 +44,7 @@
   "Default effort set to high for Pro/Max subscribers on Opus 4.6 and Sonnet 4.6 (v2.1.117)": "对 Opus 4.6 和 Sonnet 4.6 的 Pro/Max 订阅用户，默认 effort 设为 high (v2.1.117)",
   "EnterWorktree tool gains a path parameter to switch into an existing worktree (v2.1.105)": "EnterWorktree 工具新增 path 参数，可切换到现有 worktree（v2.1.105）",
   "Fixed a crash in the permission dialog when an agent teams teammate requested tool permission (v2.1.114)NEW": "修复了当 agent 团队中的队友请求工具权限时，权限对话框崩溃的问题 (v2.1.114)NEW",
+  "Fixed OAuth authentication 401 retry loop when CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1 is set (v2.1.123)": "修复在设置 CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1 时 OAuth 身份验证 401 重试循环（v2.1.123）",
   "Fullscreen: Shift+↑/↓ scrolls viewport when extending selection past the visible edgeNEW": "全屏：当扩展选区越过可见边缘时，Shift+↑/↓ 会滚动视口NEW",
   "Improved /loop: Esc cancels pending wakeups; wakeups display as \"Claude resuming /loop wakeup\"NEW": "改进 /loop：Esc 可取消待处理的唤醒；唤醒显示为“Claude resuming /loop wakeup”NEW",
   "Improved /model to warn before switching mid-conversation; /resume defaults to current directory (v2.1.108)": "改进 /model，在对话中切换前会发出警告；/resume 默认使用当前目录 (v2.1.108)",
