@@ -386,6 +386,9 @@
   "claude plugin prune": {
     "desc": "移除未使用/孤立的插件"
   },
+  "claude project purge [path]": {
+    "desc": "删除所有 Claude Code 项目状态"
+  },
   "claude ultrareview [target]": {
     "desc": "非交互式代码审查（PR / 分支 / 路径）"
   },
