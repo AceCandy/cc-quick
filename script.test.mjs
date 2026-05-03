@@ -282,6 +282,15 @@ function createEnvironment({
   groupHeading.setClosest('[data-section-panel]', sectionPanels[0] || null);
   groupHeading.setClosest('.section-group', sectionPanels[0] || null);
 
+  const visitCount = new FakeElement({
+    textContent: '统计中…',
+    attributes: {
+      id: 'siteVisitCount',
+      'data-counter-namespace': 'cc-quick',
+      'data-counter-name': 'site-visits'
+    }
+  });
+
   const keyElements = keyTexts.map((text) => new FakeElement({ textContent: text }));
   const keycapElements = keycaps.map((text) => new FakeElement({ textContent: text }));
   const badges = [];
@@ -359,6 +368,9 @@ function createEnvironment({
       if (id === 'section-keyboard-group-general-controls') {
         return groupHeading;
       }
+      if (id === 'siteVisitCount') {
+        return visitCount;
+      }
       return null;
     },
     querySelector(selector) {
@@ -405,6 +417,7 @@ function createEnvironment({
   changelog.ownerDocument = document;
   changelogPanelInner.ownerDocument = document;
   changelogTrigger.ownerDocument = document;
+  visitCount.ownerDocument = document;
   groupHeading.ownerDocument = document;
   sectionButtons.forEach((button) => {
     button.ownerDocument = document;
@@ -469,6 +482,7 @@ function createEnvironment({
     changelog,
     changelogPanelInner,
     groupHeading,
+    visitCount,
     outsideClickTarget,
     localStorage,
     historyCalls,
@@ -750,4 +764,47 @@ test('脚本初始化不会再写入 cc-density', () => {
   executeScript(env.context);
 
   assert.equal(env.localStorage.getItem('cc-density'), null);
+});
+
+test('脚本初始化会通过 CounterAPI 增加并展示本站访问量', async () => {
+  const env = createEnvironment();
+  const calls = [];
+
+  env.context.Counter = class Counter {
+    constructor(config) {
+      calls.push({ type: 'constructor', config });
+    }
+
+    async up(name) {
+      calls.push({ type: 'up', name });
+      return { count: 12345 };
+    }
+  };
+
+  executeScript(env.context);
+  await Promise.resolve();
+
+  assert.deepEqual(JSON.parse(JSON.stringify(calls)), [
+    { type: 'constructor', config: { namespace: 'cc-quick', version: 'v1' } },
+    { type: 'up', name: 'site-visits' }
+  ]);
+  assert.equal(env.visitCount.textContent, '12,345');
+  assert.equal(env.visitCount.attributes['data-counter-state'], 'ready');
+});
+
+test('CounterAPI 不可用时访问量展示为暂不可用', async () => {
+  const env = createEnvironment();
+
+  env.context.Counter = class Counter {
+    async up() {
+      throw new Error('network failed');
+    }
+  };
+
+  executeScript(env.context);
+  await Promise.resolve();
+  await Promise.resolve();
+
+  assert.equal(env.visitCount.textContent, '暂不可用');
+  assert.equal(env.visitCount.attributes['data-counter-state'], 'error');
 });

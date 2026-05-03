@@ -305,7 +305,7 @@ test('renderPage 输出 section 切换契约与 changelog 触发按钮', () => {
   );
   assert.match(
     html,
-    /<div class="header-heading">[\s\S]*<h1>Claude Code 中文速查表<\/h1>[\s\S]*<span>GitHub Star<\/span>[\s\S]*<\/div>/
+    /<div class="header-heading">[\s\S]*<h1>Claude Code 中文速查表<\/h1>[\s\S]*<div class="header-heading-actions">[\s\S]*<span>GitHub Star<\/span>[\s\S]*id="siteVisitCount"[\s\S]*<\/div>/
   );
   assert.match(
     html,
@@ -409,6 +409,21 @@ test('renderPage 渲染结构化 footer 并保留本地说明行', () => {
   assert.match(html, /<span class="footer-item"><code>CLAUDE_STREAM_IDLE_TIMEOUT_MS<\/code> （默认 90 秒）<\/span>/);
   assert.match(html, /<span class="footer-item"><code>ANTHROPIC_API_KEY<\/code><\/span>/);
   assert.match(html, /页面由上游内容自动同步生成；未命中词表时默认保留原文。/);
+});
+
+test('模板底部包含本站访问量占位与 CounterAPI 浏览器脚本', () => {
+  const template = readFileSync(new URL('../templates/index.template.html', import.meta.url), 'utf8');
+
+  assert.match(template, /<div class="header-counter" aria-live="polite">/);
+  assert.doesNotMatch(template, /footer-counter/);
+  assert.match(template, /id="siteVisitCount"/);
+  assert.match(template, /data-counter-namespace="cc-quick"/);
+  assert.match(template, /data-counter-name="site-visits"/);
+  assert.match(
+    template,
+    /<script src="https:\/\/cdn\.jsdelivr\.net\/npm\/counterapi@2\.1\.2\/dist\/counter\.browser\.min\.js" defer><\/script>/
+  );
+  assert.match(template, /<script src="\.\/script\.js" defer><\/script>/);
 });
 
 test('renderPage 使用真实 upstream fixture 保留全部 wrapper 分组', () => {

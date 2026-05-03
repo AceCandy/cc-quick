@@ -353,10 +353,44 @@ function initChangelogPopover() {
   setOpen(!panel.hidden);
 }
 
+function initSiteVisitCounter() {
+  var countEl = document.getElementById("siteVisitCount");
+
+  if (!countEl || typeof Counter !== "function") {
+    return;
+  }
+
+  var namespace = countEl.getAttribute("data-counter-namespace") || "cc-quick";
+  var name = countEl.getAttribute("data-counter-name") || "site-visits";
+
+  function setCounterState(state, text) {
+    countEl.textContent = text;
+    countEl.setAttribute("data-counter-state", state);
+  }
+
+  // CounterAPI v2 需要预创建 workspace；这里使用 v1 namespace，静态页可直接计数。
+  new Counter({ namespace: namespace, version: "v1" })
+    .up(name)
+    .then(function (result) {
+      var count = result && typeof result.count === "number" ? result.count : null;
+
+      if (count === null) {
+        setCounterState("error", "暂不可用");
+        return;
+      }
+
+      setCounterState("ready", count.toLocaleString("zh-CN"));
+    })
+    .catch(function () {
+      setCounterState("error", "暂不可用");
+    });
+}
+
 (function () {
   initStickyOffsets();
   initSectionSwitcher();
   initChangelogPopover();
+  initSiteVisitCounter();
 })();
 
 (function () {
