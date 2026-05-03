@@ -362,28 +362,74 @@ function initSiteVisitCounter() {
 
   var namespace = countEl.getAttribute("data-counter-namespace") || "cc-quick";
   var name = countEl.getAttribute("data-counter-name") || "site-visits";
+  var cacheKey = namespace + ":siteVisitCount";
+  var counter = new Counter({ namespace: namespace, version: "v1" });
 
   function setCounterState(state, text) {
     countEl.textContent = text;
     countEl.setAttribute("data-counter-state", state);
   }
 
+  function getCachedCount() {
+    try {
+      return localStorage.getItem(cacheKey);
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function cacheCount(count) {
+    try {
+      localStorage.setItem(cacheKey, String(count));
+    } catch (_error) {
+      // 忽略缓存不可写场景，统计展示仍以本次接口结果为准。
+    }
+  }
+
+  function readCount(result) {
+    return result && typeof result.count === "number" ? result.count : null;
+  }
+
+  function renderCount(count) {
+    setCounterState("ready", count.toLocaleString("zh-CN"));
+    cacheCount(count);
+  }
+
+  var cachedCount = getCachedCount();
+  var hasVisibleCount = false;
+
+  if (cachedCount !== null) {
+    setCounterState("ready", Number(cachedCount).toLocaleString("zh-CN"));
+    hasVisibleCount = true;
+  }
+
+  function updateCounter(method, showFallbackError) {
+    return counter[method](name)
+      .then(function (result) {
+        var count = readCount(result);
+
+        if (count === null) {
+          if (showFallbackError && !hasVisibleCount) {
+            setCounterState("error", "暂不可用");
+          }
+          return;
+        }
+
+        hasVisibleCount = true;
+        renderCount(count);
+      })
+      .catch(function () {
+        if (showFallbackError && !hasVisibleCount) {
+          setCounterState("error", "暂不可用");
+        }
+      });
+  }
+
   // CounterAPI v2 需要预创建 workspace；这里使用 v1 namespace，静态页可直接计数。
-  new Counter({ namespace: namespace, version: "v1" })
-    .up(name)
-    .then(function (result) {
-      var count = result && typeof result.count === "number" ? result.count : null;
-
-      if (count === null) {
-        setCounterState("error", "暂不可用");
-        return;
-      }
-
-      setCounterState("ready", count.toLocaleString("zh-CN"));
-    })
-    .catch(function () {
-      setCounterState("error", "暂不可用");
-    });
+  updateCounter("up", true);
+  setInterval(function () {
+    updateCounter("get", false);
+  }, 15000);
 }
 
 (function () {

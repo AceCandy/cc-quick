@@ -406,7 +406,8 @@ a,
 }
 
 .header-counter-label {
-  color: var(--text-muted);
+  color: var(--text);
+  font-weight: 800;
 }
 
 .theme-btn {
@@ -951,7 +952,7 @@ a,
 .visit-count {
   font-family: var(--font-mono);
   font-weight: 700;
-  color: var(--text);
+  color: var(--danger);
 }
 
 .visit-count[data-counter-state="error"] {

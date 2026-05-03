@@ -36,6 +36,12 @@ test('styles.css 包含 GitHub Star 入口和手机端响应式契约', () => {
   assert.match(styles, /@media \(max-width:\s*420px\) \{[\s\S]*\.section-switcher-btn\s*\{[\s\S]*text-overflow:\s*ellipsis;/);
 });
 
+test('styles.css 访问统计标签加粗且数字使用红色', () => {
+  assert.match(styles, /\.header-counter-label\s*\{[\s\S]*font-weight:\s*800;/);
+  assert.match(styles, /\.header-counter-label\s*\{[\s\S]*color:\s*var\(--text\);/);
+  assert.match(styles, /\.visit-count\s*\{[\s\S]*color:\s*var\(--danger\);/);
+});
+
 test('styles.css 包含导航三态和 section 切换动效契约', () => {
   assert.match(styles, /--ease-out-quart:\s*cubic-bezier\(0\.25,\s*1,\s*0\.5,\s*1\);/);
   assert.match(styles, /\.section-switcher-btn\s*\{[\s\S]*transform:\s*translateX\(0\);/);

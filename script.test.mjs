@@ -454,6 +454,13 @@ function createEnvironment({
     localStorage,
     history,
     navigator: { platform, userAgent },
+    setInterval(fn, delay) {
+      if (typeof window.setInterval === 'function') {
+        return window.setInterval(fn, delay);
+      }
+
+      return { fn, delay };
+    },
     matchMedia(query) {
       return {
         matches: prefersDark && query === '(prefers-color-scheme: dark)'
@@ -789,6 +796,83 @@ test('脚本初始化会通过 CounterAPI 增加并展示本站访问量', async
     { type: 'up', name: 'site-visits' }
   ]);
   assert.equal(env.visitCount.textContent, '12,345');
+  assert.equal(env.visitCount.attributes['data-counter-state'], 'ready');
+});
+
+test('访问量会优先展示缓存并每 15 秒只读刷新', async () => {
+  const env = createEnvironment({
+    storage: {
+      'cc-quick:siteVisitCount': '120'
+    }
+  });
+  const calls = [];
+  const intervals = [];
+
+  env.window.setInterval = (fn, delay) => {
+    intervals.push({ fn, delay });
+    return intervals.length;
+  };
+  env.context.setInterval = env.window.setInterval;
+
+  env.context.Counter = class Counter {
+    async up(name) {
+      calls.push({ type: 'up', name });
+      return { count: 121 };
+    }
+
+    async get(name) {
+      calls.push({ type: 'get', name });
+      return { count: 130 };
+    }
+  };
+
+  executeScript(env.context);
+
+  assert.equal(env.visitCount.textContent, '120');
+  assert.equal(env.visitCount.attributes['data-counter-state'], 'ready');
+  assert.equal(intervals[0].delay, 15000);
+
+  await Promise.resolve();
+  assert.equal(env.visitCount.textContent, '121');
+
+  await intervals[0].fn();
+  assert.deepEqual(calls, [
+    { type: 'up', name: 'site-visits' },
+    { type: 'get', name: 'site-visits' }
+  ]);
+  assert.equal(env.visitCount.textContent, '130');
+  assert.equal(env.localStorage.getItem('cc-quick:siteVisitCount'), '130');
+});
+
+test('访问量自动刷新失败时保留已有数字', async () => {
+  const env = createEnvironment({
+    storage: {
+      'cc-quick:siteVisitCount': '120'
+    }
+  });
+  const intervals = [];
+
+  env.window.setInterval = (fn, delay) => {
+    intervals.push({ fn, delay });
+    return intervals.length;
+  };
+  env.context.setInterval = env.window.setInterval;
+
+  env.context.Counter = class Counter {
+    async up() {
+      return { count: 121 };
+    }
+
+    async get() {
+      throw new Error('network failed');
+    }
+  };
+
+  executeScript(env.context);
+  await Promise.resolve();
+  await intervals[0].fn();
+
+  assert.equal(env.visitCount.textContent, '121');
   assert.equal(env.visitCount.attributes['data-counter-state'], 'ready');
 });
 
