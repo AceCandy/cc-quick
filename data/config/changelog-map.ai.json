@@ -1,6 +1,7 @@
 {
   "--exclude-dynamic-system-prompt-sections improves cross-user prompt caching in print mode (v2.1.98)": "--exclude-dynamic-system-prompt-sections 可改进 print 模式下的跨用户 prompt 缓存（v2.1.98）",
   "--from-pr supports GitLab, Bitbucket and GitHub Enterprise (v2.1.119)": "--from-pr 支持 GitLab、Bitbucket 和 GitHub Enterprise (v2.1.119)",
+  "--plugin-dir now accepts .zip plugin archives in addition to directories (v2.1.128)": "--plugin-dir 现在除目录外，还接受 .zip 插件归档（v2.1.128）",
   "--resume/--continue now resurrect unexpired scheduled tasks; /recap now works for users with telemetry disabled (v2.1.110)": "--resume/--continue 现在会恢复未过期的 scheduled tasks；/recap 现在对禁用 telemetry 的用户也可用（v2.1.110）",
   "/agents now has Running and Library tabs with quick actions for launching or inspecting agents (v2.1.100)": "/agents 现在有 Running 和 Library 选项卡，并提供用于启动或检查 agents 的快速操作（v2.1.100）",
   "/agents now has Running and Library tabs with quick actions for launching or inspecting agents (v2.1.98)": "/agents 现在有 Running 和 Library 标签页，并提供用于启动或检查 agents 的快捷操作（v2.1.98）",
@@ -10,6 +11,7 @@
   "/extra-usage now works from Remote Control (mobile/web) clientsNEW": "/extra-usage 现在可在 Remote Control（移动端/网页）客户端中使用NEW",
   "/less-permission-prompts skill — scans transcripts and proposes a prioritized allowlist for .claude/settings.jsonNEW": "/less-permission-prompts skill — 扫描对话记录并为 .claude/settings.json 提出一个按优先级排序的允许列表NEW",
   "/mcp panel now shows claude.ai connectors hidden by duplicate-URL local servers (v2.1.122)": "/mcp 面板现在会显示被重复 URL 的本地服务器隐藏的 claude.ai connectors (v2.1.122)",
+  "/mcp shows tool count per connected server; flags servers that connected with 0 tools (v2.1.128)": "/mcp 显示每个已连接 server 的 tool 数量；对连接时 tool 数为 0 的 server 进行标记（v2.1.128）",
   "/model selection persists across restarts (v2.1.117)": "/model 选择会在重启后保持 (v2.1.117)",
   "/proactive is now an alias for /loop (v2.1.105)": "/proactive 现在是 /loop 的别名（v2.1.105）",
   "/reload-plugins can now pick up plugin-provided skills without restarting Claude Code (v2.1.100)": "/reload-plugins 现在无需重启 Claude Code 即可加载插件提供的 skills（v2.1.100）",
