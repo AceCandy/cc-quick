@@ -48,18 +48,17 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.128</span></span>
-          <span class="last-updated">最近更新：2026年5月4日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.129</span></span>
+          <span class="last-updated">最近更新：2026年5月6日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--plugin-dir 现在除目录外，还接受 .zip 插件归档（v2.1.128）</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--plugin-url &lt;url&gt; fetches plugin .zip archive directly from URL (v2.1.129)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Ctrl+R history search now defaults to all projects; narrow to current project with Ctrl+S (v2.1.129)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">skillOverrides setting now accepts off, user-invocable-only, and name-only values (v2.1.129)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--plugin-dir 现在除目录外，还接受 .zip 插件归档（v2.1.128）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/mcp 显示每个已连接 server 的 tool 数量；对连接时 tool 数为 0 的 server 进行标记（v2.1.128）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">安全：修复 allowManagedDomainsOnly / allowManagedReadPathsOnly policy flags 被静默忽略的问题 (v2.1.126)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增 claude project purge [path]，用于删除所有 Claude Code project state (v2.1.126)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">模型选择器列出 gateway /v1/models 的模型；claude auth login 支持粘贴的 OAuth code (v2.1.126)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">自动模式：当权限检查卡住时，spinner 会变红 (v2.1.126)</a></li>
         </ul>
       </div>
     </header>
@@ -428,6 +427,7 @@
             <div class="row"><span class="key">CLAUDE_CODE_AUTO_COMPACT_WINDOW</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_AUTO_MEMORY</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_1M_CONTEXT</span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</span> <span class="desc">Auto-upgrade via Homebrew/WinGet<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
               </div>
             </section>
           </div>
@@ -539,6 +539,7 @@
             <div class="row"><span class="key">--allowedTools</span> <span class="desc">预先批准</span></div>
             <div class="row"><span class="key">--disallowedTools</span> <span class="desc">移除 tools</span></div>
             <div class="row"><span class="key">--allow-danger…</span> <span class="desc">为 ⇧Tab 循环添加 bypassPerms</span></div>
+            <div class="row"><span class="key">--plugin-url</span> <span class="desc">Fetch plugin .zip from URL<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">--output-format</span> <span class="desc">json/stream</span></div>
             <div class="row"><span class="key">--json-schema</span> <span class="desc">结构化</span></div>
             <div class="row"><span class="key">--max-turns</span> <span class="desc">限制轮数</span></div>
