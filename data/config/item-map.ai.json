@@ -95,6 +95,9 @@
   "--permission-mode plan": {
     "desc": "以 plan 模式启动"
   },
+  "--plugin-url": {
+    "desc": "从 URL 获取 plugin .zip"
+  },
   "--rc": {
     "desc": "远程控制模式"
   },
@@ -421,6 +424,9 @@
   },
   "CLAUDE_CODE_NO_FLICKER": {
     "desc": "备用屏渲染 (=1)"
+  },
+  "CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE": {
+    "desc": "通过 Homebrew/WinGet 自动升级"
   },
   "CLAUDE_CODE_PERFORCE_MODE": {
     "desc": "在只读文件上编辑失败时提示 p4 edit"
