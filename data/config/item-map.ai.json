@@ -407,6 +407,9 @@
   "CLAUDE_CODE_CERT_STORE": {
     "desc": "逗号分隔的 TLS CA 来源：bundled、system（默认：两者）"
   },
+  "CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN": {
+    "desc": "关闭全屏渲染（=1）"
+  },
   "CLAUDE_CODE_DISABLE_CRON": {
     "desc": "禁用计划任务"
   },
