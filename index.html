@@ -48,17 +48,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.131</span></span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.132</span></span>
           <span class="last-updated">最近更新：2026年5月6日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed VS Code extension failing to activate on Windows (v2.1.131)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed --permission-mode flag ignored when resuming plan-mode sessions (v2.1.132)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed fullscreen blank screen after sleep/wake or Ctrl+Z/fg (v2.1.132)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed mouse wheel scrolling in Cursor, VS Code 1.92–1.104, and JetBrains 2025.2 (v2.1.132)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed MCP unbounded memory growth and silent tools/list failures (v2.1.132)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed VS Code extension failing to activate on Windows (v2.1.131)</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed Mantle endpoint authentication (missing x-api-key header) (v2.1.131)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--plugin-url &lt;url&gt; 现在可直接从 URL 获取插件 .zip 压缩包（v2.1.129）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Ctrl+R 历史搜索现在默认搜索所有项目；可用 Ctrl+S 缩小到当前项目（v2.1.129）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">skillOverrides 设置现在接受 off、user-invocable-only 和 name-only 值（v2.1.129）</a></li>
         </ul>
       </div>
     </header>
@@ -424,7 +425,7 @@
             <div class="row"><span class="key">API_TIMEOUT_MS</span> <span class="desc">API 超时（默认：600000ms）</span></div>
             <div class="row"><span class="key">MCP_TIMEOUT</span> <span class="desc">MCP server 启动超时（ms）</span></div>
             <div class="row"><span class="key">CLAUDE_AUTOCOMPACT_PCT_OVERRIDE</span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_AUTO_COMPACT_WINDOW</span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN</span> <span class="desc">Opt out of fullscreen rendering (=1)<span class="badge-new" data-added="2026-05-07">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_AUTO_MEMORY</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_1M_CONTEXT</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</span> <span class="desc">通过 Homebrew/WinGet 自动升级<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
