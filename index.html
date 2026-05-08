@@ -48,18 +48,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.132</span></span>
-          <span class="last-updated">最近更新：2026年5月6日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.133</span></span>
+          <span class="last-updated">最近更新：2026年5月7日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复恢复 plan-mode 会话时忽略 --permission-mode 标志的问题（v2.1.132）</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Added worktree.baseRef setting, sandbox path overrides; effort level now available in hook definitions (v2.1.133)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed parallel session 401 errors; fixed proxy support for full MCP OAuth flow; fixed subagent skill discovery (v2.1.133)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复恢复 plan-mode 会话时忽略 --permission-mode 标志的问题（v2.1.132）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复睡眠/唤醒或 Ctrl+Z/fg 后全屏黑屏问题（v2.1.132）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 Cursor、VS Code 1.92–1.104 和 JetBrains 2025.2 中的鼠标滚轮滚动问题（v2.1.132）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 MCP 无界内存增长以及 tools/list 静默失败问题（v2.1.132）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 VS Code 扩展在 Windows 上无法激活的问题（v2.1.131）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 Mantle 端点认证（缺少 x-api-key 头）问题（v2.1.131）</a></li>
         </ul>
       </div>
     </header>
@@ -390,6 +390,7 @@
                 <div class="row"><span class="key">modelOverrides</span> <span class="desc">将模型选择器映射到自定义 ID</span></div>
             <div class="row"><span class="key">autoMemoryDirectory</span> <span class="desc">自定义 memory 目录</span></div>
             <div class="row"><span class="key">worktree.sparsePaths</span> <span class="desc">稀疏检出目录</span></div>
+            <div class="row"><span class="key">worktree.baseRef</span> <span class="desc">Base branch for worktree diff comparisons<span class="badge-new" data-added="2026-05-07">NEW</span></span></div>
             <div class="row"><span class="key">sandbox.failIfUnavailable</span> <span class="desc">sandbox 失败时退出</span></div>
             <div class="row"><span class="key">hooks: if</span> <span class="desc">条件 hooks（permission rule 语法）</span></div>
             <div class="row"><span class="key">DISABLE_PROMPT_CACHING*</span> <span class="desc">禁用 prompt caching 时的启动警告<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
@@ -424,7 +425,7 @@
             <div class="row"><span class="key">DISABLE_UPDATES</span> <span class="desc">阻止所有更新路径<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
             <div class="row"><span class="key">API_TIMEOUT_MS</span> <span class="desc">API 超时（默认：600000ms）</span></div>
             <div class="row"><span class="key">MCP_TIMEOUT</span> <span class="desc">MCP server 启动超时（ms）</span></div>
-            <div class="row"><span class="key">CLAUDE_AUTOCOMPACT_PCT_OVERRIDE</span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_SESSION_ID</span> <span class="desc">Unique session ID for hooks and CI tracing<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN</span> <span class="desc">关闭全屏渲染（=1）<span class="badge-new" data-added="2026-05-07">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_AUTO_MEMORY</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_1M_CONTEXT</span></div>
