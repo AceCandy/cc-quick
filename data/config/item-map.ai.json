@@ -437,6 +437,9 @@
   "CLAUDE_CODE_SCRIPT_CAPS": {
     "desc": "限制每个会话的 script 调用次数"
   },
+  "CLAUDE_CODE_SESSION_ID": {
+    "desc": "用于 hooks 和 CI tracing 的唯一 session ID"
+  },
   "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB": {
     "desc": "从子进程中剥离凭据"
   },
@@ -619,6 +622,9 @@
   },
   "workspace.git_worktree": {
     "desc": "状态行 JSON：已链接的 worktree 路径"
+  },
+  "worktree.baseRef": {
+    "desc": "用于 worktree diff 比较的基准分支"
   },
   "worktree.sparsePaths": {
     "desc": "稀疏检出目录"
