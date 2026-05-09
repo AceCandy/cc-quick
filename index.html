@@ -48,18 +48,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.133</span></span>
-          <span class="last-updated">最近更新：2026年5月7日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.137</span></span>
+          <span class="last-updated">最近更新：2026年5月9日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增 worktree.baseRef 设置、sandbox 路径覆盖；hook definitions 现在可用 effort level（v2.1.133）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复并行 session 的 401 错误；修复完整 MCP OAuth flow 的 proxy 支持；修复 subagent skill discovery（v2.1.133）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复恢复 plan-mode 会话时忽略 --permission-mode 标志的问题（v2.1.132）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复睡眠/唤醒或 Ctrl+Z/fg 后全屏黑屏问题（v2.1.132）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 Cursor、VS Code 1.92–1.104 和 JetBrains 2025.2 中的鼠标滚轮滚动问题（v2.1.132）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 MCP 无界内存增长以及 tools/list 静默失败问题（v2.1.132）</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Added settings.autoMode.hard_deny for unconditional auto-mode classifier rules (v2.1.136)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed MCP servers silently disappearing after /clear (v2.1.136)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed login loop from concurrent credential writes overwriting OAuth tokens (v2.1.136)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">WSL2: image paste from Windows clipboard now works via PowerShell fallback (v2.1.136)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed VS Code extension failing to activate on Windows (v2.1.137)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">50+ bug fixes: terminal modes, MCP tools, settings, permissions (v2.1.136)</a></li>
         </ul>
       </div>
     </header>
@@ -391,6 +391,7 @@
             <div class="row"><span class="key">autoMemoryDirectory</span> <span class="desc">自定义 memory 目录</span></div>
             <div class="row"><span class="key">worktree.sparsePaths</span> <span class="desc">稀疏检出目录</span></div>
             <div class="row"><span class="key">worktree.baseRef</span> <span class="desc">用于 worktree diff 比较的基准分支<span class="badge-new" data-added="2026-05-07">NEW</span></span></div>
+            <div class="row"><span class="key">autoMode.hard_deny</span> <span class="desc">Unconditional auto-mode classifier deny rules<span class="badge-new" data-added="2026-05-08">NEW</span></span></div>
             <div class="row"><span class="key">sandbox.failIfUnavailable</span> <span class="desc">sandbox 失败时退出</span></div>
             <div class="row"><span class="key">hooks: if</span> <span class="desc">条件 hooks（permission rule 语法）</span></div>
             <div class="row"><span class="key">DISABLE_PROMPT_CACHING*</span> <span class="desc">禁用 prompt caching 时的启动警告<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
