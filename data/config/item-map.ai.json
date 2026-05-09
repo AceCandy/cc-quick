@@ -344,6 +344,9 @@
   "autoMemoryDirectory": {
     "desc": "自定义 memory 目录"
   },
+  "autoMode.hard_deny": {
+    "desc": "无条件自动模式分类器拒绝规则"
+  },
   "autoScrollEnabled": {
     "desc": "在全屏模式下禁用自动滚动"
   },

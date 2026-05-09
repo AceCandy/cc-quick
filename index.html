@@ -54,12 +54,12 @@
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Added settings.autoMode.hard_deny for unconditional auto-mode classifier rules (v2.1.136)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed MCP servers silently disappearing after /clear (v2.1.136)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed login loop from concurrent credential writes overwriting OAuth tokens (v2.1.136)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">WSL2: image paste from Windows clipboard now works via PowerShell fallback (v2.1.136)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed VS Code extension failing to activate on Windows (v2.1.137)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">50+ bug fixes: terminal modes, MCP tools, settings, permissions (v2.1.136)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增 settings.autoMode.hard_deny，用于无条件 auto-mode classifier 规则 (v2.1.136)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 MCP servers 在 /clear 后静默消失的问题 (v2.1.136)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复并发 credential 写入覆盖 OAuth tokens 导致登录循环的问题 (v2.1.136)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">WSL2：通过 PowerShell fallback，现在可从 Windows 剪贴板粘贴图片 (v2.1.136)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 VS Code extension 在 Windows 上无法激活的问题 (v2.1.137)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">50+ 个 bug 修复：terminal modes、MCP tools、settings、permissions (v2.1.136)</a></li>
         </ul>
       </div>
     </header>
@@ -391,7 +391,7 @@
             <div class="row"><span class="key">autoMemoryDirectory</span> <span class="desc">自定义 memory 目录</span></div>
             <div class="row"><span class="key">worktree.sparsePaths</span> <span class="desc">稀疏检出目录</span></div>
             <div class="row"><span class="key">worktree.baseRef</span> <span class="desc">用于 worktree diff 比较的基准分支<span class="badge-new" data-added="2026-05-07">NEW</span></span></div>
-            <div class="row"><span class="key">autoMode.hard_deny</span> <span class="desc">Unconditional auto-mode classifier deny rules<span class="badge-new" data-added="2026-05-08">NEW</span></span></div>
+            <div class="row"><span class="key">autoMode.hard_deny</span> <span class="desc">无条件自动模式分类器拒绝规则<span class="badge-new" data-added="2026-05-08">NEW</span></span></div>
             <div class="row"><span class="key">sandbox.failIfUnavailable</span> <span class="desc">sandbox 失败时退出</span></div>
             <div class="row"><span class="key">hooks: if</span> <span class="desc">条件 hooks（permission rule 语法）</span></div>
             <div class="row"><span class="key">DISABLE_PROMPT_CACHING*</span> <span class="desc">禁用 prompt caching 时的启动警告<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
