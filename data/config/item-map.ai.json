@@ -206,6 +206,9 @@
   "/focus": {
     "desc": "切换聚焦视图（全屏，仅显示最终消息）"
   },
+  "/goal [desc]": {
+    "desc": "设置完成目标；Claude 会持续执行，直到达成，期间显示实时进度覆盖层"
+  },
   "/ide": {
     "desc": "IDE 集成状态"
   },
@@ -241,6 +244,9 @@
   },
   "/review [PR]": {
     "desc": "在本地审查 PR"
+  },
+  "/scroll-speed [speed]": {
+    "desc": "调整输出滚动速度"
   },
   "/simplify": {
     "desc": "代码审查（3 个并行 agent）"
@@ -461,6 +467,9 @@
   "context: fork": {
     "desc": "在子代理中运行"
   },
+  "continueOnBlock": {
+    "desc": "Hook 配置：在被阻止的 tool call 后继续运行"
+  },
   "CtrlA": {
     "desc": "移动到逻辑行开头（多行输入）"
   },
@@ -511,6 +520,9 @@
   },
   "General": {
     "desc": "全工具，适合复杂任务"
+  },
+  "hook step args": {
+    "desc": "在 hook steps 中传递带类型的参数"
   },
   "hooks: \"defer\"": {
     "desc": "暂停 headless → 稍后恢复"
