@@ -216,13 +216,9 @@
             <div class="row"><span class="key">/agents</span> <span class="desc">管理 agents<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
             <div class="row"><span class="key">/review [PR]</span> <span class="desc">在本地审查 PR</span></div>
             <div class="row"><span class="key">/ultrareview [PR#]</span> <span class="desc">云端代码审查 — 并行多 agent 分析</span></div>
-            <div class="row"><span class="key">/simplify [focus]</span> <span class="desc">代码审查 + 修复（3 个 agents）<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">/security-review</span> <span class="desc">对改动做安全分析</span></div>
-            <div class="row"><span class="key">/less-permission-prompts</span> <span class="desc">添加 allowlist 以减少提示<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">/loop [interval] [prompt]</span> <span class="desc">周期性任务（/proactive 别名）<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
-            <div class="row"><span class="key">/chrome</span> <span class="desc">Chrome 集成</span></div>
             <div class="row"><span class="key">/ide</span> <span class="desc">IDE 集成状态</span></div>
-            <div class="row"><span class="key">/reload-plugins</span> <span class="desc">热重载 plugins</span></div>
             <div class="row"><span class="key">/add-dir &lt;path&gt;</span> <span class="desc">添加工作目录</span></div>
               </div>
             </section>
@@ -335,9 +331,7 @@
               <div class="group-rows">
                 <div class="row"><span class="key">/context</span> <span class="desc">可视化上下文（网格）</span></div>
             <div class="row"><span class="key">/compact [focus]</span> <span class="desc">按焦点压缩上下文</span></div>
-            <div class="row"><span class="key">Auto-compact</span> <span class="desc">~95% 容量（抖动检测：3x）<span class="badge-new" data-added="2026-04-01">NEW</span></span></div>
             <div class="row"><span class="key">1M context</span> <span class="desc">Opus 4.6（Max/Team/Ent）</span></div>
-            <div class="row"><span class="key">CLAUDE.md</span> <span class="desc">压缩后仍保留！</span></div>
               </div>
             </section>
 
@@ -390,24 +384,16 @@
               <h3 class="group-title" id="section-config-group-关键设置">关键设置</h3>
               <div class="group-rows">
                 <div class="row"><span class="key">modelOverrides</span> <span class="desc">将模型选择器映射到自定义 ID</span></div>
-            <div class="row"><span class="key">autoMemoryDirectory</span> <span class="desc">自定义 memory 目录</span></div>
-            <div class="row"><span class="key">worktree.sparsePaths</span> <span class="desc">稀疏检出目录</span></div>
-            <div class="row"><span class="key">worktree.baseRef</span> <span class="desc">用于 worktree diff 比较的基准分支<span class="badge-new" data-added="2026-05-07">NEW</span></span></div>
             <div class="row"><span class="key">autoMode.hard_deny</span> <span class="desc">无条件自动模式分类器拒绝规则<span class="badge-new" data-added="2026-05-08">NEW</span></span></div>
-            <div class="row"><span class="key">sandbox.failIfUnavailable</span> <span class="desc">sandbox 失败时退出</span></div>
             <div class="row"><span class="key">hooks: if</span> <span class="desc">条件 hooks（permission rule 语法）</span></div>
             <div class="row"><span class="key">DISABLE_PROMPT_CACHING*</span> <span class="desc">禁用 prompt caching 时的启动警告<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">Monitor tool</span> <span class="desc">从后台脚本流式输出事件<span class="badge-new" data-added="2026-04-09">NEW</span></span></div>
             <div class="row"><span class="key">PermissionDenied</span> <span class="desc">Hook：自动模式拒绝<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">可选启用（现默认关闭）<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
-            <div class="row"><span class="key">allowedChannelPlugins</span> <span class="desc">管理员 channel plugin 允许列表</span></div>
             <div class="row"><span class="key">hooks: &quot;defer&quot;</span> <span class="desc">暂停 headless → 稍后恢复</span></div>
             <div class="row"><span class="key">type: &quot;mcp_tool&quot;</span> <span class="desc">Hook 步骤直接调用 MCP tool<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
-            <div class="row"><span class="key">PostToolUse → hook_output</span> <span class="desc">从 hook 返回 hook_output 以替换工具结果<span class="badge-new" data-added="2026-04-28">NEW</span></span></div>
             <div class="row"><span class="key">continueOnBlock</span> <span class="desc">Hook 配置：在被阻止的 tool call 后继续运行<span class="badge-new" data-added="2026-05-11">NEW</span></span></div>
-            <div class="row"><span class="key">hook step args</span> <span class="desc">在 hook steps 中传递带类型的参数<span class="badge-new" data-added="2026-05-11">NEW</span></span></div>
             <div class="row"><span class="key">disableSkillShellExec</span> <span class="desc">阻止 skills/plugins 中的 !`cmd`<span class="badge-new" data-added="2026-04-03">NEW</span></span></div>
-            <div class="row"><span class="key">forceRemoteSettings…</span> <span class="desc">阻塞直到获取最新配置<span class="badge-new" data-added="2026-04-04">NEW</span></span></div>
             <div class="row"><span class="key">refreshInterval</span> <span class="desc">每 N 秒重新运行自定义状态行<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
               </div>
             </section>
@@ -542,26 +528,16 @@
             <div class="row"><span class="key">--continue, -c</span> <span class="desc">继续最近一次会话</span></div>
             <div class="row"><span class="key">--add-dir</span> <span class="desc">添加目录</span></div>
             <div class="row"><span class="key">--agent</span> <span class="desc">使用 agent</span></div>
-            <div class="row"><span class="key">--agents</span> <span class="desc">通过 JSON 定义 agents</span></div>
             <div class="row"><span class="key">--allowedTools</span> <span class="desc">预先批准</span></div>
             <div class="row"><span class="key">--disallowedTools</span> <span class="desc">移除 tools</span></div>
             <div class="row"><span class="key">--allow-danger…</span> <span class="desc">为 ⇧Tab 循环添加 bypassPerms</span></div>
-            <div class="row"><span class="key">--plugin-url</span> <span class="desc">从 URL 获取 plugin .zip<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">--output-format</span> <span class="desc">json/stream</span></div>
-            <div class="row"><span class="key">--json-schema</span> <span class="desc">结构化</span></div>
-            <div class="row"><span class="key">--max-turns</span> <span class="desc">限制轮数</span></div>
             <div class="row"><span class="key">--max-budget-usd</span> <span class="desc">成本上限</span></div>
-            <div class="row"><span class="key">--exclude-dyn…</span> <span class="desc">打印：更好的 prompt 缓存<span class="badge-new" data-added="2026-04-09">NEW</span></span></div>
-            <div class="row"><span class="key">--bare</span> <span class="desc">最小化无头模式（无 hooks/LSP）</span></div>
-            <div class="row"><span class="key">--channels</span> <span class="desc">权限中继 / MCP 推送</span></div>
             <div class="row"><span class="key">--remote</span> <span class="desc">claude.ai 上的 Web 会话</span></div>
-            <div class="row"><span class="key">--rc / --remote-control</span> <span class="desc">Remote Control 模式</span></div>
             <div class="row"><span class="key">--effort</span> <span class="desc">low/medium/high/max</span></div>
             <div class="row"><span class="key">--permission-mode</span> <span class="desc">plan/default/…</span></div>
             <div class="row"><span class="key">--dangerously-skip-permissions</span> <span class="desc">跳过所有提示 ⚠️</span></div>
-            <div class="row"><span class="key">--chrome / --no-chrome</span> <span class="desc">开启/关闭 Chrome</span></div>
             <div class="row"><span class="key">--debug [filter]</span> <span class="desc">调试日志</span></div>
-            <div class="row"><span class="key">--system-prompt</span> <span class="desc">自定义 system prompt</span></div>
             <div class="row"><span class="key">--settings &lt;file&gt;</span> <span class="desc">加载 settings JSON</span></div>
             <div class="row"><span class="key">--from-pr</span> <span class="desc">加载 PR 上下文（GitHub / GitLab / Bitbucket / GHE）<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
               </div>
