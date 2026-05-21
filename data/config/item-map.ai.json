@@ -179,6 +179,9 @@
   "/claude-api": {
     "desc": "加载 API + SDK 参考"
   },
+  "/code-review": {
+    "desc": "低/中/高三种 effort 级别的代码审查"
+  },
   "/config [key [value]]": {
     "desc": "查看/设置配置（持久化到 ~/.claude/settings.json）"
   },
