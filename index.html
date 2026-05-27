@@ -54,9 +54,9 @@
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/code-review --fix applies review findings directly to the working tree (v2.1.152)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">MessageDisplay hook transforms assistant messages before display (v2.1.152)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Auto mode no longer requires opt-in; enabled for all eligible users (v2.1.152)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener"> /code-review --fix 直接将 review 发现应用到工作区（v2.1.152）</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">MessageDisplay hook 在显示前转换 assistant 消息（v2.1.152）</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Auto mode 不再需要 opt-in；对所有符合条件的用户启用（v2.1.152）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/usage 显示按类别的成本明细：skills、subagents、plugins、MCP (v2.1.149)</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/diff 详情视图支持键盘滚动（↑↓ / j/k / PgUp/PgDn / Space）（v2.1.149）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Markdown 可渲染 GFM 任务列表复选框（- [ ] / - [x]）(v2.1.149)</a></li>
@@ -213,7 +213,7 @@
             <div class="row"><span class="key">/mcp</span> <span class="desc">管理 MCP 服务器</span></div>
             <div class="row"><span class="key">/hooks</span> <span class="desc">管理 hooks</span></div>
             <div class="row"><span class="key">/skills</span> <span class="desc">列出可用 skills</span></div>
-            <div class="row"><span class="key">/reload-skills</span> <span class="desc">Reload skills without restarting<span class="badge-new" data-added="2026-05-27">NEW</span></span></div>
+            <div class="row"><span class="key">/reload-skills</span> <span class="desc">无需重启即可重新加载 skills<span class="badge-new" data-added="2026-05-27">NEW</span></span></div>
             <div class="row"><span class="key">/agents</span> <span class="desc">管理 agents<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
             <div class="row"><span class="key">/review [PR]</span> <span class="desc">在本地审查 PR</span></div>
             <div class="row"><span class="key">/ultrareview [PR#]</span> <span class="desc">云端代码审查 — 并行多 agent 分析</span></div>
@@ -438,7 +438,7 @@
               <h3 class="group-title" id="section-skills-group-内置-skills">内置 Skills</h3>
               <div class="group-rows">
                 <div class="row"><span class="key">Skill tool</span> <span class="desc">发现内置 slash commands（/init、/review、/security-review…）<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
-            <div class="row"><span class="key">/code-review [effort]</span> <span class="desc">Code review; --fix flag applies findings to working tree<span class="badge-new" data-added="2026-05-27">NEW</span></span></div>
+            <div class="row"><span class="key">/code-review [effort]</span> <span class="desc">代码审查；--fix 标志将发现应用到工作树<span class="badge-new" data-added="2026-05-27">NEW</span></span></div>
             <div class="row"><span class="key">/batch</span> <span class="desc">自动创建 worktree</span></div>
             <div class="row"><span class="key">/debug [desc]</span> <span class="desc">从调试日志排查问题</span></div>
             <div class="row"><span class="key">/loop [interval]</span> <span class="desc">创建周期任务</span></div>
@@ -459,7 +459,7 @@
               <div class="group-rows">
                 <div class="row"><span class="key">description</span> <span class="desc">自动调用触发器</span></div>
             <div class="row"><span class="key">allowed-tools</span> <span class="desc">跳过权限提示</span></div>
-            <div class="row"><span class="key">disallowed-tools</span> <span class="desc">Block specific tools from skill<span class="badge-new" data-added="2026-05-27">NEW</span></span></div>
+            <div class="row"><span class="key">disallowed-tools</span> <span class="desc">阻止 skill 使用特定工具<span class="badge-new" data-added="2026-05-27">NEW</span></span></div>
             <div class="row"><span class="key">model</span> <span class="desc">为 skill 覆盖模型</span></div>
             <div class="row"><span class="key">effort</span> <span class="desc">覆盖 effort 级别</span></div>
             <div class="row"><span class="key">paths: [globs]</span> <span class="desc">路径定向（YAML 列表）<span class="badge-new" data-added="2026-03-26">NEW</span></span></div>

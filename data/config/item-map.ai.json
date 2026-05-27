@@ -182,6 +182,9 @@
   "/code-review": {
     "desc": "低/中/高三种 effort 级别的代码审查"
   },
+  "/code-review [effort]": {
+    "desc": "代码审查；--fix 标志将发现应用到工作树"
+  },
   "/config [key [value]]": {
     "desc": "查看/设置配置（持久化到 ~/.claude/settings.json）"
   },
@@ -241,6 +244,9 @@
   },
   "/release-notes": {
     "desc": "交互式版本更新日志"
+  },
+  "/reload-skills": {
+    "desc": "无需重启即可重新加载 skills"
   },
   "/resume [session]": {
     "desc": "按 ID/名称恢复"
@@ -502,6 +508,9 @@
   },
   "disableSkillShellExec": {
     "desc": "阻止 skills/plugins 中的 !`cmd`"
+  },
+  "disallowed-tools": {
+    "desc": "阻止 skill 使用特定工具"
   },
   "effort": {
     "desc": "覆盖 effort 级别"
