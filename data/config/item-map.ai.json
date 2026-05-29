@@ -131,6 +131,9 @@
   "-w": {
     "desc": "Git worktree"
   },
+  "! <cmd>": {
+    "desc": "将 shell 命令作为后台会话运行"
+  },
   "!`cmd`": {
     "desc": "动态上下文注入"
   },
@@ -280,6 +283,9 @@
   },
   "/undo": {
     "desc": "/rewind 的别名"
+  },
+  "/workflows": {
+    "desc": "查看和管理后台多智能体工作流运行"
   },
   "~/.claude.json": {
     "desc": "OAuth、MCP、状态"
