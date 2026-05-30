@@ -416,6 +416,9 @@
   "claude plugin": {
     "desc": "插件管理"
   },
+  "claude plugin init <name>": {
+    "desc": "创建新的插件脚手架"
+  },
   "claude plugin prune": {
     "desc": "移除未使用/孤立的插件"
   },
