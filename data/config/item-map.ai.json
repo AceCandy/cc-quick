@@ -443,6 +443,9 @@
   "CLAUDE_CODE_EFFORT_LEVEL": {
     "desc": "low/medium/high/max/auto"
   },
+  "CLAUDE_CODE_ENABLE_AUTO_MODE": {
+    "desc": "在 Bedrock/Vertex/Foundry 上启用自动模式（=1）"
+  },
   "CLAUDE_CODE_ENABLE_AWAY_SUMMARY": {
     "desc": "在 telemetry 禁用时强制生成摘要"
   },

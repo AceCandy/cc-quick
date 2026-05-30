@@ -42,6 +42,7 @@
   "Agent tool subagent_type is now case- and separator-insensitive (v2.1.140)": "Agent 工具的 subagent_type 现在对大小写和分隔符不敏感 (v2.1.140)",
   "Agent View (Research Preview): claude agents shows all sessions in a single list (v2.1.139)": "Agent View（Research Preview）：claude agents 将所有会话显示在单一列表中（v2.1.139）",
   "alwaysLoad option for MCP servers — server stays connected across all sessions (v2.1.121)": "MCP servers 的 alwaysLoad 选项 — 服务器会在所有会话中保持连接 (v2.1.121)",
+  "Auto mode available on Bedrock, Vertex, and Foundry for Opus 4.7 & 4.8 — opt in with CLAUDE_CODE_ENABLE_AUTO_MODE=1 (v2.1.158)": "Opus 4.7 和 4.8 的 Auto mode 现已在 Bedrock、Vertex 和 Foundry 上可用 — 通过 CLAUDE_CODE_ENABLE_AUTO_MODE=1 启用（v2.1.158）",
   "Auto mode no longer requires --enable-auto-mode; available for Max subscribers using Opus 4.7": "Auto 模式不再需要 --enable-auto-mode；使用 Opus 4.7 的 Max 订阅用户可用",
   "Auto mode no longer requires --enable-auto-mode; available for Max subscribers using Opus 4.7NEW": "Auto mode 不再需要 --enable-auto-mode；使用 Opus 4.7 的 Max 订阅用户可用NEW",
   "Auto mode no longer requires opt-in; enabled for all eligible users (v2.1.152)": "Auto mode 不再需要 opt-in；对所有符合条件的用户启用（v2.1.152）",
