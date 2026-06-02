@@ -135,8 +135,14 @@ function initStickyOffsets() {
 
   updateStickyOffsets();
 
+  var resizeTimeout = null;
   if (window && typeof window.addEventListener === "function") {
-    window.addEventListener("resize", updateStickyOffsets);
+    window.addEventListener("resize", function () {
+      if (resizeTimeout) {
+        cancelAnimationFrame(resizeTimeout);
+      }
+      resizeTimeout = requestAnimationFrame(updateStickyOffsets);
+    });
   }
 }
 
