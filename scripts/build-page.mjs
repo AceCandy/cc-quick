@@ -269,7 +269,20 @@ export function renderSection(section) {
     })
     .join('\n\n            ');
 
-  return `<section class="${escapeHtml(section.className || 'section')}" data-section-panel="${escapeHtml(sectionAnchorId(section))}" aria-labelledby="${escapeHtml(sectionAnchorId(section))}">\n          <header class="section-header">\n            <h2 class="section-title" id="${escapeHtml(sectionAnchorId(section))}">${escapeHtml(section.title)}</h2>\n          </header>\n          <div class="section-content">\n            ${groupsHtml}\n          </div>\n        </section>`;
+  const anchorId = sectionAnchorId(section);
+  const isKeyboard = anchorId === 'section-keyboard';
+  const osToggleHtml = isKeyboard
+    ? `\n            <div class="os-toggle" id="osToggle" aria-label="系统快捷键切换">
+              <button class="os-btn active" type="button" data-os="mac" title="Mac 快捷键" aria-label="切换到 Mac 快捷键">
+                <svg width="16" height="16" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.4c-58.4-83-106.3-211.5-106.3-334.2 0-196.5 127.8-300.9 253.3-300.9 66.8 0 122.4 43.4 164.1 43.4 39.5 0 101.1-46 176.2-46 28.5 0 130.9 2.6 198.3 99.1zm-169.5-92.8c31.2-37 52.4-88.1 52.4-139.3 0-7.1-.6-14.3-1.9-20.1-50 1.6-109.2 33.3-145 75.1-25.8 29.3-52.4 79.8-52.4 131.6 0 7.8.6 15.6 1.3 18.2 2.6.6 6.4 1.3 10.3 1.3 44.7 0 101.1-30.5 135.3-66.8z"/></svg>
+              </button>
+              <button class="os-btn" type="button" data-os="win" title="Windows 快捷键" aria-label="切换到 Windows 快捷键">
+                <svg width="16" height="16" viewBox="0 0 88 88" fill="currentColor" aria-hidden="true"><path d="M0 12.402l35.687-4.86.016 34.423-35.67.203zm35.67 33.529l.028 34.453L.028 71.48l-.026-25.55zm4.326-39.025L87.314 0v41.527l-47.318.376zm47.329 39.349l-.011 41.34-47.318-6.678-.066-34.739z"/></svg>
+              </button>
+            </div>`
+    : '';
+
+  return `<section class="${escapeHtml(section.className || 'section')}" data-section-panel="${escapeHtml(anchorId)}" aria-labelledby="${escapeHtml(anchorId)}">\n          <header class="section-header">\n            <h2 class="section-title" id="${escapeHtml(anchorId)}">${escapeHtml(section.title)}</h2>${osToggleHtml}\n          </header>\n          <div class="section-content">\n            ${groupsHtml}\n          </div>\n        </section>`;
 }
 
 function renderLayoutItem(layoutItem, sectionMap) {

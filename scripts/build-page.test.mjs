@@ -478,7 +478,7 @@ test('renderPage 使用真实模板时，正文先于目录输出且 OS 切换�
   assert.notEqual(mainIndex, -1);
   assert.notEqual(sidebarIndex, -1);
   assert.ok(mainIndex < sidebarIndex);
-  assert.match(html, /<button class="os-btn active"[^>]*>[\s\S]*<span class="os-btn-label">Mac<\/span>/);
-  assert.match(html, /<button class="os-btn"[^>]*>[\s\S]*<span class="os-btn-label">Win<\/span>/);
+  assert.match(html, /<button class="os-btn active"[^>]*data-os="mac"/);
+  assert.match(html, /<button class="os-btn"[^>]*data-os="win"/);
   assert.doesNotMatch(html, /onclick=/);
 });

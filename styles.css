@@ -350,6 +350,7 @@ a,
   display: inline-flex;
   width: 38px;
   height: 38px;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--toggle-single-border);
@@ -793,6 +794,10 @@ a,
   position: relative;
   padding: var(--section-header-padding);
   border-bottom: 1px solid color-mix(in srgb, var(--section-accent) 18%, var(--border));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .section-header::before {
@@ -1348,7 +1353,8 @@ a,
   .skip-link,
   .page-sidebar,
   .header-controls,
-  .changelog-trigger {
+  .changelog-trigger,
+  .os-toggle {
     display: none !important;
   }
 
