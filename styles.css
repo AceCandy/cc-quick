@@ -42,6 +42,8 @@
   --control-border: #c9d4e3;
   --control-active-bg: #17202e;
   --control-active-text: #f8fbff;
+  --toggle-indicator-bg: #ffffff;
+  --toggle-indicator-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
   --focus-ring: rgba(37, 99, 235, 0.28);
   --danger: #c2410c;
   --danger-soft: #fff0e8;
@@ -85,6 +87,8 @@
   --control-border: #30465d;
   --control-active-bg: #e6edf8;
   --control-active-text: #10213a;
+  --toggle-indicator-bg: #223147;
+  --toggle-indicator-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   --focus-ring: rgba(125, 171, 255, 0.32);
   --danger: #ff9a73;
   --danger-soft: #3a2118;
@@ -127,6 +131,8 @@
     --control-border: #30465d;
     --control-active-bg: #e6edf8;
     --control-active-text: #10213a;
+    --toggle-indicator-bg: #223147;
+    --toggle-indicator-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
     --focus-ring: rgba(125, 171, 255, 0.32);
     --danger: #ff9a73;
     --danger-soft: #3a2118;
@@ -334,13 +340,36 @@ a,
 
 .os-toggle,
 .theme-toggle {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
   padding: 0.2rem;
   border: 1px solid var(--control-border);
   border-radius: 999px;
   background: var(--control-bg);
+  isolation: isolate;
+}
+
+/* 滑块指示器 */
+.os-toggle::before,
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  left: 0.2rem;
+  width: calc(50% - 0.2rem);
+  background: var(--toggle-indicator-bg);
+  border-radius: 999px;
+  box-shadow: var(--toggle-indicator-shadow);
+  transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+/* 滑动位移 */
+.os-toggle:has([data-os="win"].active)::before,
+.theme-toggle:has([data-theme="dark"].active)::before {
+  transform: translateX(100%);
 }
 
 .os-btn,
@@ -351,19 +380,32 @@ a,
   color: var(--text-soft);
   font: inherit;
   cursor: pointer;
-}
-
-.os-btn,
-.theme-btn {
   min-height: 44px;
-  min-width: 44px;
   padding: 0.6rem 0.95rem;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  transition: color 0.2s ease, transform 0.1s ease;
+}
+
+.os-btn {
+  min-width: 4.8rem;
+}
+
+.theme-btn {
+  min-width: 3.2rem;
+  font-weight: 700;
+}
+
+/* 按钮点击缩放反馈 */
+.os-btn:active,
+.theme-btn:active {
+  transform: scale(0.95);
 }
 
 .github-star-link {
@@ -426,14 +468,21 @@ a,
 }
 
 .os-btn.active,
-.theme-btn.active,
+.theme-btn.active {
+  color: var(--text);
+  font-weight: 800;
+}
+
 .section-switcher-btn.active {
   background: var(--control-active-bg);
   color: var(--control-active-text);
 }
 
 .os-btn:hover:not(.active),
-.theme-btn:hover:not(.active),
+.theme-btn:hover:not(.active) {
+  color: var(--text);
+}
+
 .section-switcher-btn:hover:not(.active) {
   background: color-mix(in srgb, var(--panel) 60%, var(--control-bg));
 }
@@ -1137,6 +1186,7 @@ a,
     min-height: 38px;
     padding: 0.48rem 0.72rem;
     flex: 1;
+    min-width: 0;
   }
 
   .github-star-link {
