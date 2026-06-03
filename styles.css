@@ -706,6 +706,11 @@ a,
   display: block;
 }
 
+/* 当编组容器内没有任何处于激活状态（未隐藏）的面板时，隐藏该容器以防止产生多余的 gap 间距 */
+.main-grid > div:not(:has(> [data-section-panel]:not([hidden]))) {
+  display: none;
+}
+
 .section {
   --section-accent: var(--border-strong);
   --section-surface: var(--panel);
