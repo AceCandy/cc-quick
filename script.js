@@ -68,7 +68,12 @@
   buttons.forEach(function (button) {
     button.addEventListener("click", function () {
       localStorage.setItem("cc-os-manual", "1");
-      applyOS(button.dataset.os);
+      if (button.classList.contains("active")) {
+        var nextOS = button.dataset.os === "mac" ? "win" : "mac";
+        applyOS(nextOS);
+      } else {
+        applyOS(button.dataset.os);
+      }
     });
   });
 
@@ -103,7 +108,12 @@
   if (buttons.length > 0) {
     buttons.forEach(function (button) {
       button.addEventListener("click", function () {
-        applyTheme(button.dataset.theme);
+        if (button.classList.contains("active")) {
+          var nextTheme = button.dataset.theme === "light" ? "dark" : "light";
+          applyTheme(nextTheme);
+        } else {
+          applyTheme(button.dataset.theme);
+        }
       });
     });
   }

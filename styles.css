@@ -342,34 +342,27 @@ a,
 .theme-toggle {
   position: relative;
   display: inline-flex;
+  width: 36px;
+  height: 36px;
   align-items: center;
-  padding: 0.2rem;
+  justify-content: center;
   border: 1px solid var(--control-border);
-  border-radius: 999px;
+  border-radius: 50%;
   background: var(--control-bg);
   isolation: isolate;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
 }
 
-/* 滑块指示器 */
-.os-toggle::before,
-.theme-toggle::before {
-  content: "";
-  position: absolute;
-  top: 0.2rem;
-  bottom: 0.2rem;
-  left: 0.2rem;
-  width: calc(50% - 0.2rem);
-  background: var(--toggle-indicator-bg);
-  border-radius: 999px;
-  box-shadow: var(--toggle-indicator-shadow);
-  transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1);
-  z-index: 1;
+.os-toggle:hover,
+.theme-toggle:hover {
+  border-color: var(--border-strong);
+  background: color-mix(in srgb, var(--panel) 60%, var(--control-bg));
 }
 
-/* 滑动位移 */
-.os-toggle:has([data-os="win"].active)::before,
-.theme-toggle:has([data-theme="dark"].active)::before {
-  transform: translateX(100%);
+.os-toggle:active,
+.theme-toggle:active {
+  transform: scale(0.92);
 }
 
 .os-btn,
@@ -377,35 +370,22 @@ a,
   appearance: none;
   border: none;
   background: transparent;
-  color: var(--text-soft);
-  font: inherit;
-  cursor: pointer;
-  min-height: 44px;
-  padding: 0.6rem 0.95rem;
-  border-radius: 999px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  position: relative;
-  z-index: 2;
-  flex: 1;
-  transition: color 0.2s ease, transform 0.1s ease;
-}
-
-.os-btn {
-  min-width: 4.8rem;
-}
-
-.theme-btn {
-  min-width: 3.2rem;
-  font-weight: 700;
-}
-
-/* 按钮点击缩放反馈 */
-.os-btn:active,
-.theme-btn:active {
-  transform: scale(0.95);
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.6) rotate(-90deg);
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: var(--text-soft);
 }
 
 .github-star-link {
@@ -455,32 +435,22 @@ a,
   font-weight: 800;
 }
 
-.theme-btn {
-  min-width: 2.6rem;
-  font-weight: 700;
-}
-
-.os-btn-label {
-  font-size: 0.82rem;
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
 .os-btn.active,
 .theme-btn.active {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  pointer-events: auto;
   color: var(--text);
-  font-weight: 800;
+}
+
+.os-btn:hover,
+.theme-btn:hover {
+  color: var(--text);
 }
 
 .section-switcher-btn.active {
   background: var(--control-active-bg);
   color: var(--control-active-text);
-}
-
-.os-btn:hover:not(.active),
-.theme-btn:hover:not(.active) {
-  color: var(--text);
 }
 
 .section-switcher-btn:hover:not(.active) {
@@ -1165,28 +1135,9 @@ a,
   }
 
   .header-controls {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     gap: 0.5rem;
-    width: 100%;
-  }
-
-  .os-toggle,
-  .theme-toggle {
-    min-width: 0;
-    justify-content: space-between;
-  }
-
-  .os-toggle {
-    width: 100%;
-  }
-
-  .os-btn,
-  .theme-btn {
-    min-height: 38px;
-    padding: 0.48rem 0.72rem;
-    flex: 1;
-    min-width: 0;
+    align-items: center;
   }
 
   .github-star-link {

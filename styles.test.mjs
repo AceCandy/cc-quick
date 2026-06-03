@@ -28,7 +28,7 @@ test('styles.css 包含 GitHub Star 入口和手机端响应式契约', () => {
   assert.doesNotMatch(styles, /@media \(max-width:\s*1180px\)/);
   assert.match(styles, /@media \(max-width:\s*760px\) \{[\s\S]*\.page-sidebar\s*\{[\s\S]*grid-column:\s*1;/);
   assert.match(styles, /@media \(max-width:\s*680px\) \{[\s\S]*\.header\s*\{[\s\S]*position:\s*static;/);
-  assert.match(styles, /@media \(max-width:\s*680px\) \{[\s\S]*\.header-controls\s*\{[\s\S]*grid-template-columns:\s*minmax\(0,\s*1fr\) auto;/);
+  assert.match(styles, /@media \(max-width:\s*680px\) \{[\s\S]*\.header-controls\s*\{[\s\S]*display:\s*flex;/);
   assert.match(styles, /@media \(max-width:\s*680px\) \{[\s\S]*\.page-sidebar\s*\{[\s\S]*position:\s*sticky;/);
   assert.match(styles, /\.page-sidebar\s*\{[\s\S]*min-width:\s*0;/);
   assert.match(styles, /@media \(max-width:\s*680px\) \{[\s\S]*\.page-shell\s*\{[\s\S]*min-width:\s*0;/);
