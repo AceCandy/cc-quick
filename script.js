@@ -259,18 +259,26 @@ function initSectionSwitcher() {
   function setActivePanel(activePanel, syncHash) {
     var activeTarget = getPanelTarget(activePanel);
 
-    panels.forEach(function (panel) {
-      var isActive = panel === activePanel;
+    function updateDOM() {
+      panels.forEach(function (panel) {
+        var isActive = panel === activePanel;
 
-      panel.hidden = !isActive;
-    });
+        panel.hidden = !isActive;
+      });
 
-    buttons.forEach(function (button) {
-      var isActive = getButtonTarget(button) === activeTarget;
+      buttons.forEach(function (button) {
+        var isActive = getButtonTarget(button) === activeTarget;
 
-      button.classList.toggle("active", isActive);
-      button.setAttribute("aria-pressed", isActive ? "true" : "false");
-    });
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    }
+
+    if (document.startViewTransition) {
+      document.startViewTransition(updateDOM);
+    } else {
+      updateDOM();
+    }
 
     if (syncHash) {
       syncHashWithoutScroll(activeTarget);

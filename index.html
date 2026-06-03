@@ -22,7 +22,7 @@
             </a>
             <div class="header-counter" aria-live="polite">
               <span class="header-counter-label">本站访问量</span>
-              <span id="siteVisitCount" class="visit-count" data-counter-namespace="cc-quick" data-counter-name="site-visits">—</span>
+              <span id="siteVisitCount" class="visit-count" data-counter-namespace="cc-quick" data-counter-name="site-visits"><span class="visitor-loading-dots">...</span></span>
             </div>
           </div>
         </div>
@@ -55,8 +55,8 @@
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
           <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">在写入 shell 启动文件（.zshenv、.bash_login）和构建工具配置（.npmrc、.yarnrc）前显示安全提示（v2.1.160）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">后台会话在重新连接后 այժմ 保留完整聊天历史记录（v2.1.160）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Opus 4.7 和 4.8 的 Auto mode 现已在 Bedrock、Vertex 和 Foundry 上可用 — 通过 CLAUDE_CODE_ENABLE_AUTO_MODE=1 启用（v2.1.158）</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">后台会话在重新连接后现已保留完整聊天历史记录（v2.1.160）</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Opus 4.7 和 4.8 的 Auto mode 现已在 Bedrock、Vertex 和 Foundry 上可用（通过 CLAUDE_CODE_ENABLE_AUTO_MODE=1 启用，v2.1.158）</a></li>
         </ul>
       </div>
     </header>
@@ -214,7 +214,7 @@
             <div class="row"><span class="key">/agents</span> <span class="desc">管理 agents<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
             <div class="row"><span class="key">/workflows</span> <span class="desc">查看和管理后台多智能体工作流运行<span class="badge-new" data-added="2026-05-28">NEW</span></span></div>
             <div class="row"><span class="key">/review [PR]</span> <span class="desc">在本地审查 PR</span></div>
-            <div class="row"><span class="key">/ultrareview [PR#]</span> <span class="desc">云端代码审查 — 并行多 agent 分析</span></div>
+            <div class="row"><span class="key">/ultrareview [PR#]</span> <span class="desc">云端代码审查 (并行多 agent 分析)</span></div>
             <div class="row"><span class="key">/security-review</span> <span class="desc">对改动做安全分析</span></div>
             <div class="row"><span class="key">/loop [interval] [prompt]</span> <span class="desc">周期性任务（/proactive 别名）<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
             <div class="row"><span class="key">/ide</span> <span class="desc">IDE 集成状态</span></div>
