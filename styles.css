@@ -68,6 +68,7 @@
   --surface-config: #f8fafc;
   --font-sans: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
   --font-mono: "IBM Plex Mono", "JetBrains Mono", "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  --toggle-hover-shadow: rgba(15, 23, 42, 0.05);
 }
 
 :root[data-theme="dark"] {
@@ -113,6 +114,7 @@
   --surface-mcp: #121b29;
   --surface-cli: #121b29;
   --surface-config: #121b29;
+  --toggle-hover-shadow: rgba(2, 6, 23, 0.35);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -159,6 +161,7 @@
     --surface-mcp: #121b29;
     --surface-cli: #121b29;
     --surface-config: #121b29;
+    --toggle-hover-shadow: rgba(2, 6, 23, 0.35);
   }
 }
 
@@ -348,8 +351,8 @@ a,
 .theme-toggle {
   position: relative;
   display: inline-flex;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
@@ -366,7 +369,7 @@ a,
 .theme-toggle:hover {
   border-color: var(--border-strong);
   background: var(--toggle-single-hover-bg);
-  box-shadow: var(--toggle-single-shadow), 0 2px 8px rgba(15, 23, 42, 0.05);
+  box-shadow: var(--toggle-single-shadow), 0 2px 8px var(--toggle-hover-shadow);
 }
 
 .os-toggle:active,
@@ -473,8 +476,8 @@ a,
   color: var(--text-soft);
   font: inherit;
   cursor: pointer;
-  min-height: 2.35rem;
-  padding: 0.42rem 0.82rem;
+  min-height: 2.75rem;
+  padding: 0.42rem 1rem;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
@@ -546,6 +549,8 @@ a,
   display: inline-block;
   color: inherit;
   text-decoration: none;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .changelog-link:hover,
@@ -656,6 +661,10 @@ a,
   color: var(--text);
   transform: translateX(2px);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--border-strong) 55%, transparent);
+}
+
+.section-switcher-btn:focus-visible {
+  box-shadow: 0 0 0 3px var(--focus-ring), inset 0 0 0 1px color-mix(in srgb, var(--border-strong) 55%, transparent);
 }
 
 .section-switcher-btn:hover::before,
@@ -926,10 +935,11 @@ a,
   display: inline-flex;
   align-items: center;
   margin-left: 0.45rem;
-  padding: 0.16rem 0.42rem;
+  padding: 0.12rem 0.42rem;
   border-radius: 999px;
-  background: var(--danger);
-  color: #ffffff;
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid color-mix(in srgb, var(--danger) 24%, transparent);
   font-size: 0.66rem;
   line-height: 1;
   font-weight: 700;
@@ -1028,6 +1038,18 @@ a,
   .page-sidebar {
     grid-column: 1;
     grid-row: 1;
+    position: sticky;
+    top: var(--sticky-shell-top, 1rem);
+    z-index: 8;
+    max-height: none;
+    overflow: visible;
+    padding: 0.5rem 0.2rem;
+    background: var(--bg);
+    border: none;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    box-shadow: none;
+    margin: -0.25rem -0.5rem 0.5rem -0.5rem;
   }
 
   .page-content {
@@ -1035,10 +1057,54 @@ a,
     grid-row: 2;
   }
 
-  .page-sidebar {
+  .section-switcher {
     position: static;
     max-height: none;
-    overflow: visible;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .section-switcher::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .section-switcher-list {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    width: max-content;
+    padding: 0 0.5rem;
+  }
+
+  .section-switcher-item {
+    flex: 0 0 auto;
+  }
+
+  .section-switcher-btn {
+    width: auto;
+    min-height: 2.75rem; /* 提升触控高度至 44px */
+    padding: 0.65rem 1rem;
+    text-align: center;
+  }
+
+  .section-switcher-btn::before {
+    inset-block: auto 0.25rem;
+    inset-inline: 0.85rem;
+    width: auto;
+    height: 0.18rem;
+    transform: scaleX(0.55);
+  }
+
+  .section-switcher-btn:hover::before,
+  .section-switcher-btn:focus-visible::before,
+  .section-switcher-btn.active::before {
+    transform: scaleX(1);
+  }
+
+  .section-switcher-btn:hover,
+  .section-switcher-btn:focus-visible {
+    transform: none;
   }
 }
 
@@ -1294,9 +1360,8 @@ a,
   }
 
   .changelog-trigger {
-    min-height: 2rem;
-    padding: 0.34rem 0.58rem;
     font-size: 0.76rem;
+    padding: 0.42rem 0.82rem;
   }
 
   .section-switcher-btn {

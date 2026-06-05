@@ -37,9 +37,11 @@
 
   function applyOS(os) {
     buttons.forEach(function (button) {
-      button.classList.toggle("active", button.dataset.os === os);
+      var active = button.dataset.os === os;
+      button.classList.toggle("active", active);
       if (button.setAttribute) {
-        button.setAttribute("aria-pressed", button.dataset.os === os ? "true" : "false");
+        button.setAttribute("tabindex", active ? "0" : "-1");
+        button.setAttribute("aria-pressed", active ? "true" : "false");
       }
     });
 
@@ -100,6 +102,7 @@
       var active = button.dataset.theme === theme;
       button.classList.toggle("active", active);
       if (button.setAttribute) {
+        button.setAttribute("tabindex", active ? "0" : "-1");
         button.setAttribute("aria-pressed", active ? "true" : "false");
       }
     });
@@ -280,11 +283,15 @@ function initSectionSwitcher() {
         var isActive = getButtonTarget(button) === activeTarget;
 
         button.classList.toggle("active", isActive);
+        button.setAttribute("aria-selected", isActive ? "true" : "false");
         button.setAttribute("aria-pressed", isActive ? "true" : "false");
+        button.setAttribute("tabindex", isActive ? "0" : "-1");
       });
     }
 
-    if (document.startViewTransition) {
+    var prefersReducedMotion = typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (document.startViewTransition && !prefersReducedMotion) {
       document.startViewTransition(updateDOM);
     } else {
       updateDOM();
