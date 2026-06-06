@@ -65,6 +65,9 @@
   "--exclude-dynamic-system-prompt-sections": {
     "desc": "打印模式：改进跨用户 prompt 缓存"
   },
+  "--fallback-model": {
+    "desc": "为交互式会话设置 fallback model"
+  },
   "--from-pr": {
     "desc": "加载 PR 上下文（GitHub / GitLab / Bitbucket / GHE）"
   },
@@ -532,6 +535,9 @@
   },
   "Explore": {
     "desc": "快速只读（Haiku）"
+  },
+  "fallbackModel": {
+    "desc": "故障时最多 3 个 fallback model"
   },
   "FORCE_PROMPT_CACHING_5M": {
     "desc": "强制 5 分钟 prompt cache TTL"
