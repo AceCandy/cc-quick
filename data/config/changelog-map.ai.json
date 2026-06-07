@@ -51,6 +51,7 @@
   "Background sessions now preserve full chat history when reconnected (v2.1.160)": "后台会话在重新连接后 այժմ 保留完整聊天历史记录（v2.1.160）",
   "Background sessions now preserve model and effort level after waking from idle (v2.1.143)": "后台会话从空闲唤醒后现在会保留 model 和 effort level（v2.1.143）",
   "Bug fixes and reliability improvements (v2.1.167)": "错误修复和可靠性改进 (v2.1.167)",
+  "Bug fixes and reliability improvements (v2.1.168)": "修复 bug 并提升可靠性（v2.1.168）",
   "claude agents --cwd sets working directory for agent sessions (v2.1.141)": "claude agents --cwd 为 agent 会话设置工作目录 (v2.1.141)",
   "claude agents --json lists live Claude sessions as JSON for scripting (v2.1.145)": "claude agents --json 将实时 Claude 会话以 JSON 形式列出，便于脚本处理 (v2.1.145)",
   "claude agents now accepts session config flags (--add-dir, --settings, --mcp-config, --plugin-dir, --model, --effort) for dispatched background sessions (v2.1.142)": "claude agents 现在支持为派发的后台会话使用 session 配置标志（--add-dir、--settings、--mcp-config、--plugin-dir、--model、--effort）（v2.1.142）",
