@@ -42,15 +42,16 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.168</span></span>
-          <span class="last-updated">最近更新：2026年6月6日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.169</span></span>
+          <span class="last-updated">最近更新：2026年6月8日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 bug 并提升可靠性（v2.1.168）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">错误修复和可靠性改进 (v2.1.167)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">fallbackModel 设置和 --fallback-model 标志 — 可配置最多 3 个 fallback 模型 (v2.1.166)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--safe-mode flag — disable all customizations (CLAUDE.md, plugins, skills, hooks, MCP) for troubleshooting (v2.1.169)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/cd command — move sessions to a new working directory without breaking prompt cache (v2.1.169)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">disableBundledSkills setting — hide built-in skills and slash commands from the model (v2.1.169)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 bug 并提升可靠性（v2.1.168）</a></li>
         </ul>
       </div>
     </header>
@@ -532,7 +533,6 @@
             <div class="row"><span class="key">--agent</span> <span class="desc">使用 agent</span></div>
             <div class="row"><span class="key">--allowedTools</span> <span class="desc">预先批准</span></div>
             <div class="row"><span class="key">--disallowedTools</span> <span class="desc">移除 tools</span></div>
-            <div class="row"><span class="key">--allow-danger…</span> <span class="desc">为 ⇧Tab 循环添加 bypassPerms</span></div>
             <div class="row"><span class="key">--output-format</span> <span class="desc">json/stream</span></div>
             <div class="row"><span class="key">--max-budget-usd</span> <span class="desc">成本上限</span></div>
             <div class="row"><span class="key">--remote</span> <span class="desc">claude.ai 上的 Web 会话</span></div>
@@ -540,6 +540,7 @@
             <div class="row"><span class="key">--permission-mode</span> <span class="desc">plan/default/…</span></div>
             <div class="row"><span class="key">--dangerously-skip-permissions</span> <span class="desc">跳过所有提示 ⚠️</span></div>
             <div class="row"><span class="key">--debug [filter]</span> <span class="desc">调试日志</span></div>
+            <div class="row"><span class="key">--safe-mode</span> <span class="desc">Disable all customizations for troubleshooting (CLAUDE.md, plugins, hooks, MCP)<span class="badge-new" data-added="2026-06-08">NEW</span></span></div>
             <div class="row"><span class="key">--settings &lt;file&gt;</span> <span class="desc">加载 settings JSON</span></div>
             <div class="row"><span class="key">--from-pr</span> <span class="desc">加载 PR 上下文（GitHub / GitLab / Bitbucket / GHE）<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
             <div class="row"><span class="key">--fallback-model</span> <span class="desc">为交互式会话设置 fallback model<span class="badge-new" data-added="2026-06-06">NEW</span></span></div>
