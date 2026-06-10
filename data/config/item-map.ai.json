@@ -116,6 +116,9 @@
   "--resume, -r": {
     "desc": "恢复会话"
   },
+  "--safe-mode": {
+    "desc": "禁用所有自定义配置以便排障（CLAUDE.md、plugins、hooks、MCP）"
+  },
   "--settings <file>": {
     "desc": "加载 settings JSON"
   },
