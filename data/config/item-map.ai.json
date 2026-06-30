@@ -446,6 +446,9 @@
   "CLAUDE_CODE_DISABLE_CRON": {
     "desc": "禁用计划任务"
   },
+  "CLAUDE_CODE_DISABLE_MOUSE_CLICKS": {
+    "desc": "在全屏中禁用鼠标点击/拖拽/悬停（=1）"
+  },
   "CLAUDE_CODE_EFFORT_LEVEL": {
     "desc": "low/medium/high/max/auto"
   },
