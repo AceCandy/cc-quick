@@ -42,16 +42,17 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.170</span></span>
-          <span class="last-updated">最近更新：2026年6月9日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.195</span></span>
+          <span class="last-updated">最近更新：2026年6月27日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Claude Fable 5（claude-fable-5）现已可用 — 可通过 /model 或 ANTHROPIC_MODEL 选择 Mythos-class 模型（v2.1.170）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--safe-mode 标志 — 为排查问题禁用所有自定义项（CLAUDE.md、plugins、skills、hooks、MCP）（v2.1.169）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/cd 命令 — 将会话移动到新的工作目录，同时不破坏提示缓存（v2.1.169）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">disableBundledSkills 设置 — 对模型隐藏内置 skills 和 slash commands（v2.1.169）</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">CLAUDE_CODE_DISABLE_MOUSE_CLICKS disables mouse click/drag/hover in fullscreen (v2.1.195)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed hook matchers with hyphenated identifiers (exact-match instead of substring) (v2.1.195)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Improved Remote session startup with provisioning checklist (v2.1.195)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Live file path autocomplete in bash (!) mode (v2.1.193)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">autoMode.classifyAllShell routes all shell commands through auto-mode classifier (v2.1.193)</a></li>
         </ul>
       </div>
     </header>
@@ -120,7 +121,7 @@
               <h3 class="group-title" id="section-keyboard-group-前缀">前缀</h3>
               <div class="group-rows">
                 <div class="row"><span class="key key-chord"><span class="keycap">/</span></span> <span class="desc">斜杠命令</span></div>
-            <div class="row"><span class="key key-chord"><span class="keycap">!</span></span> <span class="desc">直接执行 bash</span></div>
+            <div class="row"><span class="key key-chord"><span class="keycap">!</span></span> <span class="desc">直接执行 bash<span class="badge-new" data-added="2026-06-25">NEW</span></span></div>
             <div class="row"><span class="key key-chord"><span class="keycap">@</span></span> <span class="desc">文件引用 + 自动补全</span></div>
               </div>
             </section>
@@ -180,7 +181,7 @@
             <div class="row"><span class="key">/copy [N]</span> <span class="desc">复制最后一条（或第 N 条）回复</span></div>
             <div class="row"><span class="key">/recap</span> <span class="desc">返回会话时获取上下文摘要<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
             <div class="row"><span class="key">/undo</span> <span class="desc">/rewind 的别名<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
-            <div class="row"><span class="key">/rewind</span> <span class="desc">回退对话 / 代码检查点</span></div>
+            <div class="row"><span class="key">/rewind</span> <span class="desc">回退对话 / 代码检查点<span class="badge-new" data-added="2026-06-24">NEW</span></span></div>
             <div class="row"><span class="key">/export</span> <span class="desc">导出对话</span></div>
             <div class="row"><span class="key">/plan [desc]</span> <span class="desc">计划模式（+ 自动开始）</span></div>
             <div class="row"><span class="key">/resume [session]</span> <span class="desc">按 ID/名称恢复</span></div>
@@ -420,7 +421,7 @@
             <div class="row"><span class="key">CLAUDE_CODE_SESSION_ID</span> <span class="desc">用于 hooks 和 CI tracing 的唯一 session ID<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN</span> <span class="desc">关闭全屏渲染（=1）<span class="badge-new" data-added="2026-05-07">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_AUTO_MEMORY</span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_1M_CONTEXT</span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_MOUSE_CLICKS</span> <span class="desc">Disable mouse click/drag/hover in fullscreen (=1)<span class="badge-new" data-added="2026-06-27">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</span> <span class="desc">通过 Homebrew/WinGet 自动升级<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_ENABLE_AUTO_MODE</span> <span class="desc">在 Bedrock/Vertex/Foundry 上启用自动模式（=1）<span class="badge-new" data-added="2026-05-30">NEW</span></span></div>
               </div>
