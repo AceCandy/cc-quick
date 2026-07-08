@@ -112,6 +112,7 @@
   "Fixed fullscreen blank screen after sleep/wake or Ctrl+Z/fg (v2.1.132)": "修复睡眠/唤醒或 Ctrl+Z/fg 后全屏黑屏问题（v2.1.132）",
   "Fixed hook matchers with hyphenated identifiers (exact-match instead of substring) (v2.1.195)": "修复了带连字符标识符的 hook matcher（精确匹配而非子串匹配）(v2.1.195)",
   "Fixed image paste breaking sessions; images auto-downscale to fit context (v2.1.126)": "修复图片粘贴导致 session 中断的问题；图片会自动缩小以适配 context (v2.1.126)",
+  "Fixed inline Ctrl+R history search crashes (v2.1.202)": "修复内联 Ctrl+R 历史搜索崩溃问题（v2.1.202）",
   "Fixed login loop from concurrent credential writes overwriting OAuth tokens (v2.1.136)": "修复并发 credential 写入覆盖 OAuth tokens 导致登录循环的问题 (v2.1.136)",
   "Fixed Mantle endpoint authentication (missing x-api-key header) (v2.1.131)": "修复 Mantle 端点认证（缺少 x-api-key 头）问题（v2.1.131）",
   "Fixed MCP servers silently disappearing after /clear (v2.1.136)": "修复 MCP servers 在 /clear 后静默消失的问题 (v2.1.136)",
