@@ -42,18 +42,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.204</span></span>
-          <span class="last-updated">最近更新：2026年7月8日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.205</span></span>
+          <span class="last-updated">最近更新：2026年7月9日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复无头会话中的 SessionStart hooks 期间 hook events 未流式传输的问题 (v2.1.204)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增登录过期警告 — 在后台会话被中断前重新认证 (v2.1.203)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">在手动权限模式激活时，页脚显示 ⏸ 徽标 (v2.1.203)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 daemon token 过期后后台会话永久无法 attach 的问题 (v2.1.203)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复 claude agents 在返回时静默停止 subagents 并从头重新运行 prompt 的问题 (v2.1.203)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复内存和 CPU 回归：context-usage 指标不再每轮重新分析完整 transcript (v2.1.203)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/doctor upgraded to full setup checkup; /checkup added as alias (v2.1.205)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Auto-update streams downloads to disk (~400 MB lower peak memory) (v2.1.205)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Auto mode asks before running rm -rf on unresolved variables (v2.1.205)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed messages sent while Claude was working being lost at --max-turns limit (v2.1.205)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed background agents stuck as failed/completed after resume (v2.1.205)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复无头会话中的 SessionStart hooks 期间 hook events 未流式传输的问题 (v2.1.204)</a></li>
         </ul>
       </div>
     </header>
@@ -233,7 +233,7 @@
                 <div class="row"><span class="key">/btw &lt;question&gt;</span> <span class="desc">旁支提问（不占上下文）</span></div>
             <div class="row"><span class="key">/extra-usage</span> <span class="desc">限流时的额外用量</span></div>
             <div class="row"><span class="key">/voice</span> <span class="desc">开启按住说话</span></div>
-            <div class="row"><span class="key">/doctor</span> <span class="desc">诊断安装问题</span></div>
+            <div class="row"><span class="key">/doctor</span> <span class="desc">诊断安装问题<span class="badge-new" data-added="2026-07-08">NEW</span></span></div>
             <div class="row"><span class="key">/insights</span> <span class="desc">分析会话报告</span></div>
             <div class="row"><span class="key">/desktop</span> <span class="desc">转到 Desktop 应用继续</span></div>
             <div class="row"><span class="key">/rename [name]</span> <span class="desc">为当前会话命名</span></div>
