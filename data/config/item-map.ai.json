@@ -377,6 +377,9 @@
   "autoScrollEnabled": {
     "desc": "在全屏模式下禁用自动滚动"
   },
+  "axScreenReader": {
+    "desc": "纯文本 screen reader 渲染"
+  },
   "background: true": {
     "desc": "后台任务"
   },
@@ -436,6 +439,9 @@
   },
   "claude update": {
     "desc": "更新"
+  },
+  "CLAUDE_AX_SCREEN_READER": {
+    "desc": "screen reader 模式（=1）"
   },
   "CLAUDE_CODE_CERT_STORE": {
     "desc": "逗号分隔的 TLS CA 来源：bundled、system（默认：两者）"
