@@ -42,6 +42,7 @@
   "/ultrareview [PR#] — comprehensive cloud code review using parallel multi-agent analysisNEW": "/ultrareview [PR#] — 使用并行多代理分析进行全面的云端代码审查NEW",
   "/usage replaces /cost and /stats (v2.1.118)": "/usage 替代 /cost 和 /stats (v2.1.118)",
   "/usage shows per-category cost breakdown: skills, subagents, plugins, MCP (v2.1.149)": "/usage 显示按类别的成本明细：skills、subagents、plugins、MCP (v2.1.149)",
+  "/verify and /code-review skills no longer run automatically — invoke them explicitly when needed (v2.1.215)": "/verify 和 /code-review 技能不再自动运行——需要时请显式调用它们（v2.1.215）",
   "⏸ badge in footer when manual permission mode is active (v2.1.203)": "在手动权限模式激活时，页脚显示 ⏸ 徽标 (v2.1.203)",
   "50+ bug fixes: terminal modes, MCP tools, settings, permissions (v2.1.136)": "50+ 个 bug 修复：terminal modes、MCP tools、settings、permissions (v2.1.136)",
   "Added claude auto-mode reset command with confirmation prompt (v2.1.212)": "新增 claude auto-mode 重置命令，带确认提示（v2.1.212）",
