@@ -1,6 +1,7 @@
 {
   "--exclude-dynamic-system-prompt-sections improves cross-user prompt caching in print mode (v2.1.98)": "--exclude-dynamic-system-prompt-sections 可改进 print 模式下的跨用户 prompt 缓存（v2.1.98）",
   "--from-pr supports GitLab, Bitbucket and GitHub Enterprise (v2.1.119)": "--from-pr 支持 GitLab、Bitbucket 和 GitHub Enterprise (v2.1.119)",
+  "--max-budget-usd now stops background subagents mid-run when budget is exceeded (v2.1.217)": "--max-budget-usd 现在会在预算超出时中途停止后台 subagents（v2.1.217）",
   "--plugin-dir now accepts .zip plugin archives in addition to directories (v2.1.128)": "--plugin-dir 现在除目录外，还接受 .zip 插件归档（v2.1.128）",
   "--plugin-url <url> fetches plugin .zip archive directly from URL (v2.1.129)": "--plugin-url <url> 现在可直接从 URL 获取插件 .zip 压缩包（v2.1.129）",
   "--resume/--continue now resurrect unexpired scheduled tasks; /recap now works for users with telemetry disabled (v2.1.110)": "--resume/--continue 现在会恢复未过期的 scheduled tasks；/recap 现在对禁用 telemetry 的用户也可用（v2.1.110）",
@@ -111,6 +112,7 @@
   "disableBundledSkills setting — hide built-in skills and slash commands from the model (v2.1.169)": "disableBundledSkills 设置 — 对模型隐藏内置 skills 和 slash commands（v2.1.169）",
   "Dynamic workflow size setting in /config — controls agent count per workflow run (v2.1.202)": "在 /config 中新增动态 workflow size 设置——控制每次 workflow run 的 agent 数量 (v2.1.202)",
   "Dynamic workflows: /workflows to view and manage background multi-agent runs (v2.1.154)": "Dynamic workflows：使用 /workflows 查看和管理后台 multi-agent 运行（v2.1.154）",
+  "Emoji shortcode autocomplete (:heart:, :smile: etc.) in prompt input (v2.1.217)": "提示输入中的 Emoji 短代码自动补全（:heart:, :smile: 等）（v2.1.217）",
   "EnterWorktree can now switch between Claude-managed worktrees mid-session (v2.1.157)": "EnterWorktree 现在可在会话中切换 Claude 管理的 worktree（v2.1.157）",
   "EnterWorktree tool gains a path parameter to switch into an existing worktree (v2.1.105)": "EnterWorktree 工具新增 path 参数，可切换到现有 worktree（v2.1.105）",
   "Failed Bash commands in parallel tool calls no longer cancel sibling calls (v2.1.161)": "并行 tool calls 中失败的 Bash 命令不再取消同级调用 (v2.1.161)",
@@ -224,6 +226,7 @@
   "Stalled subagents now fail with a clear error after 10 minutes instead of hanging silently (v2.1.113)": "卡住的 subagents 现在会在 10 分钟后以明确错误失败，而不是静默挂起 (v2.1.113)",
   "Startup warnings for path-based Write/NotebookEdit/Glob permission rules (v2.1.210)": "基于路径的 Write/NotebookEdit/Glob 权限规则在启动时发出警告 (v2.1.210)",
   "Stateful MCP servers no longer reconnect-loop on tools/list (v2.1.153)": "有状态 MCP 服务器不再在 tools/list 上陷入重连循环（v2.1.153）",
+  "Subagents no longer spawn nested subagents by default; concurrency cap raised to 20 (v2.1.217)": "Subagents 默认不再生成嵌套 subagents；并发上限提升至 20（v2.1.217）",
   "Subagents that stall mid-stream now fail with a clear error after 10 minutes instead of hanging silentlyNEW": "在流式传输中途卡住的子代理现在会在 10 分钟后以清晰错误失败，而不是静默挂起NEW",
   "Transcript navigation: ? for shortcuts, {/} to jump between prompts (v2.1.139)": "Transcript 导航：? 查看快捷键，{/} 在提示之间跳转（v2.1.139）",
   "Transient 429 rate-limit errors now auto-retry with backoff for subscribers (v2.1.199)": "订阅用户遇到的临时 429 限流错误现在会自动重试，并采用 backoff 策略（v2.1.199）",
