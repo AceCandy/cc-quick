@@ -115,6 +115,7 @@
   "Disable model thinking via --thinking disabled or MAX_THINKING_TOKENS=0 (v2.1.166)": "可通过 --thinking disabled 或 MAX_THINKING_TOKENS=0 禁用 model thinking (v2.1.166)",
   "disableBundledSkills setting — hide built-in skills and slash commands from the model (v2.1.169)": "disableBundledSkills 设置 — 对模型隐藏内置 skills 和 slash commands（v2.1.169）",
   "Dynamic workflow size setting in /config — controls agent count per workflow run (v2.1.202)": "在 /config 中新增动态 workflow size 设置——控制每次 workflow run 的 agent 数量 (v2.1.202)",
+  "Dynamic workflows now default to medium size (≤15 agents); configurable via workflowSizeGuideline setting or /config (v2.1.219)": "动态工作流现默认使用中等规模（≤15 个代理）；可通过 workflowSizeGuideline 设置或 /config 配置（v2.1.219）",
   "Dynamic workflows: /workflows to view and manage background multi-agent runs (v2.1.154)": "Dynamic workflows：使用 /workflows 查看和管理后台 multi-agent 运行（v2.1.154）",
   "Emoji shortcode autocomplete (:heart:, :smile: etc.) in prompt input (v2.1.217)": "提示输入中的 Emoji 短代码自动补全（:heart:, :smile: 等）（v2.1.217）",
   "EnterWorktree can now switch between Claude-managed worktrees mid-session (v2.1.157)": "EnterWorktree 现在可在会话中切换 Claude 管理的 worktree（v2.1.157）",
