@@ -220,6 +220,7 @@
   "Screen reader mode: --ax-screen-reader flag, CLAUDE_AX_SCREEN_READER=1, or axScreenReader: true setting (v2.1.208)": "屏幕阅读器模式：使用 --ax-screen-reader 标志、CLAUDE_AX_SCREEN_READER=1，或 axScreenReader: true 设置（v2.1.208）",
   "Security fixes for blockedMarketplaces (v2.1.119)": "blockedMarketplaces 的安全修复 (v2.1.119)",
   "Security fixes: Bash/zsh regex permission-check bypass, PowerShell quote-character mishandling, @-mentioned files silently dropped (v2.1.221)": "安全修复：修复 Bash/zsh 正则权限检查绕过、PowerShell 引号字符处理错误，以及 @ 提及的文件被静默丢弃的问题 (v2.1.221)",
+  "Security fixes: worktree-isolated subagents blocked from destructive git commands against main checkout; PreToolUse auto-allow hook bypass fixed (v2.1.222)": "安全修复：隔离在 worktree 中的子代理已禁止对主检出执行破坏性的 git 命令；已修复 PreToolUse 自动允许 hook 的绕过问题（v2.1.222）",
   "Security prompts before writing to shell startup files (.zshenv, .bash_login) and build-tool configs (.npmrc, .yarnrc) (v2.1.160)": "在写入 shell 启动文件（.zshenv、.bash_login）和构建工具配置（.npmrc、.yarnrc）前显示安全提示（v2.1.160）",
   "Security: Bash find deny rules no longer auto-approve -exec/-delete; macOS /private paths now treated as dangerous removal targets": "安全性：Bash find deny 规则不再自动批准 -exec/-delete；macOS /private 路径现在被视为危险删除目标",
   "Security: Bash find deny rules no longer auto-approve -exec/-delete; macOS /private paths now treated as dangerous removal targetsNEW": "安全性：Bash find 拒绝规则不再自动批准 -exec/-delete；macOS 的 /private 路径现在被视为危险删除目标NEW",
