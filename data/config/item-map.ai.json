@@ -260,6 +260,9 @@
   "/resume [session]": {
     "desc": "按 ID/名称恢复"
   },
+  "/review": {
+    "desc": " /code-review 的别名"
+  },
   "/review [PR]": {
     "desc": "在本地审查 PR"
   },
