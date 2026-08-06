@@ -42,16 +42,15 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.222</span></span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.223</span></span>
           <span class="last-updated">最近更新：2026年8月5日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">安全修复：隔离在 worktree 中的子代理已禁止对主检出执行破坏性的 git 命令；已修复 PreToolUse 自动允许 hook 的绕过问题（v2.1.222）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">聚焦视图：chat-menu 切换会将工具活动隐藏在可展开的逐轮摘要后；使用 Ctrl+Alt+F 切换 (v2.1.221)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">安全修复：修复 Bash/zsh 正则权限检查绕过、PowerShell 引号字符处理错误，以及 @ 提及的文件被静默丢弃的问题 (v2.1.221)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">后台会话现在仅在任务需要时才会 commit/push 并打开 draft PR，遵循 CLAUDE.md 中的指示 (v2.1.221)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Security fixes: Bash permission bypass vulnerabilities fixed; permission prompts no longer hide commands with tabs/Unicode (v2.1.223)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/review is now an alias for /code-review; CLAUDE_CODE_DISABLE_1M_CONTEXT applies to all 1M-capable models (v2.1.223)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">安全修复：隔离在 worktree 中的子代理已禁止对主检出执行破坏性的 git 命令；已修复 PreToolUse 自动允许 hook 的绕过问题（v2.1.222）</a></li>
         </ul>
       </div>
     </header>
@@ -216,7 +215,7 @@
             <div class="row"><span class="key">/reload-skills</span> <span class="desc">无需重启即可重新加载 skills<span class="badge-new" data-added="2026-05-27">NEW</span></span></div>
             <div class="row"><span class="key">/agents</span> <span class="desc">管理 agents<span class="badge-new" data-added="2026-04-08">NEW</span></span></div>
             <div class="row"><span class="key">/workflows</span> <span class="desc">查看和管理后台多智能体工作流运行<span class="badge-new" data-added="2026-05-28">NEW</span></span></div>
-            <div class="row"><span class="key">/review [PR]</span> <span class="desc">在本地审查 PR</span></div>
+            <div class="row"><span class="key">/review</span> <span class="desc">Alias for /code-review</span></div>
             <div class="row"><span class="key">/ultrareview [PR#]</span> <span class="desc">云端代码审查 — 并行多 agent 分析</span></div>
             <div class="row"><span class="key">/security-review</span> <span class="desc">对改动做安全分析</span></div>
             <div class="row"><span class="key">/loop [interval] [prompt]</span> <span class="desc">周期性任务（/proactive 别名）<span class="badge-new" data-added="2026-04-16">NEW</span></span></div>
