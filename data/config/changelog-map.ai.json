@@ -81,6 +81,7 @@
   "Bug fixes and reliability improvements (v2.1.220)": "Bug 修复和稳定性改进 (v2.1.220)",
   "Bug fixes: feature-flag tier evaluation on expired login token, Bash commands under claude-code-action with allowed_non_write_users (v2.1.227)": "Bug 修复：过期登录 token 上的 feature-flag tier 评估，以及在 allowed_non_write_users 下的 claude-code-action 中执行 Bash 命令（v2.1.227）",
   "Bug fixes: OAuth 401 token rotation, MCP keychain timeouts on macOS, Remote Control reliability (v2.1.225–226)": "修复问题：OAuth 401 token rotation、macOS 上的 MCP keychain 超时、Remote Control 可靠性 (v2.1.225–226)",
+  "Bug fixes: session cleanup, git detection on Windows, /tui model reset, Remote Control /resume history leak (v2.1.228)": "修复：会话清理、Windows 上的 git 检测、/tui 模型重置、Remote Control /resume 历史泄漏 (v2.1.228)",
   "claude agents --cwd sets working directory for agent sessions (v2.1.141)": "claude agents --cwd 为 agent 会话设置工作目录 (v2.1.141)",
   "claude agents --json lists live Claude sessions as JSON for scripting (v2.1.145)": "claude agents --json 将实时 Claude 会话以 JSON 形式列出，便于脚本处理 (v2.1.145)",
   "claude agents now accepts session config flags (--add-dir, --settings, --mcp-config, --plugin-dir, --model, --effort) for dispatched background sessions (v2.1.142)": "claude agents 现在支持为派发的后台会话使用 session 配置标志（--add-dir、--settings、--mcp-config、--plugin-dir、--model、--effort）（v2.1.142）",
@@ -177,6 +178,7 @@
   "Git push to pre-configured remote now auto-allowed (no per-push prompt) (v2.1.206)": "Git push 到预配置的 remote 现已自动允许（不再每次 push 提示）（v2.1.206）",
   "Glob patterns in MCP deny rule tool-name position (\"*\" denies all tools) (v2.1.166)": "MCP deny 规则 tool-name 位置支持 Glob 模式（\"*\" 拒绝所有工具）(v2.1.166)",
   "Hardened cross-session messaging — relayed Claude messages no longer carry user authority (v2.1.166)": "增强跨会话消息传递安全性 — 转发的 Claude 消息不再携带用户权限 (v2.1.166)",
+  "Hardened skills synced from claude.ai: prevents shadowing local commands, sanitized descriptions (v2.1.228)": "从 claude.ai 同步的 hardened skills：防止覆盖本地命令、清理描述 (v2.1.228)",
   "Improved /loop: Esc cancels pending wakeups; wakeups display as \"Claude resuming /loop wakeup\"NEW": "改进 /loop：Esc 可取消待处理的唤醒；唤醒显示为“Claude resuming /loop wakeup”NEW",
   "Improved /model to warn before switching mid-conversation; /resume defaults to current directory (v2.1.108)": "改进 /model，在对话中切换前会发出警告；/resume 默认使用当前目录 (v2.1.108)",
   "Improved /plugin Installed tab: items needing attention and favorites at top, disabled items folded; /doctor warns on duplicate MCP server configs (v2.1.110)": "改进 /plugin Installed 选项卡：需要关注的项和收藏项置顶，禁用项折叠；/doctor 会在检测到重复的 MCP server 配置时发出警告（v2.1.110）",
@@ -259,5 +261,6 @@
   "Windows: Git Bash no longer required — PowerShell used directly (v2.1.120)": "Windows：不再需要 Git Bash —— 直接使用 PowerShell（v2.1.120）",
   "Workspace trust prompt for claude agents in untrusted directories (v2.1.225)": "在不受信任的目录中为 claude agents 显示 Workspace trust 提示 (v2.1.225)",
   "workspace.git_worktree is now included in status line JSON input (v2.1.97)": "workspace.git_worktree 现已包含在 status line JSON input 中 (v2.1.97)",
+  "Write tool now allows newer models to overwrite previously-unread files (v2.1.228)": "Write 工具现在允许较新的模型覆盖之前未读的文件 (v2.1.228)",
   "WSL2: image paste from Windows clipboard now works via PowerShell fallback (v2.1.136)": "WSL2：通过 PowerShell fallback，现在可从 Windows 剪贴板粘贴图片 (v2.1.136)"
 }
