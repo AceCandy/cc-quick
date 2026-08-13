@@ -153,6 +153,7 @@
   "Fixed left-arrow key discarding conversation with no undo; now prompts to confirm after edits (v2.1.218)": "修复了按左箭头键会丢弃 conversation 且无法撤销的问题；现在在编辑后会提示确认 (v2.1.218)",
   "Fixed login loop from concurrent credential writes overwriting OAuth tokens (v2.1.136)": "修复并发 credential 写入覆盖 OAuth tokens 导致登录循环的问题 (v2.1.136)",
   "Fixed Mantle endpoint authentication (missing x-api-key header) (v2.1.131)": "修复 Mantle 端点认证（缺少 x-api-key 头）问题（v2.1.131）",
+  "Fixed MCP OAuth sign-in for pre-registered OAuth clients (e.g. Slack): redirect URI mismatch resolved (v2.1.231)": "修复了预注册 OAuth 客户端（例如 Slack）的 MCP OAuth 登录：已解决重定向 URI 不匹配问题（v2.1.231）",
   "Fixed MCP servers silently disappearing after /clear (v2.1.136)": "修复 MCP servers 在 /clear 后静默消失的问题 (v2.1.136)",
   "Fixed MCP unbounded memory growth and silent tools/list failures (v2.1.132)": "修复 MCP 无界内存增长以及 tools/list 静默失败问题（v2.1.132）",
   "Fixed MCP_TOOL_TIMEOUT not applying to remote HTTP/SSE MCP servers (v2.1.142)": "修复了 MCP_TOOL_TIMEOUT 未应用于远程 HTTP/SSE MCP 服务器的问题（v2.1.142）",
