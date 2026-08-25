@@ -608,6 +608,9 @@
   "modelOverrides": {
     "desc": "将模型选择器映射到自定义 ID"
   },
+  "modelPicker": {
+    "desc": "用自定义模型列表配置 /model picker"
+  },
   "Monitor tool": {
     "desc": "从后台脚本流式输出事件"
   },
