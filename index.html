@@ -42,18 +42,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.247</span></span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.250</span></span>
           <span class="last-updated">最近更新：2026年8月26日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增 SendFeedback 工具：Claude 起草 bug 报告供审阅；可通过 /feedback 发送（可用 feedbackDrafts 禁用）（v2.1.247）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复了携带 API keys 到第三方网关的 telemetry 请求（v2.1.246）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/permissions 中用于查看/编辑 classifier rules 的 Auto mode 选项卡（v2.1.246）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复了后台会话在 45 秒后失败的问题（v2.1.246）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/cd 现在会立即应用项目设置、hooks、MCP servers 和 skills（v2.1.246）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复了全屏 transcript 在超长行（base64 strings）下变慢的问题（v2.1.246）</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Bug fixes and reliability improvements (v2.1.250)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--restricted flag: strip built-in tools from Claude's toolset (v2.1.248)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Cross-session messaging support added (v2.1.248)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed prompt-cache misses in long sessions (v2.1.248)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Settings diagnostics: new command to debug settings loading (v2.1.248)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed session cleanup and transcript retention issues (v2.1.248)</a></li>
         </ul>
       </div>
     </header>
@@ -545,7 +545,7 @@
             <div class="row"><span class="key">--safe-mode</span> <span class="desc">禁用所有自定义配置以便排障（CLAUDE.md、plugins、hooks、MCP）<span class="badge-new" data-added="2026-06-08">NEW</span></span></div>
             <div class="row"><span class="key">--settings &lt;file&gt;</span> <span class="desc">加载 settings JSON</span></div>
             <div class="row"><span class="key">--from-pr</span> <span class="desc">加载 PR 上下文（GitHub / GitLab / Bitbucket / GHE）<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
-            <div class="row"><span class="key">--fallback-model</span> <span class="desc">为交互式会话设置 fallback model<span class="badge-new" data-added="2026-06-06">NEW</span></span></div>
+            <div class="row"><span class="key">--restricted</span> <span class="desc">Strip built-in tools from Claude's toolset<span class="badge-new" data-added="2026-08-27">NEW</span></span></div>
               </div>
             </section>
           </div>
