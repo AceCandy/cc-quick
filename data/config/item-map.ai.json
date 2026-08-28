@@ -113,6 +113,9 @@
   "--remote-control / --rc": {
     "desc": "启用 Remote Control 的交互式会话"
   },
+  "--restricted": {
+    "desc": "从 Claude 的工具集中移除内置工具"
+  },
   "--resume, -r": {
     "desc": "恢复会话"
   },
