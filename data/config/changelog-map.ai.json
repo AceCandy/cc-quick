@@ -87,6 +87,7 @@
   "Bug fixes and reliability improvements (v2.1.220)": "Bug 修复和稳定性改进 (v2.1.220)",
   "Bug fixes and reliability improvements (v2.1.241, v2.1.240)": "错误修复和可靠性改进（v2.1.241、v2.1.240）",
   "Bug fixes and reliability improvements (v2.1.250)": "错误修复和可靠性改进（v2.1.250）",
+  "Bug fixes: Bash task-swap errors on Mac, always-allow save in non-project dirs, Remote Control stall on degraded connections (v2.1.252)": "修复：Mac 上 Bash 任务切换错误、非项目目录中始终允许保存、Remote Control 在连接降级时卡住（v2.1.252）",
   "Bug fixes: feature-flag tier evaluation on expired login token, Bash commands under claude-code-action with allowed_non_write_users (v2.1.227)": "Bug 修复：过期登录 token 上的 feature-flag tier 评估，以及在 allowed_non_write_users 下的 claude-code-action 中执行 Bash 命令（v2.1.227）",
   "Bug fixes: OAuth 401 token rotation, MCP keychain timeouts on macOS, Remote Control reliability (v2.1.225–226)": "修复问题：OAuth 401 token rotation、macOS 上的 MCP keychain 超时、Remote Control 可靠性 (v2.1.225–226)",
   "Bug fixes: session cleanup, git detection on Windows, /tui model reset, Remote Control /resume history leak (v2.1.228)": "修复：会话清理、Windows 上的 git 检测、/tui 模型重置、Remote Control /resume 历史泄漏 (v2.1.228)",
