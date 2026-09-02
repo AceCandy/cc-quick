@@ -491,6 +491,9 @@
   "CLAUDE_CODE_SESSION_ID": {
     "desc": "用于 hooks 和 CI tracing 的唯一 session ID"
   },
+  "CLAUDE_CODE_SUBAGENT_MODEL_FORCE": {
+    "desc": "将某个模型应用到所有 subagent"
+  },
   "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB": {
     "desc": "从子进程中剥离凭据"
   },
