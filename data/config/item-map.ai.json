@@ -278,6 +278,9 @@
   "/simplify [focus]": {
     "desc": "代码审查 + 修复（3 个 agents）"
   },
+  "/skill-doctor": {
+    "desc": "识别未使用的 skills 及其上下文成本"
+  },
   "/theme [name]": {
     "desc": "创建并切换命名的自定义主题；包含 \"Auto (match terminal)\" 深色/浅色"
   },
