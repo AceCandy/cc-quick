@@ -89,6 +89,7 @@
   "Bug fixes and reliability improvements (v2.1.220)": "Bug 修复和稳定性改进 (v2.1.220)",
   "Bug fixes and reliability improvements (v2.1.241, v2.1.240)": "错误修复和可靠性改进（v2.1.241、v2.1.240）",
   "Bug fixes and reliability improvements (v2.1.250)": "错误修复和可靠性改进（v2.1.250）",
+  "Bug fixes and reliability improvements (v2.1.263)": "错误修复与可靠性改进 (v2.1.263)",
   "Bug fixes: Bash task-swap errors on Mac, always-allow save in non-project dirs, Remote Control stall on degraded connections (v2.1.252)": "修复：Mac 上 Bash 任务切换错误、非项目目录中始终允许保存、Remote Control 在连接降级时卡住（v2.1.252）",
   "Bug fixes: concurrent session config conflicts, thinking rejection loop, Bash deny rules (v2.1.259)": "错误修复：并发会话配置冲突、thinking 拒绝循环、Bash deny 规则（v2.1.259）",
   "Bug fixes: feature-flag tier evaluation on expired login token, Bash commands under claude-code-action with allowed_non_write_users (v2.1.227)": "Bug 修复：过期登录 token 上的 feature-flag tier 评估，以及在 allowed_non_write_users 下的 claude-code-action 中执行 Bash 命令（v2.1.227）",
