@@ -12,5 +12,8 @@
   },
   "dependencies": {
     "cheerio": "^1.1.2"
+  },
+  "overrides": {
+    "undici": "8.9.0"
   }
 }
