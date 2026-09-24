@@ -122,6 +122,7 @@
   "Claude Opus 4.7 xhigh effort level — between high and max, available via /effort, --effort, and model picker": "Claude Opus 4.7 xhigh effort level — 介于 high 和 max 之间，可通过 /effort、--effort 和模型选择器使用",
   "Claude Opus 4.7 xhigh effort level — between high and max, available via /effort, --effort, and model picker; /effort opens an interactive slider with arrow keys when called without argumentsNEW": "Claude Opus 4.7 xhigh 努力度级别——介于 high 和 max 之间，可通过 /effort、--effort 和模型选择器使用；当 /effort 不带参数调用时，会打开一个可用方向键操作的交互式滑块NEW",
   "Claude Opus 5 (claude-opus-5) added — 1M context, new default Opus; Opus 4.7 removed from fast mode (v2.1.219)": "新增 Claude Opus 5 (claude-opus-5) — 1M 上下文，新的默认 Opus；fast mode 中移除 Opus 4.7 (v2.1.219)",
+  "Claude Opus 5.5 (claude-opus-5-5) is now the default Opus model — 1M context, lower cache read cost (v2.1.280)": "Claude Opus 5.5 (claude-opus-5-5) 现已成为默认的 Opus 模型 — 1M 上下文，缓存读取成本更低（v2.1.280）",
   "claude plugin details <name> shows component inventory and projected token cost (v2.1.139)": "claude plugin details <name> 显示组件清单和预计 token 成本（v2.1.139）",
   "claude plugin disable now refuses when another enabled plugin depends on target (disable-chain hint shown); claude plugin enable force-enables transitive dependencies (v2.1.143)": "当另一个已启用的 plugin 依赖于目标插件时，claude plugin disable 现在会拒绝执行（显示 disable-chain 提示）；claude plugin enable 会强制启用传递依赖（v2.1.143）",
   "claude plugin init <name> scaffolds new plugins (v2.1.157)": "claude plugin init <name> 可生成新插件脚手架（v2.1.157）",
