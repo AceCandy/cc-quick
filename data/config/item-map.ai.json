@@ -536,7 +536,7 @@
   "CtrlY": {
     "desc": "恢复已清空的输入缓冲区"
   },
-  "desc": "完整设置检查（/checkup 别名）；prompt-audit 用于审查 CLAUDE.md 中过时的模型引用",
+  "desc": "全面检查设置（/checkup 别名）；prompt-audit 会审查 CLAUDE.md 中过时的模型引用",
   "description": {
     "desc": "自动调用触发器"
   },
