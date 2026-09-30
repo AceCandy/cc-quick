@@ -42,18 +42,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.284</span></span>
-          <span class="last-updated">最近更新：2026年9月29日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.285</span></span>
+          <span class="last-updated">最近更新：2026年9月30日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Claude Sonnet 5.5 现为默认模型；1M 上下文窗口，$2/$10/Mtok (v2.1.284)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">claude --desktop opens the Claude desktop app on the current directory or active session (v2.1.285)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">CLAUDE_CODE_DISABLE_WEB_FETCH env var disables the WebFetch tool (v2.1.285)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Claude Sonnet 5.5 现为默认模型；1M 上下文窗口，$2/$10/Mtok (v2.1.284)</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">在 /usage 和状态栏中显示支出追踪信息 (v2.1.284)</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/mcp reconnect all 会重试所有失败的 MCP 服务器连接 (v2.1.284)</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复递归 rm 绕过安全提示的问题 (v2.1.284)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增 /doctor prompt-audit 子命令，用于审计 CLAUDE.md 文件中过时的模型引用（v2.1.283）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">新增托管设置 availableModelsMatch + deniedModels，用于控制每个部署可用的模型（v2.1.283）</a></li>
         </ul>
       </div>
     </header>
@@ -417,7 +417,6 @@
             <div class="row"><span class="key">CLAUDECODE</span> <span class="desc">检测 CC shell (=1)</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_CRON</span> <span class="desc">禁用计划任务</span></div>
             <div class="row"><span class="key">DISABLE_UPDATES</span> <span class="desc">阻止所有更新路径<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
-            <div class="row"><span class="key">API_TIMEOUT_MS</span> <span class="desc">API 超时（默认：600000ms）</span></div>
             <div class="row"><span class="key">MCP_TIMEOUT</span> <span class="desc">MCP server 启动超时（ms）</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_SESSION_ID</span> <span class="desc">用于 hooks 和 CI tracing 的唯一 session ID<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN</span> <span class="desc">关闭全屏渲染（=1）<span class="badge-new" data-added="2026-05-07">NEW</span></span></div>
@@ -425,6 +424,7 @@
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_MOUSE_CLICKS</span> <span class="desc">在全屏中禁用鼠标点击/拖拽/悬停（=1）<span class="badge-new" data-added="2026-06-27">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</span> <span class="desc">通过 Homebrew/WinGet 自动升级<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_AX_SCREEN_READER</span> <span class="desc">screen reader 模式（=1）<span class="badge-new" data-added="2026-07-14">NEW</span></span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_WEB_FETCH</span> <span class="desc">Disable the WebFetch tool (=1)<span class="badge-new" data-added="2026-09-29">NEW</span></span></div>
               </div>
             </section>
           </div>
