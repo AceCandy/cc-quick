@@ -206,6 +206,9 @@
   "/diff": {
     "desc": "交互式 diff 查看器"
   },
+  "/doctor [prompt-audit]": {
+    "desc": "完整设置检查（/checkup 别名）；prompt-audit 用于审查 CLAUDE.md 中过时的模型引用"
+  },
   "/effort": {
     "desc": "○ 低 · ◐ 中 · ● 高 · ★ 最大"
   },
@@ -463,6 +466,9 @@
   },
   "CLAUDE_CODE_DISABLE_MOUSE_CLICKS": {
     "desc": "在全屏中禁用鼠标点击/拖拽/悬停（=1）"
+  },
+  "CLAUDE_CODE_DISABLE_WEB_FETCH": {
+    "desc": "禁用 WebFetch 工具（=1）"
   },
   "CLAUDE_CODE_EFFORT_LEVEL": {
     "desc": "low/medium/high/max/auto"
