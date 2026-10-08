@@ -42,18 +42,16 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.292</span></span>
-          <span class="last-updated">最近更新：2026年10月7日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.294</span></span>
+          <span class="last-updated">最近更新：2026年10月8日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">多项安全修复：绕过权限提示、通过交换符号链接读取数据、篡改设置缓存（v2.1.292）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复会话恢复后 /loop 定时任务静默停止的问题（v2.1.292）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">为 claude plugin install 添加 --marketplace 参数（v2.1.292）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">为 Agent 工具添加 effort 参数，用于控制子代理（v2.1.292）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复云端会话丢失对权限提示的回答问题 (v2.1.291)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复退出时会话最后几条消息丢失的问题 (v2.1.291)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed prompt/agent hooks written as instructions (e.g. &quot;Block commands that...&quot;) incorrectly allowing blocked actions (v2.1.294)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Improved prompt hooks on Stop/SubagentStop so Claude is less likely to stop early on conditional instructions (v2.1.294)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Added Claude Haiku 5.5 (claude-haiku-5-5) as default Haiku model; 1M context, $0.10/$0.50 per M tokens (v2.1.293)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fixed context compaction treating pre-compaction actions as done; fixed HTTP MCP memory leak (v2.1.293)</a></li>
         </ul>
       </div>
     </header>
@@ -335,7 +333,7 @@
               <div class="group-rows">
                 <div class="row"><span class="key">/context</span> <span class="desc">可视化上下文（网格）</span></div>
             <div class="row"><span class="key">/compact [focus]</span> <span class="desc">按焦点压缩上下文</span></div>
-            <div class="row"><span class="key">1M context</span> <span class="desc">Opus 4.6（Max/Team/Ent）<span class="badge-new" data-added="2026-06-30">NEW</span></span></div>
+            <div class="row"><span class="key">1M context</span> <span class="desc">Opus 4.6（Max/Team/Ent）</span></div>
               </div>
             </section>
 
