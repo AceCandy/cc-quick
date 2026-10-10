@@ -42,16 +42,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.295</span></span>
-          <span class="last-updated">最近更新：2026年10月9日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.296</span></span>
+          <span class="last-updated">最近更新：2026年10月10日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">为命令和 HTTP hook 添加 onFailure: &quot;block&quot; —— hook 失败现在会阻止操作（v2.1.295）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">通过 Program Status Protocol（OSC 7501）添加终端状态 —— 兼容的终端会显示 working/waiting/done（v2.1.295）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">修复以指令形式编写的 prompt/agent hook（例如 &quot;Block commands that...&quot;）错误地允许已阻止操作的问题（v2.1.294）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">改进 Stop/SubagentStop 上的 prompt hook，使 Claude 在处理条件指令时不太容易提前停止（v2.1.294）</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Sonnet 5.5 cache reads halved to $0.10/M tokens (was $0.20) (v2.1.296)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL — run all workflow agents on one model (v2.1.296)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">autoCompactWindow in subagent definitions — compact earlier than main conv (v2.1.296)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">MCP tool description/instruction limit raised from 2,048 to 4,096 chars (v2.1.296)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">onFailure: &quot;block&quot; on command/HTTP hooks — hook failure now blocks action (v2.1.295)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">OSC 7501 Program Status Protocol — terminals can show Claude working/waiting/done (v2.1.295)</a></li>
         </ul>
       </div>
     </header>
@@ -417,8 +419,8 @@
             <div class="row"><span class="key">DISABLE_UPDATES</span> <span class="desc">阻止所有更新路径<span class="badge-new" data-added="2026-04-23">NEW</span></span></div>
             <div class="row"><span class="key">MCP_TIMEOUT</span> <span class="desc">MCP server 启动超时（ms）</span></div>
             <div class="row"><span class="key">CLAUDE_CODE_SESSION_ID</span> <span class="desc">用于 hooks 和 CI tracing 的唯一 session ID<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN</span> <span class="desc">关闭全屏渲染（=1）<span class="badge-new" data-added="2026-05-07">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_SUBAGENT_MODEL_FORCE</span> <span class="desc">将某个模型应用到所有 subagent<span class="badge-new" data-added="2026-09-02">NEW</span></span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL</span> <span class="desc">Run all workflow agents on one model<span class="badge-new" data-added="2026-10-10">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_MOUSE_CLICKS</span> <span class="desc">在全屏中禁用鼠标点击/拖拽/悬停（=1）<span class="badge-new" data-added="2026-06-27">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</span> <span class="desc">通过 Homebrew/WinGet 自动升级<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_AX_SCREEN_READER</span> <span class="desc">screen reader 模式（=1）<span class="badge-new" data-added="2026-07-14">NEW</span></span></div>
