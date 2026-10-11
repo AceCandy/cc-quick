@@ -509,6 +509,9 @@
   "CLAUDE_CODE_USE_MANTLE": {
     "desc": "为 Bedrock 使用 Mantle (=1)"
   },
+  "CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL": {
+    "desc": "让所有工作流代理使用同一个模型运行"
+  },
   "CLAUDE_STREAM_IDLE_TIMEOUT_MS": {
     "desc": "流式看门狗（默认 90s）"
   },
