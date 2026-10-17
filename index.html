@@ -42,18 +42,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.301</span></span>
-          <span class="last-updated">最近更新：2026年10月15日</span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.302</span></span>
+          <span class="last-updated">最近更新：2026年10月17日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Vim 中的 % 跳转到匹配的括号；可与 d/c/y 操作符配合使用 (v2.1.301)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fork subagents on by default in claude -p, Agent SDK, desktop app, VS Code — disable with CLAUDE_CODE_FORK_SUBAGENT=0 (v2.1.302)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Idle compaction toggle added to /config (v2.1.302)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">CLAUDE_CODE_AUTO_MODE_MODEL selects model for auto mode classifier (v2.1.302)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Vim 中的 % 跳转到匹配的括号；可与 d/c/y 操作符配合使用 (v2.1.301)</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">VS Code：渲染 LaTeX 数学公式；在用量限制横幅中添加“Get more usage”链接 (v2.1.301)</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">切换到上下文窗口较小的模型时，如果对话过长，现在会先进行摘要 (v2.1.301)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Claude Platform on AWS 上启用 /advisor — 设置 CLAUDE_CODE_DISABLE_ADVISOR_TOOL=1 可禁用（v2.1.300）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">在 claude remote-control 中使用 --sandbox/--no-sandbox 现在会报错 — 请改用 sandbox.enabled 设置（v2.1.300）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">大型 API 请求现在会自动进行 gzip 压缩 — 设置 CLAUDE_CODE_GZIP_REQUEST_BODIES=0 可禁用（v2.1.300）</a></li>
         </ul>
       </div>
     </header>
@@ -421,7 +421,7 @@
             <div class="row"><span class="key">CLAUDE_CODE_SESSION_ID</span> <span class="desc">用于 hooks 和 CI tracing 的唯一 session ID<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_SUBAGENT_MODEL_FORCE</span> <span class="desc">将某个模型应用到所有 subagent<span class="badge-new" data-added="2026-09-02">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL</span> <span class="desc">让所有工作流代理使用同一个模型运行<span class="badge-new" data-added="2026-10-10">NEW</span></span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_MOUSE_CLICKS</span> <span class="desc">在全屏中禁用鼠标点击/拖拽/悬停（=1）<span class="badge-new" data-added="2026-06-27">NEW</span></span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_AUTO_MODE_MODEL</span> <span class="desc">Model for auto mode classifier (client-side)<span class="badge-new" data-added="2026-10-17">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</span> <span class="desc">通过 Homebrew/WinGet 自动升级<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_AX_SCREEN_READER</span> <span class="desc">screen reader 模式（=1）<span class="badge-new" data-added="2026-07-14">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_WEB_FETCH</span> <span class="desc">禁用 WebFetch 工具（=1）<span class="badge-new" data-added="2026-09-29">NEW</span></span></div>
