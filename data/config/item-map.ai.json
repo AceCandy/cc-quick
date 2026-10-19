@@ -455,6 +455,9 @@
   "CLAUDE_AX_SCREEN_READER": {
     "desc": "screen reader 模式（=1）"
   },
+  "CLAUDE_CODE_AUTO_MODE_MODEL": {
+    "desc": "自动模式分类器使用的模型（客户端侧）"
+  },
   "CLAUDE_CODE_CERT_STORE": {
     "desc": "逗号分隔的 TLS CA 来源：bundled、system（默认：两者）"
   },
