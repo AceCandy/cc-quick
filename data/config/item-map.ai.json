@@ -548,7 +548,7 @@
   "CtrlY": {
     "desc": "恢复已清空的输入缓冲区"
   },
-  "desc": "加载 API + SDK 参考；managed-agents-secure 用于审计安全状况",
+  "desc": "加载 API + SDK 参考；managed-agents-secure 审计安全态势",
   "description": {
     "desc": "自动调用触发器"
   },
