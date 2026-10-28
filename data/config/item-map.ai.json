@@ -191,6 +191,9 @@
   "/claude-api": {
     "desc": "加载 API + SDK 参考"
   },
+  "/claude-api [subcmd]": {
+    "desc": "加载 API + SDK 参考；managed-agents-secure 审计安全态势"
+  },
   "/code-review": {
     "desc": "低/中/高三种 effort 级别的代码审查"
   },
