@@ -42,18 +42,17 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.312</span></span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.314</span></span>
           <span class="last-updated">最近更新：2026年10月24日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">每个会话的 Hooks 并发运行数上限为 24（包括子代理）；超时 &lt; 1 秒按 1 秒计（v2.1.312）</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">permissions.blockWritesOutsideWorkingDirectories: Write, Edit, and NotebookEdit refuse paths outside working dirs in all permission modes (v2.1.314)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Idle compaction added in VS Code and Claude Desktop Code tab (v2.1.314)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">FORCE_HYPERLINK=false / no / off now correctly turns hyperlinks off (was inverted) (v2.1.314)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">每个会话的 Hooks 并发运行数上限为 24（包括子代理）；超时 &lt; 1 秒按 1 秒计（v2.1.312）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">目录级和路径：cd 进入 git 子目录后，现在可以正确找到 skills（v2.1.312）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">终端中的 ultrathink 现在会在通过 Anthropic API 访问的多个模型上以 xhigh effort 运行 (v2.1.311)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">/code-review 现在仅在明确要求时使用 max effort (v2.1.311)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">VS Code 扩展中的代码块语法着色 (v2.1.311)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">设置中的 DISABLE_COMPACT 只能关闭压缩，不能重新开启 (v2.1.311)</a></li>
         </ul>
       </div>
     </header>
@@ -391,7 +390,7 @@
                 <div class="row"><span class="key">modelOverrides</span> <span class="desc">将模型选择器映射到自定义 ID</span></div>
             <div class="row"><span class="key">autoMode.hard_deny</span> <span class="desc">无条件自动模式分类器拒绝规则<span class="badge-new" data-added="2026-05-08">NEW</span></span></div>
             <div class="row"><span class="key">hooks: if</span> <span class="desc">条件 hooks（permission rule 语法）</span></div>
-            <div class="row"><span class="key">DISABLE_PROMPT_CACHING*</span> <span class="desc">禁用 prompt caching 时的启动警告<span class="badge-new" data-added="2026-04-15">NEW</span></span></div>
+            <div class="row"><span class="key">permissions.blockWritesOutsideWorkingDirectories</span> <span class="desc">Refuse writes outside working dirs in all permission modes<span class="badge-new" data-added="2026-10-30">NEW</span></span></div>
             <div class="row"><span class="key">Monitor tool</span> <span class="desc">从后台脚本流式输出事件<span class="badge-new" data-added="2026-04-09">NEW</span></span></div>
             <div class="row"><span class="key">PermissionDenied</span> <span class="desc">Hook：自动模式拒绝<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">可选启用（现默认关闭）<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
