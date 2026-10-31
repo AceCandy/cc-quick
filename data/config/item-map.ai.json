@@ -506,6 +506,9 @@
   "CLAUDE_CODE_SESSION_ID": {
     "desc": "用于 hooks 和 CI tracing 的唯一 session ID"
   },
+  "CLAUDE_CODE_SUBAGENT_EFFORT": {
+    "desc": "子代理的默认 effort 级别"
+  },
   "CLAUDE_CODE_SUBAGENT_MODEL_FORCE": {
     "desc": "将某个模型应用到所有 subagent"
   },
@@ -650,6 +653,9 @@
   },
   "permissionMode": {
     "desc": "default/acceptEdits/plan/dontAsk/bypassPermissions"
+  },
+  "permissions.blockWritesOutsideWorkingDirectories": {
+    "desc": "在所有权限模式下，拒绝写入工作目录之外的位置"
   },
   "Plan": {
     "desc": "用于 plan 模式的研究"

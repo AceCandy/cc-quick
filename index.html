@@ -48,9 +48,9 @@
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">CLAUDE_CODE_DISABLE_ULTRATHINK env var disables the ultrathink keyword (v2.1.316)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">CLAUDE_CODE_SUBAGENT_EFFORT env var sets default effort level for subagents (v2.1.316)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Fast mode for Opus 4.8 deprecated Oct 30; removed Nov 30 — migrate to Opus 5.5 (v2.1.316)</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">CLAUDE_CODE_DISABLE_ULTRATHINK 环境变量禁用 ultrathink 关键字（v2.1.316）</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">CLAUDE_CODE_SUBAGENT_EFFORT 环境变量设置子代理的默认 effort 级别（v2.1.316）</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Opus 4.8 的快速模式将于 10 月 30 日弃用；11 月 30 日移除——请迁移到 Opus 5.5（v2.1.316）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">permissions.blockWritesOutsideWorkingDirectories：在所有权限模式下，Write、Edit 和 NotebookEdit 均拒绝操作工作目录之外的路径（v2.1.314）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">VS Code 和 Claude Desktop 的 Code 标签页新增空闲压缩功能（v2.1.314）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">现在 FORCE_HYPERLINK=false / no / off 会正确关闭超链接（此前逻辑相反）（v2.1.314）</a></li>
@@ -391,7 +391,7 @@
                 <div class="row"><span class="key">modelOverrides</span> <span class="desc">将模型选择器映射到自定义 ID</span></div>
             <div class="row"><span class="key">autoMode.hard_deny</span> <span class="desc">无条件自动模式分类器拒绝规则<span class="badge-new" data-added="2026-05-08">NEW</span></span></div>
             <div class="row"><span class="key">hooks: if</span> <span class="desc">条件 hooks（permission rule 语法）</span></div>
-            <div class="row"><span class="key">permissions.blockWritesOutsideWorkingDirectories</span> <span class="desc">Refuse writes outside working dirs in all permission modes<span class="badge-new" data-added="2026-10-30">NEW</span></span></div>
+            <div class="row"><span class="key">permissions.blockWritesOutsideWorkingDirectories</span> <span class="desc">在所有权限模式下，拒绝写入工作目录之外的位置<span class="badge-new" data-added="2026-10-30">NEW</span></span></div>
             <div class="row"><span class="key">Monitor tool</span> <span class="desc">从后台脚本流式输出事件<span class="badge-new" data-added="2026-04-09">NEW</span></span></div>
             <div class="row"><span class="key">PermissionDenied</span> <span class="desc">Hook：自动模式拒绝<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">可选启用（现默认关闭）<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
@@ -420,7 +420,7 @@
             <div class="row"><span class="key">CLAUDE_CODE_SESSION_ID</span> <span class="desc">用于 hooks 和 CI tracing 的唯一 session ID<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_SUBAGENT_MODEL_FORCE</span> <span class="desc">将某个模型应用到所有 subagent<span class="badge-new" data-added="2026-09-02">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL</span> <span class="desc">让所有工作流代理使用同一个模型运行<span class="badge-new" data-added="2026-10-10">NEW</span></span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_SUBAGENT_EFFORT</span> <span class="desc">Default effort level for subagents<span class="badge-new" data-added="2026-10-31">NEW</span></span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_SUBAGENT_EFFORT</span> <span class="desc">子代理的默认 effort 级别<span class="badge-new" data-added="2026-10-31">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_AUTO_MODE_MODEL</span> <span class="desc">自动模式分类器使用的模型（客户端侧）<span class="badge-new" data-added="2026-10-17">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</span> <span class="desc">通过 Homebrew/WinGet 自动升级<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_AX_SCREEN_READER</span> <span class="desc">screen reader 模式（=1）<span class="badge-new" data-added="2026-07-14">NEW</span></span></div>
