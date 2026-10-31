@@ -551,7 +551,7 @@
   "CtrlY": {
     "desc": "恢复已清空的输入缓冲区"
   },
-  "desc": "加载 API + SDK 参考；managed-agents-secure 审计安全状况",
+  "desc": "在所有权限模式下，拒绝写入工作目录以外的位置",
   "description": {
     "desc": "自动调用触发器"
   },
