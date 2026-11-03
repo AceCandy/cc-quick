@@ -387,14 +387,14 @@ function initChangelogPopover() {
 function initSiteVisitCounter() {
   var countEl = document.getElementById("siteVisitCount");
 
-  if (!countEl || typeof Counter !== "function") {
+  if (!countEl || typeof fetch !== "function") {
     return;
   }
 
-  var namespace = countEl.getAttribute("data-counter-namespace") || "cc-quick";
-  var name = countEl.getAttribute("data-counter-name") || "site-visits";
-  var cacheKey = namespace + ":siteVisitCount";
-  var counter = new Counter({ namespace: namespace, version: "v1" });
+  var endpoint = "https://api.counterapi.dev/v2/cc-quick/cc-quick-pv";
+  var apiToken = "ut_vfniLIquiZH6hmwkoMOIYIf3V9AT8Ruyf5OmXuTh";
+  var cacheKey = "cc-quick:siteVisitCount";
+  var initialCount = 575;
 
   function setCounterState(state, text) {
     countEl.textContent = text;
@@ -418,7 +418,8 @@ function initSiteVisitCounter() {
   }
 
   function readCount(result) {
-    return result && typeof result.count === "number" ? result.count : null;
+    var count = result && result.data && result.data.up_count;
+    return typeof count === "number" ? count + initialCount : null;
   }
 
   function renderCount(count) {
@@ -435,7 +436,14 @@ function initSiteVisitCounter() {
   }
 
   function updateCounter(method, showFallbackError) {
-    return counter[method](name)
+    var url = method === "up" ? endpoint + "/up" : endpoint;
+    return fetch(url, { headers: { Authorization: "Bearer " + apiToken } })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("CounterAPI request failed");
+        }
+        return response.json();
+      })
       .then(function (result) {
         var count = readCount(result);
 
@@ -456,7 +464,6 @@ function initSiteVisitCounter() {
       });
   }
 
-  // CounterAPI v2 需要预创建 workspace；这里使用 v1 namespace，静态页可直接计数。
   updateCounter("up", true);
   setInterval(function () {
     updateCounter("get", false);

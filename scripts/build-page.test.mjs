@@ -411,7 +411,7 @@ test('renderPage 渲染结构化 footer 并保留本地说明行', () => {
   assert.match(html, /页面由上游内容自动同步生成；未命中词表时默认保留原文。/);
 });
 
-test('模板底部包含本站访问量占位与 CounterAPI 浏览器脚本', () => {
+test('模板底部包含本站访问量占位与页面脚本', () => {
   const template = readFileSync(new URL('../templates/index.template.html', import.meta.url), 'utf8');
 
   assert.match(template, /<div class="header-counter" aria-live="polite">/);
@@ -419,10 +419,7 @@ test('模板底部包含本站访问量占位与 CounterAPI 浏览器脚本', ()
   assert.match(template, /id="siteVisitCount"/);
   assert.match(template, /data-counter-namespace="cc-quick"/);
   assert.match(template, /data-counter-name="site-visits"/);
-  assert.match(
-    template,
-    /<script src="https:\/\/cdn\.jsdelivr\.net\/npm\/counterapi@2\.1\.2\/dist\/counter\.browser\.min\.js" defer><\/script>/
-  );
+  assert.doesNotMatch(template, /counterapi@/);
   assert.match(template, /<script src="\.\/script\.js" defer><\/script>/);
 });
 
