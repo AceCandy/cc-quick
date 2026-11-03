@@ -391,8 +391,7 @@ function initSiteVisitCounter() {
     return;
   }
 
-  var endpoint = "https://api.counterapi.dev/v2/cc-quick/cc-quick-pv";
-  var apiToken = "ut_vfniLIquiZH6hmwkoMOIYIf3V9AT8Ruyf5OmXuTh";
+  var endpoint = "/api/site-visits";
   var cacheKey = "cc-quick:siteVisitCount";
   var initialCount = 575;
 
@@ -436,8 +435,7 @@ function initSiteVisitCounter() {
   }
 
   function updateCounter(method, showFallbackError) {
-    var url = method === "up" ? endpoint + "/up" : endpoint;
-    return fetch(url, { headers: { Authorization: "Bearer " + apiToken } })
+    return fetch(endpoint)
       .then(function (response) {
         if (!response.ok) {
           throw new Error("CounterAPI request failed");
@@ -465,9 +463,6 @@ function initSiteVisitCounter() {
   }
 
   updateCounter("up", true);
-  setInterval(function () {
-    updateCounter("get", false);
-  }, 15000);
 }
 
 (function () {
