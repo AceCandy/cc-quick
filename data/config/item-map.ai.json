@@ -473,6 +473,9 @@
   "CLAUDE_CODE_DISABLE_MOUSE_CLICKS": {
     "desc": "在全屏中禁用鼠标点击/拖拽/悬停（=1）"
   },
+  "CLAUDE_CODE_DISABLE_NESTED_SESSION_ID": {
+    "desc": "在会话内为 claude -p 恢复旧版嵌套会话 ID 行为（=1）"
+  },
   "CLAUDE_CODE_DISABLE_WEB_FETCH": {
     "desc": "禁用 WebFetch 工具（=1）"
   },

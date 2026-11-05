@@ -1,4 +1,5 @@
 {
+  "--continue no longer loses conversation after malformed tool-call retries (regression fix from v2.1.314) (v2.1.318)": "--continue 在格式错误的工具调用重试后不再丢失对话（修复 v2.1.314 引入的回归问题）（v2.1.318）",
   "--exclude-dynamic-system-prompt-sections improves cross-user prompt caching in print mode (v2.1.98)": "--exclude-dynamic-system-prompt-sections 可改进 print 模式下的跨用户 prompt 缓存（v2.1.98）",
   "--from-pr supports GitLab, Bitbucket and GitHub Enterprise (v2.1.119)": "--from-pr 支持 GitLab、Bitbucket 和 GitHub Enterprise (v2.1.119)",
   "--max-budget-usd now stops background subagents mid-run when budget is exceeded (v2.1.217)": "--max-budget-usd 现在会在预算超出时中途停止后台 subagents（v2.1.217）",
@@ -292,6 +293,7 @@
   "Hardened cross-session messaging — relayed Claude messages no longer carry user authority (v2.1.166)": "增强跨会话消息传递安全性 — 转发的 Claude 消息不再携带用户权限 (v2.1.166)",
   "Hardened skills synced from claude.ai: prevents shadowing local commands, sanitized descriptions (v2.1.228)": "从 claude.ai 同步的 hardened skills：防止覆盖本地命令、清理描述 (v2.1.228)",
   "Hooks capped at 24 concurrent runs per session (subagents included); timeout < 1 s counts as 1 s (v2.1.312)": "每个会话的 Hooks 并发运行数上限为 24（包括子代理）；超时 < 1 秒按 1 秒计（v2.1.312）",
+  "IDE extension no longer auto-installs from an IDE terminal — use /ide from an outside terminal instead (v2.1.318)": "IDE 扩展不再从 IDE 终端自动安装——请改为从外部终端使用 /ide（v2.1.318）",
   "Idle compaction added in VS Code and Claude Desktop Code tab (v2.1.314)": "VS Code 和 Claude Desktop 的 Code 标签页新增空闲压缩功能（v2.1.314）",
   "Idle compaction toggle added to /config (v2.1.302)": "在 /config 中新增空闲时压缩开关（v2.1.302）",
   "Improved /loop: Esc cancels pending wakeups; wakeups display as \"Claude resuming /loop wakeup\"NEW": "改进 /loop：Esc 可取消待处理的唤醒；唤醒显示为“Claude resuming /loop wakeup”NEW",
@@ -311,6 +313,7 @@
   "Live elapsed-time counter on collapsed tool summary lines (v2.1.210)": "折叠的工具摘要行上显示实时耗时计数器 (v2.1.210)",
   "Live file path autocomplete in bash (!) mode (v2.1.193)": "在 bash (!) 模式下支持实时文件路径自动补全 (v2.1.193)",
   "Login expiry warning added — re-authenticate before background sessions are interrupted (v2.1.203)": "新增登录过期警告 — 在后台会话被中断前重新认证 (v2.1.203)",
+  "loginExpiresAt in claude auth status and credential_expires_at in claude -p JSON show sign-in expiry (v2.1.318)": "claude auth status 中的 loginExpiresAt 和 claude -p JSON 中的 credential_expires_at 现在显示登录过期时间（v2.1.318）",
   "managedMcpServers managed setting for org-wide HTTP/SSE MCP servers; --permission-prompts none for headless hosts; GitLab MR support (v2.1.259)": "managedMcpServers 用于组织范围 HTTP/SSE MCP servers 的 managed 设置；无头主机使用 --permission-prompts none；支持 GitLab MR（v2.1.259）",
   "Markdown artifacts now render as styled document pages (v2.1.271)": "Markdown artifacts 现在会渲染为带样式的文档页面 (v2.1.271)",
   "Markdown renders GFM task list checkboxes (- [ ] / - [x]) (v2.1.149)": "Markdown 可渲染 GFM 任务列表复选框（- [ ] / - [x]）(v2.1.149)",
