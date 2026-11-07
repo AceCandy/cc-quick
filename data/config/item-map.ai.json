@@ -470,6 +470,9 @@
   "CLAUDE_CODE_DISABLE_CRON": {
     "desc": "禁用计划任务"
   },
+  "CLAUDE_CODE_DISABLE_MCP_TASKS": {
+    "desc": "关闭 MCP 任务后台化——工具调用改为在带内等待 (=1)"
+  },
   "CLAUDE_CODE_DISABLE_MOUSE_CLICKS": {
     "desc": "在全屏中禁用鼠标点击/拖拽/悬停（=1）"
   },
@@ -659,6 +662,9 @@
   },
   "permissions.blockWritesOutsideWorkingDirectories": {
     "desc": "在所有权限模式下，拒绝写入工作目录之外的位置"
+  },
+  "permissions.denyInsteadOfPrompting": {
+    "desc": "拒绝需要请求权限的工具调用，而不是等待——适用于终端、子代理和队友会话"
   },
   "Plan": {
     "desc": "用于 plan 模式的研究"
