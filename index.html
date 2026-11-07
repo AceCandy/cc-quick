@@ -42,18 +42,18 @@
           </div>
         </div>
         <div class="header-meta">
-          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.318</span></span>
+          <span class="version-info"><span class="version-label">Claude Code</span><span class="version-badge">v2.1.319</span></span>
           <span class="last-updated">最近更新：2026年11月4日</span>
         </div>
       </div>
       <div class="changelog-panel" id="changelogPanel" hidden>
         <ul class="changelog-list">
-          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">IDE 扩展不再从 IDE 终端自动安装——请改为从外部终端使用 /ide（v2.1.318）</a></li>
+          <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">MCP tool calls run in the background — Claude Code reports the result when finished; set CLAUDE_CODE_DISABLE_MCP_TASKS=1 to turn off (v2.1.319)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">permissions.denyInsteadOfPrompting denies tool calls that would prompt for permission, keeping the turn going in terminal, subagent, and teammate sessions (v2.1.319)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Self-paced /loop ends when a turn finishes without rescheduling — set CLAUDE_CODE_LOOP_KEEPALIVE=1 for the old keep-alive behavior (v2.1.319)</a></li>
+        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">IDE 扩展不再从 IDE 终端自动安装——请改为从外部终端使用 /ide（v2.1.318）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">--continue 在格式错误的工具调用重试后不再丢失对话（修复 v2.1.314 引入的回归问题）（v2.1.318）</a></li>
         <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">claude auth status 中的 loginExpiresAt 和 claude -p JSON 中的 credential_expires_at 现在显示登录过期时间（v2.1.318）</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Claude 会在 web 或 shell 工具将你的账户邮箱发送到网络前征求确认 (v2.1.317)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Read 工具不再返回 &quot;file unchanged&quot; 占位内容；重新读取未更改的文件时会返回其内容 (v2.1.317)</a></li>
-        <li><a class="changelog-link" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noreferrer noopener">Agent SDK hook 回调支持 onFailure: &quot;block&quot;，以便在失败时阻止操作 (v2.1.317)</a></li>
         </ul>
       </div>
     </header>
@@ -392,8 +392,8 @@
             <div class="row"><span class="key">autoMode.hard_deny</span> <span class="desc">无条件自动模式分类器拒绝规则<span class="badge-new" data-added="2026-05-08">NEW</span></span></div>
             <div class="row"><span class="key">hooks: if</span> <span class="desc">条件 hooks（permission rule 语法）</span></div>
             <div class="row"><span class="key">permissions.blockWritesOutsideWorkingDirectories</span> <span class="desc">在所有权限模式下，拒绝写入工作目录之外的位置<span class="badge-new" data-added="2026-10-30">NEW</span></span></div>
+            <div class="row"><span class="key">permissions.denyInsteadOfPrompting</span> <span class="desc">Deny tool calls that would prompt for permission instead of waiting — applies in terminal, subagent, and teammate sessions<span class="badge-new" data-added="2026-11-07">NEW</span></span></div>
             <div class="row"><span class="key">Monitor tool</span> <span class="desc">从后台脚本流式输出事件<span class="badge-new" data-added="2026-04-09">NEW</span></span></div>
-            <div class="row"><span class="key">PermissionDenied</span> <span class="desc">Hook：自动模式拒绝<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">showThinkingSummaries</span> <span class="desc">可选启用（现默认关闭）<span class="badge-new" data-added="2026-03-31">NEW</span></span></div>
             <div class="row"><span class="key">hooks: &quot;defer&quot;</span> <span class="desc">暂停 headless → 稍后恢复</span></div>
             <div class="row"><span class="key">axScreenReader</span> <span class="desc">纯文本 screen reader 渲染<span class="badge-new" data-added="2026-07-14">NEW</span></span></div>
@@ -424,7 +424,7 @@
             <div class="row"><span class="key">CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE</span> <span class="desc">通过 Homebrew/WinGet 自动升级<span class="badge-new" data-added="2026-05-06">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_AX_SCREEN_READER</span> <span class="desc">screen reader 模式（=1）<span class="badge-new" data-added="2026-07-14">NEW</span></span></div>
             <div class="row"><span class="key">CLAUDE_CODE_DISABLE_WEB_FETCH</span> <span class="desc">禁用 WebFetch 工具（=1）<span class="badge-new" data-added="2026-09-29">NEW</span></span></div>
-            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_NESTED_SESSION_ID</span> <span class="desc">在会话内为 claude -p 恢复旧版嵌套会话 ID 行为（=1）<span class="badge-new" data-added="2026-11-03">NEW</span></span></div>
+            <div class="row"><span class="key">CLAUDE_CODE_DISABLE_MCP_TASKS</span> <span class="desc">Turn off MCP task backgrounding — tool calls wait in-band instead (=1)<span class="badge-new" data-added="2026-11-07">NEW</span></span></div>
               </div>
             </section>
           </div>
